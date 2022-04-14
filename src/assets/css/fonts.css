@@ -1,0 +1,235 @@
+/* Casterio */
+@font-face {
+    font-family: 'Casterio';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Casterio/CasterioSemibold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Casterio';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Casterio/Casterio-Regular.ttf') format('truetype');
+}
+
+/* Arista */
+@font-face {
+    font-family: 'Arista 2.0 Alternate full';
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Arista/Arista20Alternatefull.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Arista 2.0 Alternate';
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Arista/Arista20Alternate.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Arista 2.0 Alternate';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Arista/Arista20AlternateLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Arista 2.0';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Arista/Arista20Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Arista 2.0';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Arista/Arista20.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Arista 2.0';
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Arista/Arista20Fat.ttf') format('truetype');
+}
+
+/* Georgia */
+@font-face {
+    font-family: 'Georgia';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/Georgia.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-BlackItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-BoldItalic.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-SemiboldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-Semibold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondBlack.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondBlackItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondRegular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondSemibold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondLightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Georgia Pro Cond';
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+    src: url('../fonts/Georgia/GeorgiaPro-CondSemiboldItalic.ttf') format('truetype');
+}

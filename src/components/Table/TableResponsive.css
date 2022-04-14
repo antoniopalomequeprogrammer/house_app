@@ -1,0 +1,104 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.search-button {
+  height: 55px;
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-around;
+}
+
+.table td,
+.table th {
+  padding: 6px 6px, 6px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 16px;
+}
+
+.table th {
+  background-color: rgb(209, 167, 47);
+  color: #ffffff;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.botonEliminar {
+  border: 1px solid;
+  border-color: green;
+}
+
+.paginador {
+  width: 10%;
+  margin-left: "20px";
+}
+.button-excel {
+  background-color: #84b446;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: none;
+  margin-left: 10px;
+}
+
+.button-excel-seleccionadas {
+  background-color: #1aa76d;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: none;
+  margin-left: 10px;
+}
+
+.container-button-excel {
+  display: flex;
+  justify-content: end;
+}
+
+/*responsive*/
+
+@media (max-width: 500px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: 15px;
+  }
+  .table td {
+    padding-left: 50%;
+    text-align: left;
+    position: relative;
+    padding-bottom: 35px;
+  }
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+  .paginador {
+    width: 38%;
+    margin-left: 25px;
+  }
+}

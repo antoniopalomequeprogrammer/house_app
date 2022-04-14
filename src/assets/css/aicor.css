@@ -1,0 +1,369 @@
+.awssld__content > img{
+    width: 100% !important;
+    height: auto !important;
+}
+.awssld__wrapper{
+    height: 740px !important;
+}
+.indicators{
+    bottom: 120px !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    width: 100% !important;
+}
+#banner-imagenes-clubsite .indicators{
+  bottom: 0px !important;
+}
+.indicators button{
+    width: 112px !important;
+    height: 3px !important;
+    border-radius: unset !important;
+    background: #FFF !important;
+    opacity: 1 !important;
+}
+.indicators button:hover{
+    transform: unset !important;
+    background: #e75169 !important;
+}
+.indicators button.active{
+    background: #e75169 !important;
+    transform: unset !important;
+}
+.react-slideshow-container + ul.indicators li{
+    width: auto !important;
+    height: auto !important;
+}
+.react-slideshow-container + ul.indicators .each-slideshow-indicator:before{
+    display: none !important;
+}
+.makeStyles-grid-1{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+#busqueda-concepto-servicios .MuiFormControl-fullWidth{
+    padding-top: 0;
+}
+#busqueda-concepto-servicios .makeStyles-underline-118:before,
+#busqueda-fecha-servicios .MuiInput-underline:before{
+    border-color: #e75169 !important;
+    border-width: 1px !important;
+}
+#busqueda-fecha-servicios .MuiIconButton-root{
+    color: #e75169 !important;
+}
+#busqueda-concepto-servicios input,
+#busqueda-fecha-servicios input{
+    color: #FFFFFF !important;
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-style: italic;
+}
+#busqueda-ubicacion-servicios .css-yk16xz-control{
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 1px solid #e75169;
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-style: italic;
+}
+#busqueda-ubicacion-servicios .css-1uccc91-singleValue{
+    color: #ffffff;
+    padding-left: 22px;
+}
+#busqueda-ubicacion-servicios .css-2b097c-container{
+    width: 100%;
+    margin-left: -32px;
+}
+#busqueda-ubicacion-servicios .MuiSvgIcon-root{
+    color: #e75169;
+}
+#formulario-landing .MuiInput-underline:before{
+    border-bottom: none;
+}
+#ubicacion-busqueda-landing{
+    margin: 0 0 17px 0;
+    padding-top: 27px;
+}
+#ubicacion-busqueda-landing .css-g1d714-ValueContainer{
+    color: #5b5b5b;
+    padding-left: 17px;
+}
+#ubicacion-busqueda-landing .css-g1d714-ValueContainer{
+    color: #5b5b5b;
+    padding-left: 35px;
+}
+#ubicacion-busqueda-landing .css-2b097c-container{
+    width: 100%;
+    margin-left: -32px;
+}
+#ubicacion-busqueda-landing .MuiSvgIcon-root{
+    color: #5b5b5b;
+    z-index: 9;
+    left: 10px;
+    position: relative;
+}
+#ubicacion-busqueda-landing .css-yk16xz-control{
+    height: 42px;
+}
+#fecha-busqueda-landing{
+    font-size: 14px !important;
+    font-family: "Poppins" !important;
+    color: #5b5b5b;
+}
+.MuiInputAdornment-positionStart > button.MuiIconButton-root{
+    padding: 0;
+}
+.pagina-generica h2{
+    font-size: 24px;
+    margin-top: 30px;
+    min-height: 32px;
+    font-family: 'Poppins';
+    font-weight: normal;
+    margin-bottom: 1rem;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.pagina-generica p{
+    color: #a7a7a7;
+    margin: 25px 0;
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-weight: normal;
+    line-height: 1.5;
+}
+.MuiPickersToolbar-toolbar, .MuiPickersDay-daySelected{
+    background-color: #e75169 !important;
+}
+.MuiPickersCalendarHeader-switchHeader p{
+    color: #a7a7a7 !important;
+}
+.acordeonFaq{
+  position: relative;
+  top: -38px;
+  right: -16px;
+}
+.MuiAccordionSummary-expandIcon.Mui-expanded .acordeonFaq{
+  position: relative;
+  right: 16.5px;
+  top: 29px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 33px 0 0 263px;
+  border-color: transparent transparent transparent #e8546c;
+}
+
+.MuiAccordionSummary-expandIcon.Mui-expanded .acordeonFaq .makeStyles-iconoFaq-116{
+  top: -20px !important;
+  color: #ffffff !important;
+  left: -260px !important;
+}
+.MuiAccordion-root::before{
+  background-color: transparent !important;
+}
+.gm-ui-hover-effect {
+  width: 45px !important;
+}
+.gm-ui-hover-effect img {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+/* Cajetín de Información del mapa de búsqueda */
+#caja-info-mapa{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#caja-info-mapa img.logo-club{
+  width: 100%;
+  max-width: auto;
+}
+
+#caja-info-mapa h1.titulo-club{
+  font-size: 27px;
+  text-align: center;
+  font-family: 'Poppins';
+  font-weight: 600;
+  color: #919191;
+  width: 95%;
+}
+
+#caja-info-mapa p.direccion-club{
+  font-size: 15px;
+  text-align: center;
+  font-family: 'Poppins';
+  color: #919191;
+  width: 95%;
+}
+
+/* #caja-info-mapa button{
+  margin-left: 3%;
+} */
+
+/* Nav Pills - Clubsite Page */
+#menu-club button{
+  padding: 0;
+  margin: 0 15px;
+  border-radius: unset;
+}
+#menu-club button:first-child{
+  margin-left: 0;
+}
+#menu-club button:last-child{
+  margin-right: 0;
+}
+
+#menu-club .MuiTab-textColorInherit.Mui-selected{
+  border-bottom: 2px solid #e85a71;
+  border-radius: unset;
+}
+
+#menu-club button span.MuiTab-wrapper{
+  flex-direction: row;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 13px;
+  color: #919191;
+
+}
+
+#menu-club button span .MuiSvgIcon-root{
+  margin: 0 !important;
+  margin-right: 15px !important;
+  width: 20px;
+  height: 20px;
+}
+
+/* Banderas y Efecto */
+.bandera-fondo{
+  position: relative;
+  display: inline-block;
+  margin: 2em 3em 120px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #bbb;
+    border-left-color: white;
+  box-sizing: border-box;
+  box-shadow: 2px 5px 14px 0px rgba(0,0,0,0.4);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform-style: preserve3d;
+  transform-origin: 0 250px;
+  transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(-22deg);
+
+  animation-name: wave;
+  animation-duration: 8s;
+  animation-timing-function: cubic-bezier(.16,.14,.82,.73);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.bandera-fondo:nth-child(odd) {
+  animation-delay: 1s;
+}
+
+/* .bandera-fondo:before {
+  position: absolute;
+  content: "";
+  height: 420px;
+  left: -5px;
+  top: -3px;
+  width: 6px;
+  border-right: 1px solid white;
+  border-radius: 3px;
+  background-color: #444;
+  box-shadow: -3px 3px 8px 0px rgba(0,0,0,0.4);
+} */
+    
+.bandera-fondo{
+  width: 168px;
+
+}
+
+.efecto-bandera {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-image:
+		-webkit-gradient(
+			linear,
+			0 -25%,
+			100% top,
+			color-stop(0%,rgba(255,255,255,0)),
+			color-stop(20%,rgba(255,255,255,0)),
+      color-stop(30%,rgba(0,0,0,.04)),
+			color-stop(40%,rgba(255,255,255,.2)),
+      color-stop(60%,rgba(255,255,255,0)),
+    	color-stop(65%,rgba(255,255,255,.2)),
+			color-stop(80%,rgba(0,0,0,.05)),
+			color-stop(100%,rgba(255,255,255,0)));
+
+	background-size: 200%;
+  
+	animation-name: flutter;
+	animation-duration: 8s;
+	animation-timing-function: cubic-bezier(.16,.14,.82,.73);
+	animation-iteration-count: infinite;
+}
+
+
+@keyframes flutter {
+
+	0% {
+		background-position: -200% 0px;
+	}
+
+  30% {
+		background-position: -60% 5px;
+	}
+  
+   70% {
+		background-position: 70% -5px;
+	}
+  
+	100% {
+		background-position: 200% 0px;
+	}
+}
+
+@keyframes wave {
+
+	0% {
+		box-shadow: 4px 5px 5px 0 rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(22deg);
+
+	}
+
+	20% {
+		box-shadow: 4px 5px 15px 0 rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(0deg);
+	}
+
+  40% {
+		box-shadow: 4px 5px 20px 0 rgba(0,0,0,0.4);
+   -webkit-transform: translate3d(0, 0, 0) rotateX(6deg) rotateY(-22deg);
+	}
+  
+  60% {
+		box-shadow: 4px 5px 5px 0 rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(0deg);
+	}
+
+  80% {
+		box-shadow: 4px 5px 5px 0 rgba(0,0,0,0.3);
+   -webkit-transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(16deg);
+	}
+  
+	100% {
+		box-shadow: 4px 5px 5px 0 rgba(0,0,0,0.1);
+   -webkit-transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(22deg);
+	}
+}

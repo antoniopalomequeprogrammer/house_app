@@ -1,0 +1,35 @@
+{/* REESTRUCTURANDO */}
+
+          {/* {auxReservas == null && reservas == null ? (
+            <CustomLoading />
+          ) : auxReservas ? (
+            <table className="table">
+              <thead>
+                <th>{confirmada ? "Desconfirmar" : "Confirmar"}</th>
+                <th>Hora</th>
+                <th>Cliente</th>
+                <th>Teléfono</th>
+                <th>Comensales</th>
+                <th>¿Come solo?</th>
+                <th>Observaciones</th>
+                <th>Acciones</th>
+              </thead>
+              <tbody>
+                {auxReservas.map((reserva) => (
+                  <Reserva
+                    confirmada={true}
+                    setReservaSeleccionada={setReservaSeleccionada}
+                    reservaSeleccionada={reservaSeleccionada}
+                    reserva={reserva}
+                    edit={edit}
+                    setEdit={setEdit}
+                    setReserva={setReserva}
+                  />
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <CustomLoading />
+          )}
+        </>
+      // )} */}
