@@ -237,6 +237,8 @@ export async function crearVivienda(vivienda) {
     );
 }
 
+   
+
 
 // export async function crearVivienda(vivienda){
 //     let fd = new FormData();
@@ -544,9 +546,23 @@ export async function actualizarUsuario(usuario, usuarioId) {
     );
 }
 
+export async function actualizarVivienda(vivienda,viviendaId){
+    return await resolve(
+        instance
+        .post(`vivienda/actualizar/${viviendaId}`,{vivienda})
+        .then((res) => res.data)
+    );
+}
+
 export async function borrarUsuario(id) {
     return await resolve(
         instance.post(`usuarios/eliminar/${id}`).then((res) => res.data)
+    );
+}
+
+export async function borrarInmueble(id) {
+    return await resolve(
+        instance.post(`vivienda/eliminar/${id}`).then((res) => res.data)
     );
 }
 

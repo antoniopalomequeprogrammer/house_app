@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormularioInmueble = ({
+const FormularioNuevoInmueble = ({
   vivienda,
   setVivienda,
   show = false,
@@ -45,7 +45,6 @@ const FormularioInmueble = ({
     obtenerEstados();
     obtenerTipos();
     
-    obtenerDetalleVivienda();
   }, []);
 
   const provincias = [
@@ -118,19 +117,6 @@ const FormularioInmueble = ({
       setTipos(res.data);
     }
   }
-
-
-  async function obtenerDetalleVivienda(){
-    const res = await getVivienda(vivienda);
-
-    if(res.error){
-      toast("Error, al intentar obtener el detalle de la vivienda", { type: "error" });
-    }else{
-      setVivienda(res.data);
-    }
-
-  }
-
 
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -413,4 +399,4 @@ const FormularioInmueble = ({
   );
 };
 
-export default FormularioInmueble;
+export default FormularioNuevoInmueble;

@@ -22,12 +22,14 @@ import {
   import { makeStyles } from "@material-ui/core/styles";
   import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
   import FormularioInmueble from "./FormularioInmueble";
+  import FormularioNuevoInmueble from "./FormularioNuevoInmueble";
+
   import Alert from '@material-ui/lab/Alert';
   import Modal from "components/Modal/Modal";
   import {
     crearUsuario,
-    actualizarUsuario,
-    borrarUsuario,
+    actualizarVivienda,
+    borrarInmueble,
     crearVivienda,
     getMisViviendas,
     comprobarInmobiliaria
@@ -117,8 +119,17 @@ const Inmuebles = () => {
       ciudad: { type: "NULL", field: "Ciudad" },
       direccion: { type: "NULL", field: "Dirección" },
       descripcion:{type:"NULL", field:"Descripcion"},
-      logo: { type: "NULL", field: "Logo" },
+      habitacion:{type:"NULL", field:"Habitacion"},
+      garaje:{type:"NULL", field:"Garaje"},
+      terraza:{type:"NULL", field:"Terraza"},
+      planta:{type:"NULL", field:"Planta"},
+      banos:{type:"NULL", field:"Baños"},
+      ascensor:{type:"NULL", field:"Ascensor"},
+      estado:{type:"NULL", field:"Estado"},
+      tipo:{type:"NULL", field:"Tipo"},
       telefono: { type: "NULL", field: "Teléfono" },
+      tipo:{type:"NULL", field:"Tipo"},
+      estado:{type:"NULL", field:"Estado"},
     };
   
     const validate_fields_edit = {
@@ -126,8 +137,17 @@ const Inmuebles = () => {
       ciudad: { type: "NULL", field: "Ciudad" },
       direccion: { type: "NULL", field: "Dirección" },
       descripcion:{type:"NULL", field:"Descripcion"},
-      logo: { type: "NULL", field: "Logo" },
+      habitacion:{type:"NULL", field:"Habitacion"},
+      garaje:{type:"NULL", field:"Garaje"},
+      terraza:{type:"NULL", field:"Terraza"},
+      planta:{type:"NULL", field:"Planta"},
+      banos:{type:"NULL", field:"Baños"},
+      ascensor:{type:"NULL", field:"Ascensor"},
+      estado:{type:"NULL", field:"Estado"},
+      tipo:{type:"NULL", field:"Tipo"},
       telefono: { type: "NULL", field: "Teléfono" },
+      tipo:{type:"NULL", field:"Tipo"},
+      estado:{type:"NULL", field:"Estado"},
     };
 
     const columnNames = [
@@ -181,10 +201,9 @@ const Inmuebles = () => {
   
   
     function loadVivienda(vivienda) {
-      console.log({vivienda});
+      setVivienda(vivienda);
       setReadOnly(true);
       setOpenModal(true);
-      setVivienda(vivienda);
     }
   
     async function obtenerViviendas(findBy, page, perPageData) {
@@ -196,9 +215,10 @@ const Inmuebles = () => {
         });
       } else {
 
-        const arrayUsuarios = [];
+        const arrayViviendas = [];
         if (res.data.data.length > 0) {
           res.data.data.forEach((vivienda, index) => {
+            
             let aux = createData(
               vivienda.id,
               vivienda.titulo,
@@ -212,20 +232,20 @@ const Inmuebles = () => {
               <div>
                 <Actions
                   show={true}
-                  onShow={() => loadVivienda(vivienda)}
+                  onShow={() => loadVivienda(vivienda.id)}
                   edit={true}
-                  onEdit={() => loadEdit(vivienda)}
+                  onEdit={() => loadEdit(vivienda.id)}
                   del={true}
-                  onDelete={() => loadDelete(vivienda)}
+                  onDelete={() => loadDelete(vivienda.id)}
                 />
               </div>
             );
   
-            arrayUsuarios.push(aux);
+            arrayViviendas.push(aux);
           });
         }
         setTotalData(res.data.meta.total);
-        setViviendas(arrayUsuarios);
+        setViviendas(arrayViviendas);
         setIsLoad(true);
       }
     }
@@ -254,16 +274,17 @@ const Inmuebles = () => {
       }
     }
   
-    async function editarUsuario() {
+    async function editarVivienda() {
+      console.log({vivienda});
       if (!isProcessing) {
         var validate = VALIDATION.checkObject(validate_fields_edit, vivienda);
         if (validate.status) {
-          const res = await actualizarUsuario(vivienda, vivienda.id);
+          const res = await actualizarVivienda(vivienda, vivienda.id);
   
           if (res.error) {
             toast(res.error, { type: "error" });
           } else {
-            toast("vivienda editado correctamente", { type: "success" });
+            toast("Vivienda editado correctamente", { type: "success" });
             obtenerViviendas(findBy, page, perPageData);
             handleClose();
           }
@@ -273,8 +294,8 @@ const Inmuebles = () => {
   
    
   
-    async function eliminarUsuario() {
-      const res = await borrarUsuario(vivienda.id);
+    async function eliminarInmueble() {
+      const res = await borrarInmueble(vivienda);
   
       if (res.error) {
         toast(res.error, { type: "error" });
@@ -381,7 +402,7 @@ const Inmuebles = () => {
           open={openModal}
           onCancel={() => handleClose()}
           content={
-            <FormularioInmueble
+            <FormularioNuevoInmueble
             vivienda={vivienda}
               setVivienda={setVivienda}
               readOnly={readOnly}
@@ -405,7 +426,7 @@ const Inmuebles = () => {
               edit={true}
             />
           }
-          onConfirm={() => editarUsuario()}
+          onConfirm={() => editarVivienda()}
           title="Editar vivienda"
         />
   
@@ -416,9 +437,9 @@ const Inmuebles = () => {
           onCancel={() => handleClose()}
           confirmText={"Eliminar"}
           content={<h4>Esta seguro que desea eliminar este vivienda</h4>}
-          onConfirm={() => editarUsuario()}
+          onConfirm={() => editarVivienda()}
           title="Editar vivienda"
-          onConfirm={() => eliminarUsuario()}
+          onConfirm={() => eliminarInmueble()}
         />
 
       </GridContainer>
