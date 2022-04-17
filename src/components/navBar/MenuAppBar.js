@@ -52,7 +52,7 @@ export default function MenuAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            HOUSE APP
+            DREAM HOUSE
           </Typography>
           {auth && (
             <div>
