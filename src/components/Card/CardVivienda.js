@@ -51,7 +51,7 @@ const CardVivienda = ({vivienda}) =>  {
   };
 
   return (
-    <Card className={classes.root} onClick={() => history.push(`vivienda/${vivienda.id}`)}>
+    <Card style={{width:"300px"}} className={classes.root} onClick={() => history.push(`vivienda/${vivienda.id}`)}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>

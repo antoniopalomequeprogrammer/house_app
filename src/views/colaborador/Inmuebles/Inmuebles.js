@@ -169,6 +169,7 @@ const Inmuebles = () => {
       titulo,
       descripcion,
       garaje,
+      ascensor,
       habitacion,
       m2,
       planta,
@@ -180,6 +181,7 @@ const Inmuebles = () => {
         titulo,
         descripcion,
         garaje,
+        ascensor,
         habitacion,
         m2,
         planta,
@@ -190,17 +192,21 @@ const Inmuebles = () => {
     }
   
     function loadEdit(vivienda) {
+      console.log("Dentro de Edit");
+      console.log({vivienda});
       setVivienda(vivienda);
       setOpenEdit(true);
     }
   
     function loadDelete(vivienda) {
+      console.log("Dentro de delete");
       setVivienda(vivienda);
       setOpenModalDel(true);
     }
   
   
     function loadVivienda(vivienda) {
+      console.log("Dentro de load vivienda");
       setVivienda(vivienda);
       setReadOnly(true);
       setOpenModal(true);
@@ -224,6 +230,7 @@ const Inmuebles = () => {
               vivienda.titulo,
               vivienda.descripcion,
               vivienda.garaje,
+              vivienda.ascensor,
               vivienda.habitacion,
               vivienda.m2,
               vivienda.planta,
@@ -234,7 +241,7 @@ const Inmuebles = () => {
                   show={true}
                   onShow={() => loadVivienda(vivienda.id)}
                   edit={true}
-                  onEdit={() => loadEdit(vivienda.id)}
+                  onEdit={() => loadEdit(vivienda)}
                   del={true}
                   onDelete={() => loadDelete(vivienda.id)}
                 />

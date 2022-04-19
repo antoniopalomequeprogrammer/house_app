@@ -215,6 +215,7 @@ export async function borrarInmobiliaria(id) {
 
 
 export async function crearVivienda(vivienda) {
+    console.log({vivienda});
     if (vivienda.imagenes) {
         for (var key in vivienda.imagenes) {
             vivienda.imagenes[key] = await toBase64(vivienda.imagenes[key]);
@@ -547,6 +548,7 @@ export async function actualizarUsuario(usuario, usuarioId) {
 }
 
 export async function actualizarVivienda(vivienda,viviendaId){
+    console.log({vivienda});
     return await resolve(
         instance
         .post(`vivienda/actualizar/${viviendaId}`,{vivienda})

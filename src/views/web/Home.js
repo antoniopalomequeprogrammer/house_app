@@ -5,19 +5,49 @@ import Select from "@material-ui/core/Select";
 import { FormControl, InputLabel, MenuItem } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import Viviendas from "./Viviendas";
-
+import Pagination from '@material-ui/lab/Pagination';
+import GridContainer from "components/Grid/GridContainer";
+import GridItem from "components/Grid/GridItem";
+import { shadows } from '@material-ui/system';
 const useStyles = makeStyles((theme) => ({
   contenedor: {
-    width: "98%",
-    maxWidth: "1440px",
     height:"auto",
-    // background: "#fff",
+    background: "#fff",
     padding: "10px",
-    // margin: "20px",
+    margin: "20px",
     justifyContent:"center",
     display:"flex",
     flexDirection:"row",
     flexWrap: "wrap",
+    background:"aliceblue",
+    borderRadius:"30px",
+    position:"relative",
+    width:"100%",
+    borderTopRightRadius: "30px",
+    borderTopLeftRadius: "30px",
+    
+    marginTop:"-150px"
+  },
+
+  cabecera:{
+    height:"500px",
+    marginTop:"25px",
+    backgroundImage: `url('https://frtassets.fotocasa.es/statics/img/home_search_bg_v2_full.webp')`,
+    
+  },
+
+  filtros:{
+    width:"100%",
+    display:"flex",
+    justifyContent:"center",
+    
+    
+
+  },
+
+  buscador:{
+    width:"100%",
+    background:"white",
   },
 
   item: {
@@ -40,8 +70,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   button: {
-    margin: theme.spacing(1),
-    height:"50%"
+    marginTop:"19px",
   },
 }));
 
@@ -49,7 +78,8 @@ const Home = () => {
   const classes = useStyles();
   const [estados, setEstados] = useState([]);
   const [tipos, setTipos] = useState([]);
-  const [search, setSearch] = useState('');  
+  const [loadBuscar, setLoadBuscar] = useState(false);
+  const [total, setTotal] = useState(1);
 
 
   const defaultFiltro = {
@@ -59,10 +89,15 @@ const Home = () => {
     habitaciones: 0,
     banos: 0,
     ciudad: '',
+    search: '',
+    precio:0,
   };
 
 
   const [filtros, setFiltros] = useState(defaultFiltro);
+
+
+ 
 
 
   const provincias = [
@@ -119,19 +154,35 @@ const Home = () => {
   ];
 
   return (
-      <>
-    <div className={classes.contenedor}>
+    <>
+    <GridItem xs={12} sm={12} md={12} lg={12} xl={12} className={classes.cabecera}>
+      </GridItem>
+
+
+    <GridContainer xs={12} sm={12} md={12} lg={12} xl={12} className={classes.contenedor} boxShadow={3}>
+
+      {/* FILTROS Y BUSCADOR */}
+
+      
+
+
+
+      <GridItem xs={12} sm={12} md={12} lg={12} xl={12} >
+        <h3>Aplica los Filtros que desees</h3>
       <TextField
-        className={classes.item}
+        className={classes.buscador}
         id="outlined-basic"
         label="Buscar por palabra clave"
         variant="outlined"
+        onChange={(e) => setFiltros({...filtros,search:e.target.value}) }
       />
+      </GridItem>
 
+      <GridItem xs={12} sm={12} md={12} lg={12} xl={12} className={classes.filtros}>
       <FormControl
         className={classes.formControl}
-        xs={3}
-        sm={3}
+        xs={12}
+        sm={12}
         md={3}
         lg={3}
         xl={3}
@@ -148,11 +199,28 @@ const Home = () => {
         </Select>
       </FormControl>
 
-      {/* SELECTOR ASCENSOR */}
+      <FormControl
+      className={classes.formControl}
+      xs={12}
+      sm={12}
+      md={3}
+      lg={3}
+      xl={3}
+      >
+         <TextField
+        className={classes.buscador}
+        id="outlined-basic"
+        label="Precio en €"
+        variant="outlined"
+        type="number"
+        onChange={(e) => setFiltros({...filtros,precio:e.target.value}) }
+      />
+      </FormControl>
+
       <FormControl
         className={classes.formControl}
-        xs={3}
-        sm={3}
+        xs={12}
+        sm={12}
         md={3}
         lg={3}
         xl={3}
@@ -170,8 +238,8 @@ const Home = () => {
 
       <FormControl
         className={classes.formControl}
-        xs={3}
-        sm={3}
+        xs={12}
+        sm={12}
         md={3}
         lg={3}
         xl={3}
@@ -187,11 +255,9 @@ const Home = () => {
         </Select>
       </FormControl>
 
-      {/* SELECTOR TERRAZA */}
-
       <FormControl
         className={classes.formControl}
-        xs={3}
+        xs={12}
         sm={3}
         md={3}
         lg={3}
@@ -208,12 +274,9 @@ const Home = () => {
         </Select>
       </FormControl>
 
-
-         {/* SELECTOR Nº HABITACIONES */}
-
-      <FormControl className={classes.formControl} xs={3} sm={3} md={3} lg={3} xl={3}>
-        <InputLabel id="demo-simple-select-label">HABITACIONES</InputLabel>
-        <Select
+      <FormControl className={classes.formControl} xs={12} sm={12} md={3} lg={3} xl={3}>
+         <InputLabel id="demo-simple-select-label">HABITACIONES</InputLabel>
+         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           onChange={ (e) => setFiltros({...filtros, habitaciones: e.target.value})}
@@ -227,7 +290,7 @@ const Home = () => {
 
       {/* SELECTOR Nº BAÑOS */}
 
-      <FormControl className={classes.formControl} xs={3} sm={3} md={3} lg={3} xl={3}>
+      <FormControl className={classes.formControl} xs={12} sm={12} md={3} lg={3} xl={3}>
         <InputLabel id="demo-simple-select-label">BAÑOS</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -239,8 +302,10 @@ const Home = () => {
           <MenuItem value={3}>3</MenuItem>
           <MenuItem value={9999999}>+3</MenuItem>
         </Select>
-      </FormControl>    
+      </FormControl> 
+        
       <Button
+        onClick={() => setLoadBuscar(!loadBuscar)}
         variant="contained"
         color="primary"
         size="large"
@@ -248,12 +313,16 @@ const Home = () => {
       >
         Buscar
       </Button>
+      </GridItem>
+      </GridContainer>
 
-    </div>
-    <hr></hr>
-    <Viviendas filtros={filtros}/>
-    </>
-  );
+      
+     <Viviendas filtros={filtros} loadBuscar={loadBuscar} setTotal={setTotal}/>
+
+     </>
+  )
+
+
 };
 
 export default Home;

@@ -14,7 +14,6 @@ import { getViviendas } from "utils/API_V2";
 import { toast } from "react-toastify";
 import GridItem from "components/Grid/GridItem";
 import CardVivienda from "components/Card/CardVivienda";
-import Pagination from '@material-ui/lab/Pagination';
 
 const useStyles = makeStyles((theme) => ({
   container_viviendas: {
@@ -85,10 +84,6 @@ const Viviendas = (filtros) => {
         <CardVivienda vivienda={vivienda}/>
         
     ): <h3>NO HAY VIVIENDAS CON LOS FILTROS APLICADOS</h3>} */}
-
-    <GridItem xs={12} sm={12} md={12} lg={12} xl={12} className={classes.paginacion}>
-      <Pagination count={totalData} color="primary" onChange={handleChange}/>
-    </GridItem>
 
     </GridContainer>
   );

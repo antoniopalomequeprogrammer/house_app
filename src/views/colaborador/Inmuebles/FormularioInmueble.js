@@ -11,8 +11,6 @@ import FormControl from "@material-ui/core/FormControl";
 import { toast } from "react-toastify";
 import { getEstados, getTipos } from "utils/API_V2";
 import Imagen from "./Imagen";
-import { getVivienda } from "utils/API_V2";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,16 +34,17 @@ const FormularioInmueble = ({
   readOnly = false,
 }) => {
   
+
+  console.log({vivienda});
+
   const classes = useStyles();
   const [estados, setEstados] = useState([]);
   const [tipos, setTipos] = useState([]);
 
   useEffect(() => {
-    
     obtenerEstados();
     obtenerTipos();
-    
-    obtenerDetalleVivienda();
+  
   }, []);
 
   const provincias = [
@@ -120,16 +119,6 @@ const FormularioInmueble = ({
   }
 
 
-  async function obtenerDetalleVivienda(){
-    const res = await getVivienda(vivienda);
-
-    if(res.error){
-      toast("Error, al intentar obtener el detalle de la vivienda", { type: "error" });
-    }else{
-      setVivienda(res.data);
-    }
-
-  }
 
 
   return (
@@ -155,6 +144,7 @@ const FormularioInmueble = ({
           maxFiles={10}
         />
       </GridItem>
+      
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
         <TextField
           style={{ width: "100%" }}
@@ -217,6 +207,7 @@ const FormularioInmueble = ({
           }
         />
       </GridItem>
+
       <GridItem
         xs={12}
         sm={12}
@@ -409,6 +400,7 @@ const FormularioInmueble = ({
           </Select>
         </FormControl>
       </GridItem>
+
     </GridContainer>
   );
 };
