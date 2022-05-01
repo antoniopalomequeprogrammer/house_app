@@ -521,6 +521,21 @@ export async function mapaMesas(filtroReserva) {
 }
 
 /**
+ *           CRUD SUSCRIPCIONES
+ */
+
+ export async function getSuscripciones(search, page, perPageData = 1) {
+    return await resolve(
+        instance
+
+        .post(`suscripciones/index?page=${page}`, { search, perPageData })
+        .then((res) => res.data)
+    );
+}
+
+
+
+/**
  *            CRUD USUARIOS
  */
 

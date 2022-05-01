@@ -11,7 +11,7 @@ import {
   import Datatable from "components/Table/Datatable";
   import React, { useEffect, useState } from "react";
   import { toast } from "react-toastify";
-  import { getUsuarios } from "utils/API_V2";
+  import { getSuscripciones } from "utils/API_V2";
   import PARAMS from "utils/PARAMS";
   import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
   import Actions from "components/Actions/Actions";
@@ -27,7 +27,6 @@ import {
     crearUsuario,
     actualizarUsuario,
     borrarUsuario,
-    cambiarContraseña,
   } from "utils/API_V2";
   import * as VALIDATION from "utils/VALIDATION";
 
@@ -51,11 +50,11 @@ import {
     const [openModalPassword, setOpenModalPassword] = useState(false);
   
     useEffect(() => {
-      obtenerUsuarios(findBy, page, perPageData);
+      obtenerSuscripciones(findBy, page, perPageData);
     }, []);
   
     useEffect(() => {
-      obtenerUsuarios(findBy, actualPage, perPageData);
+      obtenerSuscripciones(findBy, actualPage, perPageData);
     }, [perPageData, actualPage]);
   
     const defaultUsuario = {
@@ -71,7 +70,7 @@ import {
     const [usuario, setUsuario] = useState(defaultUsuario);
   
     const handleSearch = (findBy) => {
-      obtenerUsuarios(findBy, page, perPageData);
+      obtenerSuscripciones(findBy, page, perPageData);
     };
   
     const handleClickOpen = () => {
@@ -87,43 +86,31 @@ import {
   
     const columnNames = [
       { name: "Id", key: "id" },
-      { name: "Nombre", key: "nombre" },
-      { name: "Apellidos", key: "apellidos" },
-      { name: "Email", key: "email" },
-      { name: "Teléfono", key: "telefono" },
-      { name: "Rol", key: "rol" },
+      { name: "Título", key: "titulo" },
+      { name: "Descripción", key: "descripcion" },
+      { name: "Precio", key: "precio" },
       { name: "Acciones", key: "acciones", width: "300px", sortable: false },
     ];
   
     const validate_fields = {
-      nombre: { type: "NULL", field: "Nombre" },
-      apellidos: { type: "NULL", field: "Apellidos" },
-      email: { type: "NULL", field: "Email" },
-      password: { type: "NULL", field: "Contraseña" },
-      password_confirm: { type: "NULL", field: "Confirmar Contraseña" },
-      rol: { type: "NULL", field: "Rol" },
+      titulo: { type: "NULL", field: "Titulo" },
+      descripcion: { type: "NULL", field: "Descripción" },
+      precio: { type: "NULL", field: "Precio" },
     };
   
     const validate_fields_edit = {
-      nombre: { type: "NULL", field: "Nombre" },
-      apellidos: { type: "NULL", field: "Apellidos" },
-      email: { type: "NULL", field: "Email" },
-      rol: { type: "NULL", field: "Rol" },
+      titulo: { type: "NULL", field: "Titulo" },
+      descripcion: { type: "NULL", field: "Descripción" },
+      precio: { type: "NULL", field: "Precio" },
     };
   
-    const validate_fields_password = {
-      password: { type: "NULL", field: "Contraseña" },
-      password_confirm: { type: "NULL", field: "Contraseña Confirmada" },
-    };
   
-    function createData(id, nombre, apellidos, email, telefono, rol, acciones) {
+    function createData(id, titulo, descripcion, precio,acciones) {
       return {
         id,
-        nombre,
-        apellidos,
-        email,
-        telefono,
-        rol,
+        titulo,
+        descripcion,
+        precio,
         acciones,
       };
     }
@@ -149,24 +136,22 @@ import {
       setUsuario(usuario);
     }
   
-    async function obtenerUsuarios(findBy, page, perPageData) {
+    async function obtenerSuscripciones(findBy, page, perPageData) {
       setIsLoad(false);
-      const res = await getUsuarios(findBy, page, perPageData);
+      const res = await getSuscripciones(findBy, page, perPageData);
       if (res.error) {
         toast("Se ha producido un error en la carga de usuarios", {
           type: "warning",
         });
       } else {
-        const arrayUsuarios = [];
+        const arraySuscripciones = [];
         if (res.data.data.length > 0) {
-          res.data.data.forEach((usuario, index) => {
+          res.data.data.forEach((suscripcion, index) => {
             let aux = createData(
-              usuario.id,
-              usuario.nombre,
-              usuario.apellidos,
-              usuario.email,
-              usuario.telefono ? usuario.telefono : "Sin telefono",
-              usuario?.rol == 1 ? "admin" : "colaborador",
+              suscripcion.id,
+              suscripcion.titulo,
+              suscripcion.descripcion,
+              suscripcion.importe,
               <div>
                 <Actions
                   show={true}
@@ -181,11 +166,11 @@ import {
               </div>
             );
   
-            arrayUsuarios.push(aux);
+            arraySuscripciones.push(aux);
           });
         }
         setTotalData(res.data.meta.total);
-        setUsuarios(arrayUsuarios);
+        setSuscripciones(arraySuscripciones);
         setIsLoad(true);
       }
     }
@@ -205,7 +190,7 @@ import {
             toast(res.error, { type: "error" });
           } else {
             toast("Usuario creado correctamente", { type: "success" });
-            obtenerUsuarios(findBy, page, perPageData);
+            obtenerSuscripciones(findBy, page, perPageData);
             handleClose();
           }
         } else {
@@ -224,33 +209,14 @@ import {
             toast(res.error, { type: "error" });
           } else {
             toast("Usuario editado correctamente", { type: "success" });
-            obtenerUsuarios(findBy, page, perPageData);
+            obtenerSuscripciones(findBy, page, perPageData);
             handleClose();
           }
         }
       }
     }
   
-    async function cambiarPassword() {
-      if (!isProcessing) {
-        var validate = VALIDATION.checkObject(validate_fields_password, usuario);
-        if (validate.status) {
-          if (usuario["password"] != usuario["password_confirm"]) {
-            return toast("Las contraseñas no coinciden", { type: "warning" });
-          }
-  
-          const res = await cambiarContraseña(usuario);
-  
-          if (res.error) {
-            toast(res.error, { type: "error" });
-          } else {
-            toast("Contraseña cambiada correctamente", { type: "success" });
-            obtenerUsuarios(findBy, page, perPageData);
-            handleClose();
-          }
-        }
-      }
-    }
+    
   
     async function eliminarUsuario() {
       const res = await borrarUsuario(usuario.id);
@@ -259,7 +225,7 @@ import {
         toast(res.error, { type: "error" });
       } else {
         toast("Usuario eliminado correctamente", { type: "success" });
-        obtenerUsuarios(findBy, page, perPageData);
+        obtenerSuscripciones(findBy, page, perPageData);
         handleClose();
       }
     }

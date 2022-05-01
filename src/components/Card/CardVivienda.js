@@ -73,15 +73,22 @@ const CardVivienda = ({vivienda}) =>  {
       />
       <CardContent>
           <GridItem xs={12} sm={12} md={12} lg={12} xl={12} style={{display:"flex",justifyContent:"space-between"}}>
-              
-              <GridItem xs={4} sm={4} md={4} lg={4} xl={4}>Ascensor: {vivienda.ascensor?'SI':'NO'}</GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4} xl={4}>Garaje : {vivienda.garaje?'SI':'NO'}</GridItem>
-              <GridItem xs={4} sm={4} md={4} lg={4} xl={4}>Terraza: {vivienda.terraza?'SI':'NO'}</GridItem>
-              
+          <GridItem xs={6} sm={6} md={6} lg={6} xl={6}
+            style={{
+              padding:"0px",
+              margin:"0px",
+            }}
+          
+          >
+            PRECIO
+          </GridItem>
+          <GridItem xs={6} sm={6} md={6} lg={6} xl={6}>
+            {vivienda.precio+'€'}
+          </GridItem>
           </GridItem>
           <hr></hr>
         <Typography variant="body2" color="textSecondary" component="p">
-          {vivienda.descripcion}
+          {vivienda.descripcion.substring(0,150)}
         </Typography>
       </CardContent>
       {/* <CardActions disableSpacing>

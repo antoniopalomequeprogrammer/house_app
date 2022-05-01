@@ -17,6 +17,13 @@ const rutas = [
     visible: false,
   },
   {
+    path: "/tarifas",
+    identificador_ruta: "tarifas",
+    need_login: false,
+    component: lazy(() => import("views/web/Tarifas")),
+    visible: false,
+  },
+  {
     path: "/home",
     identificador_ruta: "home",
     need_login: false,
