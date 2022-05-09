@@ -66,6 +66,7 @@ const Inmuebles = () => {
     const defaultVivienda = {
       imagenes: "",
       ciudad: "",
+      telefono:"",
       titulo: "",
       descripcion: "",
       precio: "",
@@ -151,10 +152,10 @@ const Inmuebles = () => {
     };
 
     const columnNames = [
-      { name: "Id", key: "id" },
-      { name: "Título", key: "titulo" },
-      { name: "Descripcion", key: "descripcion" },
-      { name: "Garaje", key: "garaje" },
+      { name: "Id", key: "id", width:"50px" },
+      { name: "Título", key: "titulo",width:"100px" },
+      { name: "Descripcion", key: "descripcion",width:"100px" },
+      { name: "Garaje", key: "garaje",width:"50px" },
       { name: "Habitación", key: "habitacion" },
       { name: "m2", key: "m2" },
       { name: "planta", key: "planta" },

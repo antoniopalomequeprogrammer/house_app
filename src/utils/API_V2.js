@@ -533,6 +533,29 @@ export async function mapaMesas(filtroReserva) {
     );
 }
 
+export async function crearSuscripcion(suscripcion) {
+    return await resolve(
+        instance.post("suscripcion/crear", { suscripcion }).then((res) => res.data)
+    );
+}
+
+export async function getTarifas(){
+    return await resolve(
+        instance.get('suscripciones/tarifas').then((res) => res.data)
+    );
+}
+
+
+/**
+ *           MENSAJES ENTRE CLIENTES/INMOBILIARIA
+ */
+
+export async function enviarMensaje(mensaje){
+    return await resolve(
+        instance.post('mensajes/crear',{mensaje}).then((res) => res.data)
+    );
+}
+
 
 
 /**

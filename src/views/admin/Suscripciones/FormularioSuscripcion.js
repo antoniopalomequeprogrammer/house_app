@@ -29,7 +29,6 @@ const FormularioSuscripcion = ({
   editPerfil = false,
 }) => {
   const classes = useStyles();
-  const [showPassword, setShowPassword] = useState(false);
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
       <GridItem
@@ -45,8 +44,8 @@ const FormularioSuscripcion = ({
           id="titulo"
           label="Título"
           disabled={readOnly}
-          value={suscripcion.nombre}
-          // onChange={(e) => setSuscripcion({ ...suscripcion, nombre: e.target.value })}
+          value={suscripcion.titulo}
+          onChange={(e) => setSuscripcion({ ...suscripcion, titulo: e.target.value })}
           xs={6}
           sm={6}
           md={6}
@@ -58,10 +57,10 @@ const FormularioSuscripcion = ({
           id="importe"
           label="Importe Suscripción"
           disabled={readOnly}
-          value={suscripcion.apellidos}
-          // onChange={(e) =>
-          //   setSuscripcion({ ...suscripcion, apellidos: e.target.value })
-          // }
+          value={suscripcion.importe}
+          onChange={(e) =>
+            setSuscripcion({ ...suscripcion, importe: e.target.value })
+          }
           xs={6}
           sm={6}
           md={6}
@@ -84,8 +83,8 @@ const FormularioSuscripcion = ({
           type="text"
           label="Descripción"
           disabled={readOnly}
-          value={suscripcion.email}
-          // onChange={(e) => setSuscripcion({ ...suscripcion, email: e.target.value })}
+          value={suscripcion.descripcion}
+          onChange={(e) => setSuscripcion({ ...suscripcion, descripcion: e.target.value })}
           xs={12}
           sm={12}
           md={12}

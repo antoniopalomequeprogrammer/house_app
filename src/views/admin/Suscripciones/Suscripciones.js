@@ -24,7 +24,7 @@ import {
   import FormularioSuscripcion from "./FormularioSuscripcion";
   import Modal from "components/Modal/Modal";
   import {
-    crearUsuario,
+    crearSuscripcion,
     actualizarUsuario,
     borrarUsuario,
   } from "utils/API_V2";
@@ -35,7 +35,7 @@ import {
   const Suscripciones = () => {
     const classes = useStyles();
     const [isLoad, setIsLoad] = useState(false);
-    const [usuarios, setUsuarios] = useState([]);
+    const [suscripciones, setSuscripciones] = useState([]);
     const [findBy, setFindBy] = useState("");
     const [page, setPage] = useState(1);
     const [perPageData, setPerPageData] = useState(10);
@@ -67,7 +67,7 @@ import {
       password_confirm: "",
     };
   
-    const [usuario, setUsuario] = useState(defaultUsuario);
+    const [suscripcion, setSuscripcion] = useState(defaultUsuario);
   
     const handleSearch = (findBy) => {
       obtenerSuscripciones(findBy, page, perPageData);
@@ -82,13 +82,15 @@ import {
       setOpenEdit(false);
       setOpenModalDel(false);
       setOpenModalPassword(false);
+      setReadOnly(false);
+      
     };
   
     const columnNames = [
       { name: "Id", key: "id" },
       { name: "Título", key: "titulo" },
       { name: "Descripción", key: "descripcion" },
-      { name: "Precio", key: "precio" },
+      { name: "Precio", key: "importe" },
       { name: "Acciones", key: "acciones", width: "300px", sortable: false },
     ];
   
@@ -105,42 +107,38 @@ import {
     };
   
   
-    function createData(id, titulo, descripcion, precio,acciones) {
+    function createData(id, titulo, descripcion, importe,acciones) {
       return {
         id,
         titulo,
         descripcion,
-        precio,
+        importe,
         acciones,
       };
     }
   
-    function loadEdit(usuario) {
-      setUsuario(usuario);
+    function loadEdit(suscripcion) {
+      setSuscripcion(suscripcion);
       setOpenEdit(true);
     }
   
-    function loadDelete(usuario) {
-      setUsuario(usuario);
+    function loadDelete(suscripcion) {
+      setSuscripcion(suscripcion);
       setOpenModalDel(true);
     }
+
   
-    function loadChangePassword(usuario) {
-      setUsuario(usuario);
-      setOpenModalPassword(true);
-    }
-  
-    function loadUser(usuario) {
+    function loadSuscripcion(suscripcion) {
       setReadOnly(true);
       setOpenModal(true);
-      setUsuario(usuario);
+      setSuscripcion(suscripcion);
     }
   
     async function obtenerSuscripciones(findBy, page, perPageData) {
       setIsLoad(false);
       const res = await getSuscripciones(findBy, page, perPageData);
       if (res.error) {
-        toast("Se ha producido un error en la carga de usuarios", {
+        toast("Se ha producido un error en la carga de suscripcions", {
           type: "warning",
         });
       } else {
@@ -151,17 +149,15 @@ import {
               suscripcion.id,
               suscripcion.titulo,
               suscripcion.descripcion,
-              suscripcion.importe,
+              suscripcion.importe+'€',
               <div>
                 <Actions
                   show={true}
-                  onShow={() => loadUser(usuario)}
+                  onShow={() => loadSuscripcion(suscripcion)}
                   edit={true}
-                  onEdit={() => loadEdit(usuario)}
+                  onEdit={() => loadEdit(suscripcion)}
                   del={true}
-                  onDelete={() => loadDelete(usuario)}
-                  changePassword={true}
-                  onChangePassword={() => loadChangePassword(usuario)}
+                  onDelete={() => loadDelete(suscripcion)}
                 />
               </div>
             );
@@ -175,21 +171,18 @@ import {
       }
     }
   
-    async function nuevoUsuario() {
+    async function nuevaSuscripcion() {
       if (!isProcessing) {
-        var validate = VALIDATION.checkObject(validate_fields, usuario);
+        var validate = VALIDATION.checkObject(validate_fields, suscripcion);
         if (validate.status) {
-          if (usuario.password != usuario.password_confirm) {
-            return toast("Las contraseñas no coinciden", { type: "warning" });
-          }
-  
-          const res = await crearUsuario(usuario);
+          
+          const res = await crearSuscripcion(suscripcion);
           setIsProcessing(true);
   
           if (res.error) {
             toast(res.error, { type: "error" });
           } else {
-            toast("Usuario creado correctamente", { type: "success" });
+            toast("Suscripcion creado correctamente", { type: "success" });
             obtenerSuscripciones(findBy, page, perPageData);
             handleClose();
           }
@@ -201,14 +194,14 @@ import {
   
     async function editarUsuario() {
       if (!isProcessing) {
-        var validate = VALIDATION.checkObject(validate_fields_edit, usuario);
+        var validate = VALIDATION.checkObject(validate_fields_edit, suscripcion);
         if (validate.status) {
-          const res = await actualizarUsuario(usuario, usuario.id);
+          const res = await actualizarUsuario(suscripcion, suscripcion.id);
   
           if (res.error) {
             toast(res.error, { type: "error" });
           } else {
-            toast("Usuario editado correctamente", { type: "success" });
+            toast("Suscripcion editado correctamente", { type: "success" });
             obtenerSuscripciones(findBy, page, perPageData);
             handleClose();
           }
@@ -219,12 +212,12 @@ import {
     
   
     async function eliminarUsuario() {
-      const res = await borrarUsuario(usuario.id);
+      const res = await borrarUsuario(suscripcion.id);
   
       if (res.error) {
         toast(res.error, { type: "error" });
       } else {
-        toast("Usuario eliminado correctamente", { type: "success" });
+        toast("Suscripcion eliminado correctamente", { type: "success" });
         obtenerSuscripciones(findBy, page, perPageData);
         handleClose();
       }
@@ -242,7 +235,7 @@ import {
                   onClick={() => setHelp(true)}
                 />
               </h4>
-              <p>Gestión de usuarios</p>
+              <p>Gestión de suscripcions</p>
             </CardHeader>
             <CardBody>
               <Accordion>
@@ -287,7 +280,7 @@ import {
               </Accordion>
               <div className={classes.root}>
                 <Datatable
-                  data={usuarios}
+                  data={suscripciones}
                   columnNames={columnNames}
                   search={(data) => handleSearch(data)}
                   load={isLoad}
@@ -325,14 +318,14 @@ import {
           onCancel={() => handleClose()}
           content={
             <FormularioSuscripcion
-              usuario={usuario}
-              setUsuario={setUsuario}
+              suscripcion={suscripcion}
+              setSuscripcion={setSuscripcion}
               readOnly={readOnly}
             />
           }
           noBtn={readOnly ? true : false}
-          onConfirm={() => nuevoUsuario()}
-          title={readOnly ? "Ver Usuario" : "Crear nuevo Usuario"}
+          onConfirm={() => nuevaSuscripcion()}
+          title={readOnly ? "Ver Suscripcion" : "Crear nuevo Suscripcion"}
         />
   
         {/* EDITAR  USUARIO */}
@@ -343,13 +336,13 @@ import {
           confirmText={"Editar"}
           content={
             <FormularioSuscripcion
-              usuario={usuario}
-              setUsuario={setUsuario}
+              suscripcion={suscripcion}
+              setSuscripcion={setSuscripcion}
               edit={true}
             />
           }
           onConfirm={() => editarUsuario()}
-          title="Editar Usuario"
+          title="Editar Suscripcion"
         />
   
         {/* ELIMINAR USUARIO */}
@@ -358,9 +351,9 @@ import {
           open={openModalDel}
           onCancel={() => handleClose()}
           confirmText={"Eliminar"}
-          content={<h4>Esta seguro que desea eliminar este usuario</h4>}
+          content={<h4>Esta seguro que desea eliminar este suscripcion</h4>}
           onConfirm={() => editarUsuario()}
-          title="Editar Usuario"
+          title="Editar Suscripcion"
           onConfirm={() => eliminarUsuario()}
         />
   

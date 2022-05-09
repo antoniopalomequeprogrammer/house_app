@@ -24,6 +24,13 @@ const rutas = [
     visible: false,
   },
   {
+    path: "/inmobiliarias-disponibles",
+    identificador_ruta: "inmobiliarias-disponibles",
+    need_login: false,
+    component: lazy(() => import("views/web/Inmobiliarias")),
+    visible: false,
+  },
+  {
     path: "/home",
     identificador_ruta: "home",
     need_login: false,

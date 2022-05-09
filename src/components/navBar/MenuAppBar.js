@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  menu:{
+    color:"white",
+  }
 }));
 
 export default function MenuAppBar() {
@@ -48,16 +51,17 @@ export default function MenuAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            DREAM HOUSE
+          <Typography variant="h6" className={classes.title}
+          onClick={() => history.push('home')}
+          >
+            HOUSE APP
           </Typography>
           {auth && (
             <div>
-              <Button color="primary" variant="contained" style={{marginRight:"3px"}} onClick={ () => history.push('acceso') }>ACCESO</Button>
-              <Button color="primary" variant="contained" onClick={ () => history.push('home') }> VIVIENDAS</Button>
+              <Button  className={classes.menu} style={{marginRight:"3px"}} onClick={ () => history.push('acceso') }>ACCESO</Button>
+              <Button  className={classes.menu} onClick={ () => history.push('home') }> VIVIENDAS</Button>
+              <Button  className={classes.menu} onClick={ () => history.push('inmobiliarias-disponibles') }> INMOBILIARIAS</Button>
+              <Button  className={classes.menu} onClick={ () => history.push('tarifas') }> TARIFAS</Button>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -82,8 +86,7 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Mi Perfil</MenuItem>
               </Menu>
             </div>
           )}
