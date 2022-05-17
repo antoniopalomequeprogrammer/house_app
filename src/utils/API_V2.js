@@ -394,6 +394,23 @@ export async function getEstados() {
     );
 }
 
+export async function getNotificaciones(){
+    return await resolve(
+        instance
+        .post('notificaciones/index')
+        .then((res) => res.data)
+    );
+}
+
+export async function borrarNotificacion(id) {
+    return await resolve(
+        instance.post(`notificacion/eliminar/${id}`).then((res) => res.data)
+    );
+}
+
+
+
+
 export async function borrarEstado(id) {
     return await resolve(
         instance.post(`estados/eliminar/${id}`).then((res) => res.data)

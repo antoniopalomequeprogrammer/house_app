@@ -83,7 +83,7 @@ export default function Login(props) {
           localStorage.setItem("apiToken", res.data.token);
           localStorage.setItem("userName", res.data.nombre);
           localStorage.setItem("userEmail", res.data.email);
-          window.location.reload(false);
+          
         }
       } else {
         toast(validation.message, { type: "warning" });

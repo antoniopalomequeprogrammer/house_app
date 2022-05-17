@@ -25,8 +25,8 @@ const dashboardRoutes = [
   },
 
   {
-    path: "/conversaciones",
-    name: "CONVERSACIONES",
+    path: "/notificaciones",
+    name: "NOTIFICACIONES",
     icon: ForumIcon,
     component: lazy(() => import("views/colaborador/Conversaciones/Conversaciones")),
     sideBarVisible: true,

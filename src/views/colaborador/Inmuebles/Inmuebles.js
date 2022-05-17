@@ -128,8 +128,6 @@ const Inmuebles = () => {
       ascensor:{type:"NULL", field:"Ascensor"},
       estado:{type:"NULL", field:"Estado"},
       tipo:{type:"NULL", field:"Tipo"},
-      telefono: { type: "NULL", field: "Teléfono" },
-      tipo:{type:"NULL", field:"Tipo"},
       estado:{type:"NULL", field:"Estado"},
     };
   
@@ -144,9 +142,6 @@ const Inmuebles = () => {
       planta:{type:"NULL", field:"Planta"},
       banos:{type:"NULL", field:"Baños"},
       ascensor:{type:"NULL", field:"Ascensor"},
-      estado:{type:"NULL", field:"Estado"},
-      tipo:{type:"NULL", field:"Tipo"},
-      telefono: { type: "NULL", field: "Teléfono" },
       tipo:{type:"NULL", field:"Tipo"},
       estado:{type:"NULL", field:"Estado"},
     };

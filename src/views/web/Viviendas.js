@@ -39,8 +39,12 @@ async function obtenerViviendas(){
     if(res.error){
         toast("Error al obtener viviendas",{type:"error"});
     }else{
-        setViviendas(res.data);
-        setTotalData(res.data[0].total);
+        console.log(res.data.length);
+        if(res.data.length>0){
+            setViviendas(res.data);
+            setTotalData(res.data[0].total);
+        }
+
     }
 }
 
@@ -59,6 +63,8 @@ const handleChange = (event, value) => {
         {viviendas && viviendas.map((vivienda) => (
            <CardVivienda style={{justiFyContent:"center"}} xs={12} sm={12} md={12} lg={12} vivienda={vivienda}/>
         ))}
+
+        
 
         </GridContainer>
 
