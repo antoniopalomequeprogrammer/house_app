@@ -25,16 +25,18 @@ import Alert from '@material-ui/lab/Alert';
 import Modal from "components/Modal/Modal";
 import {
   actualizarVivienda,
-  borrarInmueble,
+  borrarNotificacion,
   crearVivienda,
   getNotificaciones,
   comprobarInmobiliaria
 } from "utils/API_V2";
 import * as VALIDATION from "utils/VALIDATION";
+import FormularioConversacion from "./FormularioConversacion";
 const useStyles = makeStyles(styles);
 
 const Conversaciones = () => {
   const classes = useStyles();
+  const [isProcessing, setIsProcessing] = useState(false);
   const [isLoad, setIsLoad] = useState(false);
   const [notificaciones, setNotificaciones] = useState([]);
   const [findBy, setFindBy] = useState("");
@@ -47,7 +49,6 @@ const Conversaciones = () => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openModalDel, setOpenModalDel] = useState(false);
   const [readOnly, setReadOnly] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
   const [openModalPassword, setOpenModalPassword] = useState(false);
   const [notificacion, setNotificacion] = useState(false);
   useEffect(() => {
@@ -58,25 +59,8 @@ const Conversaciones = () => {
     obtenerNotificaciones(findBy, actualPage, perPageData);
   }, [perPageData, actualPage]);
 
-  const defaultVivienda = {
-    imagenes: "",
-    ciudad: "",
-    telefono:"",
-    titulo: "",
-    descripcion: "",
-    precio: "",
-    habitacion: "",
-    planta: "",
-    banos: "",
-    ascensor: 0,
-    garaje: 0,
-    terraza: 0,
-    m2: "",
-    estado: "",
-    tipo: "",
-};
 
-  const [vivienda, setVivienda] = useState(defaultVivienda);
+
 
   const handleSearch = (findBy) => {
     obtenerNotificaciones(findBy, page, perPageData);
@@ -96,38 +80,6 @@ const Conversaciones = () => {
     setOpenModalPassword(false);
   };
 
-  
-
-  const validate_fields = {
-    nombre: { type: "NULL", field: "Nombre" },
-    ciudad: { type: "NULL", field: "Ciudad" },
-    direccion: { type: "NULL", field: "Dirección" },
-    descripcion:{type:"NULL", field:"Descripcion"},
-    habitacion:{type:"NULL", field:"Habitacion"},
-    garaje:{type:"NULL", field:"Garaje"},
-    terraza:{type:"NULL", field:"Terraza"},
-    planta:{type:"NULL", field:"Planta"},
-    banos:{type:"NULL", field:"Baños"},
-    ascensor:{type:"NULL", field:"Ascensor"},
-    estado:{type:"NULL", field:"Estado"},
-    tipo:{type:"NULL", field:"Tipo"},
-    estado:{type:"NULL", field:"Estado"},
-  };
-
-  const validate_fields_edit = {
-    nombre: { type: "NULL", field: "Nombre" },
-    ciudad: { type: "NULL", field: "Ciudad" },
-    direccion: { type: "NULL", field: "Dirección" },
-    descripcion:{type:"NULL", field:"Descripcion"},
-    habitacion:{type:"NULL", field:"Habitacion"},
-    garaje:{type:"NULL", field:"Garaje"},
-    terraza:{type:"NULL", field:"Terraza"},
-    planta:{type:"NULL", field:"Planta"},
-    banos:{type:"NULL", field:"Baños"},
-    ascensor:{type:"NULL", field:"Ascensor"},
-    tipo:{type:"NULL", field:"Tipo"},
-    estado:{type:"NULL", field:"Estado"},
-  };
 
   const columnNames = [
     { name: "Id", key: "id",  },
@@ -153,23 +105,16 @@ const Conversaciones = () => {
     };
   }
 
-  function loadEdit(vivienda) {
-    console.log("Dentro de Edit");
-    console.log({vivienda});
-    setVivienda(vivienda);
-    setOpenEdit(true);
-  }
 
-  function loadDelete(vivienda) {
+  function loadDelete(notificacion) {
     console.log("Dentro de delete");
-    setVivienda(vivienda);
+    setNotificacion(notificacion);
     setOpenModalDel(true);
   }
 
 
-  function loadVivienda(vivienda) {
-    console.log("Dentro de load vivienda");
-    setVivienda(vivienda);
+  function loadConversacion(notificacion) {
+    setNotificacion(notificacion);
     setReadOnly(true);
     setOpenModal(true);
   }
@@ -195,9 +140,7 @@ const Conversaciones = () => {
             <div>
               <Actions
                 show={true}
-                onShow={() => loadVivienda(notificacion.id)}
-                edit={true}
-                onEdit={() => loadEdit(notificacion)}
+                onShow={() => loadConversacion(notificacion)}
                 del={true}
                 onDelete={() => loadDelete(notificacion.id)}
               />
@@ -213,57 +156,14 @@ const Conversaciones = () => {
     }
   }
 
-  async function nuevaInmobiliaria() {
-    if (!isProcessing) {
-      var validate = VALIDATION.checkObject(validate_fields, vivienda);
-      if (validate.status) {
-        if (vivienda.password != vivienda.password_confirm) {
-          return toast("Las contraseñas no coinciden", { type: "warning" });
-        }
 
-        const res = await crearVivienda(vivienda);
-        setIsProcessing(true);
-
-        if (res.error) {
-          toast(res.error, { type: "error" });
-        } else {
-          toast("Vivienda creada correctamente", { type: "success" });
-          // obtenerNotificaciones(findBy, page, perPageData);
-          handleClose();
-        }
-      } else {
-        toast(validate.message, { type: "warning" });
-      }
-    }
-  }
-
-  async function editarVivienda() {
-    console.log({vivienda});
-    if (!isProcessing) {
-      var validate = VALIDATION.checkObject(validate_fields_edit, vivienda);
-      if (validate.status) {
-        const res = await actualizarVivienda(vivienda, vivienda.id);
-
-        if (res.error) {
-          toast(res.error, { type: "error" });
-        } else {
-          toast("Vivienda editado correctamente", { type: "success" });
-          obtenerNotificaciones(findBy, page, perPageData);
-          handleClose();
-        }
-      }
-    }
-  }
-
- 
-
-  async function eliminarInmueble() {
-    const res = await borrarInmueble(vivienda);
+  async function eliminarNotificacion() {
+    const res = await borrarNotificacion(notificacion);
 
     if (res.error) {
       toast(res.error, { type: "error" });
     } else {
-      toast("vivienda eliminado correctamente", { type: "success" });
+      toast("Notificación eliminada correctamente", { type: "success" });
       obtenerNotificaciones(findBy, page, perPageData);
       handleClose();
     }
@@ -359,7 +259,17 @@ const Conversaciones = () => {
     
         
       </GridItem>
-     
+          
+      {/* MODAL INMUEBLE */}
+
+      <Modal
+        open={openModal}
+        onCancel={() => handleClose()}      
+        confirmText={"No Mostrar"}
+        onConfig={() => handleClose()}
+        content={<FormularioConversacion notificacion={notificacion} />}
+        title="Ver Mensaje"
+      />   
 
       {/* ELIMINAR INMUEBLE */}
 
@@ -367,10 +277,9 @@ const Conversaciones = () => {
         open={openModalDel}
         onCancel={() => handleClose()}
         confirmText={"Eliminar"}
-        content={<h4>Esta seguro que desea eliminar este vivienda</h4>}
-        onConfirm={() => editarVivienda()}
+        content={<h4>Esta seguro que desea eliminar esta notificacion</h4>}
         title="Editar vivienda"
-        onConfirm={() => eliminarInmueble()}
+        onConfirm={() => eliminarNotificacion()}
       />
 
     </GridContainer>

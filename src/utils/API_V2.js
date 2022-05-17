@@ -569,7 +569,7 @@ export async function getTarifas(){
 
 export async function enviarMensaje(mensaje){
     return await resolve(
-        instance.post('mensajes/crear',{mensaje}).then((res) => res.data)
+        instance.post('notificacion/crear',{mensaje}).then((res) => res.data)
     );
 }
 

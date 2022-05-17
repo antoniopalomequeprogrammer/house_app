@@ -5,21 +5,42 @@ import GridItem from "components/Grid/GridItem";
 import { getVivienda } from "utils/API_V2";
 import { toast } from "react-toastify";
 import Modal from "components/Modal/Modal";
-import { TextField } from "@material-ui/core";
 import { enviarMensaje } from "utils/API_V2";
+import FormularioContactar from "./FormularioContactar";
+import Button from '@material-ui/core/Button';
+import * as VALIDATION from "utils/VALIDATION";
+
+
 
 const Vivienda = (props) => {
+  
   const [vivienda, setVivienda] = useState({});
+  const [isProcessing, setIsProcessing] = useState(false);
   const [openContactar, setOpenContactar] = useState(false);
   const id = props.match.params.id;
-  const [mensaje, setMensaje] = useState("");
+
   useEffect(() => {
     obtenerVivienda(id);
 
   }, []);
 
 
+  const validate_fields = {
+    nombre_contacto: { type: "NULL", field: "Nombre del Contacto" },
+    telefono: { type: "NULL", field: "Teléfono" },
+    mensaje: { type: "NULL", field: "Mensaje" },
+  };
 
+
+  const defaultMensaje = {
+    nombre_contacto: "",
+    telefono: "",
+    mensaje:"",
+    vivienda_id:"",
+
+};
+
+const [mensaje, setMensaje] = useState(defaultMensaje);
 
   const handleClose = () => {
     setOpenContactar(false);
@@ -37,15 +58,35 @@ const Vivienda = (props) => {
   }
 
   async function contactarConInmobiliaria(){
-    const res = await enviarMensaje(mensaje);
+    if (!isProcessing) {
+      var validate = VALIDATION.checkObject(validate_fields, mensaje);
+      if (validate.status) {
+        let auxMensaje = mensaje;
+        auxMensaje.vivienda_id = vivienda.id;
+        setMensaje(auxMensaje);
+        
+        const res = await enviarMensaje(mensaje);
 
-    if(res.error){
-      toast("Error, no se pudo enviar el mensaje",{type:"error"});
-    }else{
-      console.log(res.data);
+        setIsProcessing(true);
+
+        if (res.error) {
+          toast(res.error, { type: "error" });
+        } else {
+          toast("Mensaje enviado correctamente", { type: "success" });
+          handleClose();
+        }
+      } else {
+        toast(validate.message, { type: "warning" });
+      }
     }
 
   }
+
+  const handleClick = (vivienda) => {
+    setVivienda(vivienda);
+    setOpenContactar(true);
+  }
+
 
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -112,9 +153,7 @@ const Vivienda = (props) => {
 
           <a style={{ color: "black" }} href={"tel:" + vivienda.telefono}>LLAMAR</a>
         </GridItem>
-        <GridItem xs={2} sm={2} md={2} lg={2} xl={2}
-          onClick={() => setOpenContactar(true)}
-        >CONTACTAR</GridItem>
+        <Button onClick={() => handleClick(vivienda)}>CONTACTAR</Button>
       </GridItem>
 
 
@@ -129,15 +168,7 @@ const Vivienda = (props) => {
         confirmText={"Contactar"}
         content={
 
-          <TextField
-            id="outlined-multiline-static"
-            label="Mensaje para la inmobiliaría"
-            multiline
-            rows={4}
-            style={{ width: "100%" }}
-            onChange={(e) => setMensaje(e.target.value)}
-            variant="outlined"
-          />
+         <FormularioContactar setMensaje={setMensaje} mensaje={mensaje}/>
         }
         onConfirm={() => contactarConInmobiliaria()}
         title="Contactar"
