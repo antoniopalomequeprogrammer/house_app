@@ -9,7 +9,8 @@ import { enviarMensaje } from "utils/API_V2";
 import FormularioContactar from "./FormularioContactar";
 import Button from '@material-ui/core/Button';
 import * as VALIDATION from "utils/VALIDATION";
-
+import PARAMS from "utils/PARAMS"
+import CustomLoading from "components/CustomLoading/CustomLoading";
 
 
 const Vivienda = (props) => {
@@ -17,10 +18,12 @@ const Vivienda = (props) => {
   const [vivienda, setVivienda] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [openContactar, setOpenContactar] = useState(false);
+  const [fotoPrincipal, setFotoPrincipal] = useState(<CustomLoading/>);
   const id = props.match.params.id;
 
   useEffect(() => {
     obtenerVivienda(id);
+      
 
   }, []);
 
@@ -47,13 +50,21 @@ const [mensaje, setMensaje] = useState(defaultMensaje);
   }
 
   async function obtenerVivienda(id) {
+    setFotoPrincipal(<CustomLoading/>);
     const res = await getVivienda(id);
 
     if (res.error) {
       toast("Error al intentar obtener los datos", { type: "error" });
     } else {
       setVivienda(res.data);
+      
+      
+       if(res?.data?.imagenes[0]?.ruta){
+        
+      setFotoPrincipal(PARAMS.urlImagenes+res.data.imagenes[0].ruta);
+    
     }
+  }
 
   }
 
@@ -87,6 +98,11 @@ const [mensaje, setMensaje] = useState(defaultMensaje);
     setOpenContactar(true);
   }
 
+  const handleCambiarFoto = (foto) => {
+    console.log({foto});
+    setFotoPrincipal(foto);
+  }
+
 
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -98,14 +114,14 @@ const [mensaje, setMensaje] = useState(defaultMensaje);
       {/* IMAGENES */}
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12} style={{ textAlign: "center" }}>
         <GridItem xs={8} sm={8} md={8} lg={8} xl={8}>
-          <img style={{ marginTop: "20px" }} src="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg" />
+          <img style={{ marginTop: "20px", width:"650px", height:"500px" }} src={fotoPrincipal} />
         </GridItem>
         <GridItem xs={4} sm={4} md={4} lg={4} xl={4} style={{ display: "flex" }}>
-          <img style={{ marginTop: "20px", marginRight: "5px", width: "150px" }} src="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg" />
-          <img style={{ marginTop: "20px", marginRight: "5px", width: "150px" }} src="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg" />
-          <img style={{ marginTop: "20px", marginRight: "5px", width: "150px" }} src="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg" />
-          <img style={{ marginTop: "20px", marginRight: "5px", width: "150px" }} src="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg" />
-          <img style={{ marginTop: "20px", marginRight: "5px", width: "150px" }} src="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg" />
+          {vivienda?.imagenes?.length>0 && vivienda?.imagenes.map((imagen) => (
+
+          <img style={{ marginTop: "20px", marginRight: "5px", width: "150px", height:"150px",cursor:"pointer" }} src={PARAMS.urlImagenes+imagen.ruta} onClick={ () => handleCambiarFoto(PARAMS.urlImagenes+imagen.ruta)} />
+          ))}
+          
 
 
 

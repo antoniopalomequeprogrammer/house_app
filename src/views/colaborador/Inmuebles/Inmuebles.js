@@ -103,6 +103,7 @@ const Inmuebles = () => {
 
 
     const handleClickOpen = () => {
+      setReadOnly(false);
       setOpenModal(true);
     };
   
@@ -111,6 +112,7 @@ const Inmuebles = () => {
       setOpenEdit(false);
       setOpenModalDel(false);
       setOpenModalPassword(false);
+      setVivienda(defaultVivienda);
     };
   
     
@@ -148,9 +150,9 @@ const Inmuebles = () => {
 
     const columnNames = [
       { name: "Id", key: "id", width:"50px" },
-      { name: "Título", key: "titulo",width:"100px" },
-      { name: "Descripcion", key: "descripcion",width:"100px" },
-      { name: "Garaje", key: "garaje",width:"50px" },
+      { name: "Título", key: "titulo" },
+      { name: "Descripcion", key: "descripcion"},
+      { name: "Garaje", key: "garaje", },
       { name: "Habitación", key: "habitacion" },
       { name: "m2", key: "m2" },
       { name: "planta", key: "planta" },
@@ -225,17 +227,17 @@ const Inmuebles = () => {
               vivienda.id,
               vivienda.titulo,
               vivienda.descripcion,
-              vivienda.garaje,
-              vivienda.ascensor,
+              vivienda.garaje?'Con garaje':'Sin Garaje',
+              vivienda.ascensor?'Con ascensor':'Sin Ascensor',
               vivienda.habitacion,
-              vivienda.m2,
-              vivienda.planta,
-              vivienda.precio,
-              vivienda.terraza,
+              vivienda.m2+' m2',
+              vivienda.planta + ' planta',
+              vivienda.precio+'€',
+              vivienda.terraza?'Con terraza':'Sin Terraza',
               <div>
                 <Actions
                   show={true}
-                  onShow={() => loadVivienda(vivienda.id)}
+                  onShow={() => loadVivienda(vivienda)}
                   edit={true}
                   onEdit={() => loadEdit(vivienda)}
                   del={true}
@@ -440,7 +442,6 @@ const Inmuebles = () => {
           onCancel={() => handleClose()}
           confirmText={"Eliminar"}
           content={<h4>Esta seguro que desea eliminar este vivienda</h4>}
-          onConfirm={() => editarVivienda()}
           title="Editar vivienda"
           onConfirm={() => eliminarInmueble()}
         />

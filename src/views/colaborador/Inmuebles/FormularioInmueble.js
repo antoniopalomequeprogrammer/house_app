@@ -359,6 +359,9 @@ const FormularioInmueble = ({
         xl={12}
         style={{ display: "flex", justifyContent: "space-between" }}
       >
+        
+
+
         <FormControl style={{ width: "48%" }}>
           <InputLabel id="ascensor-label">Estado</InputLabel>
 

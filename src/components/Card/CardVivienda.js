@@ -17,6 +17,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import GridItem from 'components/Grid/GridItem';
 import { useHistory } from 'react-router-dom';
+import PARAMS from "utils/PARAMS"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 350,
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CardVivienda = ({vivienda}) =>  {
+  console.log(vivienda?.imagenes[0]?.ruta);
   let history = useHistory();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -55,20 +57,22 @@ const CardVivienda = ({vivienda}) =>  {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {console.log({vivienda})}
+            <img src={PARAMS.urlImagenes+vivienda?.logo_inmobiliaria}/>
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
         title={vivienda.inmobiliaria}
         subheader={vivienda.titulo}
       />
       <CardMedia
         className={classes.media}
-        image="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg"
+        // image="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg"
+        image={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta}
         title="Paella dish"
       />
       <CardContent>
