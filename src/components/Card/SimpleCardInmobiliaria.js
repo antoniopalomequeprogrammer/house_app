@@ -3,10 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-
+import PARAMS from 'utils/PARAMS';
+import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    margin:"15px",
+    cursor:"pointer",
   },
   bullet: {
     display: 'inline-block',
@@ -28,13 +31,14 @@ const useStyles = makeStyles({
 });
 
 export default function SimpleCardInmobiliaria({inmobiliaria}) {
+  let history = useHistory();
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={ () => history.push('inmobiliaria/'+inmobiliaria.id)}>
       <CardContent>
-      
+        <img src={PARAMS.urlImagenes+inmobiliaria?.logo}></img>
         <Typography className={classes.pos} color="textSecondary">
           {inmobiliaria.nombre}
         </Typography>

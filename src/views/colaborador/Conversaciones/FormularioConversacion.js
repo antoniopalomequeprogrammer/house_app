@@ -2,11 +2,15 @@ import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import React from 'react'
 import TextField from "@material-ui/core/TextField";
+import PARAMS from "utils/PARAMS";
 
 const FormularioConversacion = ({notificacion}) => {
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
         <GridItem>
+
+        <img style={{width:"100%"}} src={PARAMS.urlImagenes+notificacion?.vivienda?.imagenes[0]?.ruta}></img>
+
 
         <TextField
           style={{ width: "100%" }}
