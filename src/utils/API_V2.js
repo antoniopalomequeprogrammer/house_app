@@ -176,6 +176,13 @@ export async function inmobiliariaStore(inmobiliaria) {
     );
 }
 
+export async function viviendasInmobiliaria(idInmobiliaria){
+    return await resolve(
+        instance.post('vivienda/inmobiliaria',{idInmobiliaria})
+    );
+}
+
+
 export async function editarInmobiliaria(inmobiliaria, inmobiliariaId) {
     return await resolve(
         instance

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
     inmobiliarias:{
         display:"flex",
-        // justifyContent:"space-around",
+        justifyContent:"center",
         marginBottom:"25px",
         flexWrap:"wrap",
         padding:"15px",
