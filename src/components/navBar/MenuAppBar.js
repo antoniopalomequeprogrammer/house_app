@@ -12,7 +12,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { Button } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import {useHistory, useNavigate} from "react-router-dom"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar() {
   const classes = useStyles();
+
+
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -59,7 +62,7 @@ export default function MenuAppBar() {
           {auth && (
             <div>
               <Button  className={classes.menu} style={{marginRight:"3px"}} onClick={ () => history.push('acceso') }>ACCESO</Button>
-              <Button  className={classes.menu} onClick={ () => history.push('home') }> VIVIENDAS</Button>
+              <Button  className={classes.menu} onClick={ () => history.push('home')}> VIVIENDAS </Button>
               <Button  className={classes.menu} onClick={ () => history.push('inmobiliarias-disponibles') }> INMOBILIARIAS</Button>
               <Button  className={classes.menu} onClick={ () => history.push('tarifas') }> TARIFAS</Button>
               <IconButton

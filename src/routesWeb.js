@@ -44,6 +44,39 @@ const rutas = [
     component: lazy(() => import("views/web/Home")),
     visible: false,
   },
+
+  {
+    path: "/aviso-legal",
+    identificador_ruta: "aviso-legal",
+    need_login: false,
+    component: lazy(() => import("views/web/PaginasLegales/AvisoLegal")),
+    visible: false,
+  },
+
+  {
+    path: "/condiciones-uso",
+    identificador_ruta: "condiciones-uso",
+    need_login: false,
+    component: lazy(() => import("views/web/PaginasLegales/CondicionesUso")),
+    visible: false,
+  },
+  {
+    path: "/politica-cookies",
+    identificador_ruta: "politica-cookies",
+    need_login: false,
+    component: lazy(() => import("views/web/PaginasLegales/PoliticaCookies")),
+    visible: false,
+  },
+  {
+    path: "/politica-privacidad",
+    identificador_ruta: "politica-privacidad",
+    need_login: false,
+    component: lazy(() => import("views/web/PaginasLegales/PoliticaPrivacidad")),
+    visible: false,
+  },
+
+
+
 ];
 
 var enrutador = [];

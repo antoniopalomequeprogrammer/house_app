@@ -15,7 +15,7 @@ import Buscador from "views/web/Buscador";
 import HeaderLinks from "components/Header/HeaderLinks";
 import GridItem from "components/Grid/GridItem";
 import MenuAppBar from "components/navBar/MenuAppBar";
-import Footer from "components/Footer/FooterAdmin";
+import Footer from "components/Footer/Footer";
 import { rutas } from "routesWeb";
 
 const Admin = lazy(() => import("layouts/Admin"));

@@ -1,153 +1,66 @@
-/*eslint-disable*/
-import React from "react";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// material-ui core components
-import { Divider, List, ListItem } from "@material-ui/core";
+import React from 'react'
 import { makeStyles } from "@material-ui/core/styles";
-import GridContainer from "components/Grid/GridContainer.js";
-import GridItem from "components/Grid/GridItem.js";
-import { Link } from "react-router-dom";
+import GridContainer from 'components/Grid/GridContainer';
+import GridItem from 'components/Grid/GridItem';
 
-// @material-ui/icons
-import Favorite from "@material-ui/icons/Favorite";
 
-import styles from "assets/jss/material-kit-react/components/footerStyle.js";
-import imagen_store_google from "assets/img/google-play-store.png";
-import imagen_store_apple from "assets/img/apple-store.png";
+const useStyles = makeStyles((theme) => ({
+    footer: {
+      height:"auto",
+      width:"100%",
+      background:"white",
+      display:"flex",
+    },
+    footer1:{
+        width:"33%",
+        border:"2px solid",
+    },
+    footer2:{
+        width:"33%",
+        border:"2px solid",
+    },
+    footer3:{
+        width:"33%",
+        border:"2px solid",
+    },
+    ul_styles:{
+        listStyle:"none",
+        paddin:"0px",
+    },
+    li:{
+        cursor:"pointer",
+        width:"auto"
+        
+    }
+    
+  }));
 
-const useStyles = makeStyles(styles);
-export default function Footer(props) {
-  const classes = useStyles();
-  const { whiteFont } = props;
-  const footerClasses = classNames({
-    [classes.footer]: true,
-    [classes.footerWhiteFont]: whiteFont
-  });
-  const aClasses = classNames({
-    [classes.a]: true,
-    [classes.footerWhiteFont]: whiteFont
-  });
+const Footer = () => {
+    const classes = useStyles();
   return (
-    <footer className={footerClasses}>
-      <div className={classes.container} style={{ paddingBottom: `55px` }}>
-        <GridContainer className={classes.container}>
-          <GridItem xs={12} sm={6} md={6} lg={2} style={{ padding: `0` }}>
-            <p className={classes.titulo}>Inicio</p>
-            <hr className={classes.separador} />
-            <List className={classes.lista}>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Reserva
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Servicios
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Eventos
-                </Link>
-              </ListItem>
-            </List>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={6} lg={3} style={{ padding: `0` }}>
-            <p className={classes.titulo}>¿Qué es incrono?</p>
-            <hr className={classes.separador} />
-            <List className={classes.lista}>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Consulta nuestro Blog
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  ¿A qué esperas para jugar?
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="login" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Login
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="login" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Registro
-                </Link>
-              </ListItem>
-            </List>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={6} lg={2} style={{ padding: `0` }}>
-            <p className={classes.titulo}>Empresas</p>
-            <hr className={classes.separador} />
-            <List className={classes.lista}>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Acceso empresas
-                </Link>
-              </ListItem>
-            </List>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={6} lg={2} style={{ padding: `0` }}>
-            <p className={classes.titulo}>¿Alguna duda?</p>
-            <hr className={classes.separador} />
-            <List className={classes.lista}>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Preguntas frecuentes
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Soporte
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Hablan de nosotros
-                </Link>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <Link to="#" className={classNames(classes.footerLink, classes.footerLinkWhiteFont)}>
-                  Términos legales
-                </Link>
-              </ListItem>
-            </List>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={12} lg={3} style={{ padding: `0` }}>
-            <p className={classes.titulo}>Descarga nuestra App</p>
-            <hr className={classes.separador} />
-            <List className={classes.lista}>
-              <ListItem className={classes.list}>
-                <a className={classNames(classes.footerLink, classes.opacidad)} href="#"><img src={imagen_store_google} /></a>
-              </ListItem>
-              <ListItem className={classes.list}>
-                <a className={classNames(classes.footerLink, classes.opacidad)} href="#"><img src={imagen_store_apple} /></a>
-              </ListItem>
-            </List>
-          </GridItem>
-        </GridContainer>
-      </div>
-      <div className={classes.container}>
-        <hr className={classes.separador} />
-        <div className={classes.container1200}>
-          <div className={classNames(classes.footerWhiteFont, classes.left)}>
-            &copy; {1900 + new Date().getYear()}{" "} All rights reserved by <a href="https://www.incrono.com" className={classes.footerLinkWhiteFont}>RFES</a>
-          </div>
-          <div className={classes.right}>
-            <a href="mailto:info@incrono.com" className={classes.footerLinkWhiteFont}>info@incrono.com</a>
-          </div>
-          <div style={{ clear: "both" }} />
-        </div>
-      </div>
-    </footer>
-  );
+    <GridContainer xs={12} sm={12} md={12} lg={12} xl={12} className={classes.footer}>
+        <GridItem className={classes.footer1} xs={4} sm={4} md={4} lg={4} xl={4}>
+            <img src=""/>
+        </GridItem>
+        <GridItem className={classes.footer2} xs={4} sm={4} md={4} lg={4} xl={4}>
+        <ul className={classes.ul_styles}>
+            <li className={classes.li}>Aviso Legal</li>
+            <li className={classes.li}>Política de privacidad</li>
+            <li className={classes.li}>Política de cookies</li>
+            <li className={classes.li}>Condiciones de uso</li>
+        </ul>
+        </GridItem>
+        <GridItem className={classes.footer3} xs={4} sm={4} md={4} lg={4} xl={4}>
+        <ul className={classes.ul_styles}>
+                <li className={classes.li}>Acceso</li>
+                <li className={classes.li}>Viviendas</li>
+                <li className={classes.li}>Inmobiliarias</li>
+                <li className={classes.li}>¿Quienes somos?</li>
+            </ul>
+        </GridItem>
+
+    </GridContainer>
+  )
 }
 
-Footer.propTypes = {
-  whiteFont: PropTypes.bool
-};
+export default Footer

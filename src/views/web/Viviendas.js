@@ -35,14 +35,16 @@ useEffect(() => {
 async function obtenerViviendas(){
     
     setViviendas(null);
-    const res = await getViviendas(search, page, perPageData = 10, filtros)
+    const res = await getViviendas(search, page, perPageData = 4, filtros)
     if(res.error){
         toast("Error al obtener viviendas",{type:"error"});
     }else{
-        console.log(res.data.length);
-        if(res.data.length>0){
-            setViviendas(res.data);
-            setTotalData(res.data[0].total);
+        console.log(res.data.data.length);
+        if(res.data.data.length>0){
+            setViviendas(res.data.data);
+            setTotalData(res.data.meta.last_page);
+        }else{
+            setViviendas([]);
         }
 
     }
@@ -63,6 +65,11 @@ const handleChange = (event, value) => {
         {viviendas && viviendas.map((vivienda) => (
            <CardVivienda style={{justiFyContent:"center"}} xs={12} sm={12} md={12} lg={12} vivienda={vivienda}/>
         ))}
+
+        {viviendas?.length == 0 && <div style={{textAling:"center" }}>
+            
+            <h3 style={{textAling:"center", color:"red"}}>No hay viviendas con los filtros aplicados, intente con otro criterio de búsqueda</h3>
+            </div>}
 
         
 

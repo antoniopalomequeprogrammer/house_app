@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { comprobarInmobiliaria,actualizarInmobiliaria } from 'utils/API_V2'
 
+import DropZone from "../../../components/DropZone/DropZone";
 const PerfilEmpresa = () => {
 
 const defaultInmobiliaria = {
@@ -12,6 +13,7 @@ const defaultInmobiliaria = {
     descripcion: '',
     telefono: '',
     email: '',
+    logo: '',
 
 }
 
@@ -36,6 +38,7 @@ async function obtenerInfoInmobiliaria(){
 }
 
 async function configurarInmobiliaria(){
+    console.log({inmobiliaria});
     const res = await actualizarInmobiliaria(inmobiliaria);
     if(res.error){
         toast("Error al configurar la inmobiliaria", {type:"error"});
@@ -50,6 +53,21 @@ async function configurarInmobiliaria(){
         <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
             <h1>Configurar perfil de Inmobiliaria</h1>
         </GridItem>
+
+        <GridItem xs={12} sm={12} md={12} lg={12}>
+          
+          <DropZone
+            id="imagen"
+            preview={true}
+            onLoadImage={(File) => {
+              setInmobiliaria({...inmobiliaria,logo:File});
+            }}
+            multiple={false}
+            maxFiles={1}
+          />
+        </GridItem>
+
+
         <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
             <TextField
                 style={{ width: "100%" }}

@@ -53,7 +53,7 @@ const CardVivienda = ({vivienda}) =>  {
   };
 
   return (
-    <Card style={{width:"300px"}} className={classes.root} onClick={() => history.push(`vivienda/${vivienda.id}`)}>
+    <Card style={{width:"300px",cursor:"pointer"}} className={classes.root} onClick={() => history.push(`vivienda/${vivienda.id}`)}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -61,17 +61,12 @@ const CardVivienda = ({vivienda}) =>  {
             <img src={PARAMS.urlImagenes+vivienda?.logo_inmobiliaria}/>
           </Avatar>
         }
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+
         title={vivienda.inmobiliaria}
         subheader={vivienda.titulo}
       />
       <CardMedia
         className={classes.media}
-        // image="https://img.freepik.com/foto-gratis/casa-aislada-campo_1303-23773.jpg?size=626&ext=jpg"
         image={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta}
         title="Paella dish"
       />
