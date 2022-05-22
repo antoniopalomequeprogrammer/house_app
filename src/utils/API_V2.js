@@ -244,9 +244,17 @@ export async function actualizarInmobiliaria(inmobiliaria) {
   );
 }
 
-export async function getInmobiliarias() {
+
+
+
+export async function getInmobiliarias(search,page,perPageData) {
+
+  console.log({search});
+  console.log({page});
+  console.log({perPageData});
+
   return await resolve(
-    instance.get("index/inmobiliarias").then((res) => res.data)
+    instance.post(`index/inmobiliarias?page=${page}`, {search,perPageData}).then((res) => res.data)
   );
 }
 

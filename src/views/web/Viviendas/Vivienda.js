@@ -189,6 +189,23 @@ const Vivienda = (props) => {
             />
           ))}
       </GridItem>
+
+      {/* OPEN CONTACTAR */}
+
+
+      <Modal
+        open={openContactar}
+        onCancel={() => handleClose()}
+        confirmText={"Contactar"}
+        content={
+          <FormularioContactar setMensaje={setMensaje} mensaje={mensaje} />
+        }
+        // onConfirm={() => editarUsuario()}
+        title="Contactar con inmobiliaria"
+        onConfirm={() => contactarConInmobiliaria()}
+      />
+
+
     </GridContainer>
   );
 };

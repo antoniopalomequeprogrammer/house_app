@@ -4,10 +4,11 @@ import GridItem from 'components/Grid/GridItem'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { comprobarInmobiliaria,actualizarInmobiliaria } from 'utils/API_V2'
+import PARAMS from 'utils/PARAMS'
 
 import DropZone from "../../../components/DropZone/DropZone";
 const PerfilEmpresa = () => {
-
+const [defaultLogo, setDefaultLogo] = useState(false);
 const defaultInmobiliaria = {
     nombre: '',
     descripcion: '',
@@ -20,6 +21,10 @@ const defaultInmobiliaria = {
 const [readOnly, setReadOnly] = useState(false);
 const [inmobiliaria, setInmobiliaria] = useState([]);
     useEffect(() => {
+
+       
+
+
         obtenerInfoInmobiliaria();
     }, [])
     
@@ -27,10 +32,12 @@ const [inmobiliaria, setInmobiliaria] = useState([]);
 
 async function obtenerInfoInmobiliaria(){
     const res =  await comprobarInmobiliaria();
+    setDefaultLogo(null);
     if(res.error){
         toast("Error al intentar comprobar la inmobiliaria",{type:"error"});
     }else{
         setInmobiliaria(res.data);
+        setDefaultLogo(res.data.logo);
         if(res.data){
             setReadOnly(true);
         }
@@ -44,15 +51,23 @@ async function configurarInmobiliaria(){
         toast("Error al configurar la inmobiliaria", {type:"error"});
     }else{
         toast("Inmobiliaria configurada correctamente", {type:"success"});
+        obtenerInfoInmobiliaria();
     }
 }
 
 
     return (
          <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
-        <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
+
+        <GridItem xs={12} sm={12} md={12} lg={12} xl={12} >
             <h1>Configurar perfil de Inmobiliaria</h1>
         </GridItem>
+
+         <GridItem xs={12} sm={12} md={12} lg={12} style={{display:"flex",marginBottom:"15px", justifyContent:"end"}}>
+          
+          <img src={PARAMS.urlImagenes+defaultLogo} style={{width:"150px", height:"150px"}}/>
+        </GridItem>
+
 
         <GridItem xs={12} sm={12} md={12} lg={12}>
           

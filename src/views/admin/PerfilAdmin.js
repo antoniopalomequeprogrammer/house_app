@@ -132,7 +132,7 @@ const PerfilAdmin = () => {
         content={
           <FormularioPassword usuario={usuario} setUsuario={setUsuario} />
         }
-        onConfirm={() => editarUsuario()}
+        // onConfirm={() => editarUsuario()}
         title="Cambiar Contraseña"
         onConfirm={() => cambiarPassword()}
       />

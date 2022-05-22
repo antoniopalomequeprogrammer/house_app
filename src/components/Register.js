@@ -35,7 +35,6 @@ const useStyles = makeStyles(styles);
 
 export default function Login(props) {
   const [nombre, setNombre] = useState("");
-  const [logo, setLogo] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [rol, setRol] = useState("");
   const [email, setEmail] = useState("");
@@ -49,7 +48,6 @@ export default function Login(props) {
     nombre: nombre,
     apellidos: apellidos,
     rol:rol,
-    logo:logo,
     email: email,
     pass: pass,
     userType: rol,
@@ -106,18 +104,6 @@ export default function Login(props) {
             <h4>Registrarse</h4>
           </CardHeader>
           <CardBody>
-          <GridItem xs={12} sm={12} md={12} lg={12}>
-          
-          <DropZone
-            id="imagen"
-            preview={true}
-            onLoadImage={(File) => {
-              setLogo(File);
-            }}
-            multiple={false}
-            maxFiles={1}
-          />
-        </GridItem>
 
         <GridItem xs={12} sm={12} md={12} lg={12} style={{marginTop:"10px",paddingRight:"0px", paddingLeft:"0px"}}>
         <FormControl className={classes.formControl} style={{width:"100%"}}>

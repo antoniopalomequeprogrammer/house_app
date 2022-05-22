@@ -14,13 +14,17 @@ const useStyles = makeStyles((theme) => ({
         display:"flex", 
         justifyContent:"center",
         marginBottom:"30px",
+    },
+    viviendasContainer:{
+        justifyContent:"center",
     }
 
 }));
 
-const Viviendas = ({filtros,search,perPageData,loadBuscar,setTotal}) => {
+const Viviendas = ({filtros,search,loadBuscar,setTotal}) => {
 const [viviendas, setViviendas] = useState(false);
 const [totalData, setTotalData] = useState(false);
+const [perPage, setPerPage] = useState(10);
 const classes = useStyles();
 const [page, setPage] = useState(1);
 useEffect(() => {
@@ -35,11 +39,11 @@ useEffect(() => {
 async function obtenerViviendas(){
     
     setViviendas(null);
-    const res = await getViviendas(search, page, perPageData = 4, filtros)
+    const res = await getViviendas(search, page, perPage, filtros)
     if(res.error){
         toast("Error al obtener viviendas",{type:"error"});
     }else{
-        console.log(res.data.data.length);
+        
         if(res.data.data.length>0){
             setViviendas(res.data.data);
             setTotalData(res.data.meta.last_page);
@@ -59,7 +63,7 @@ const handleChange = (event, value) => {
         
     <h2 style={{textAlign:"center"}}>Más de 300 viviendas disponibles en toda España</h2>    
         
-        <GridContainer xs={12} sm={12} md={12} lg={12}>
+        <GridContainer xs={12} sm={12} md={12} lg={12} className={classes.viviendasContainer}>
         
         {viviendas == null && <CustomLoading/>}
         {viviendas && viviendas.map((vivienda) => (
