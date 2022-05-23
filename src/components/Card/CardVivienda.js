@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -18,6 +18,15 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import GridItem from 'components/Grid/GridItem';
 import { useHistory } from 'react-router-dom';
 import PARAMS from "utils/PARAMS"
+import { toast } from 'react-toastify';
+import { anadirFavoritos } from 'utils/API_V2';
+import CallIcon from '@material-ui/icons/Call';
+import MessageIcon from '@material-ui/icons/Message';
+import Modal from "components/Modal/Modal";
+import * as VALIDATION from "utils/VALIDATION";
+import { enviarMensaje } from "utils/API_V2";
+import FormularioContactar from 'views/web/Viviendas/FormularioContactar';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 350,
@@ -26,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    cursor:"pointer",
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -42,30 +52,93 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardVivienda = ({vivienda}) =>  {
-  console.log(vivienda?.imagenes[0]?.ruta);
+const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarFavoritos}) =>  {
+  const [openContactar, setOpenContactar] = useState(false);
   let history = useHistory();
   const classes = useStyles();
+  const [isProcessing, setIsProcessing] = useState(false);
+
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleClickContactar = () => {
+    setOpenContactar(true);
   };
 
+  const handleClose = () => {
+    setOpenContactar(false);
+  }
+
+  async function aUxaddFavoritos(){
+      
+    const res = await anadirFavoritos(vivienda.id);
+
+    if(res.error){
+      toast("No se ha podido añadir a favoritos", {type:"error"});
+    }else{
+     
+      toast(res.data,{type:"success"});
+      
+        if(recargarFavoritos){
+          setLoadFavoritos(!loadFavoritos);
+        }
+      
+    }
+  }
+  const validate_fields = {
+    nombre_contacto: { type: "NULL", field: "Nombre del Contacto" },
+    telefono: { type: "NULL", field: "Teléfono" },
+    mensaje: { type: "NULL", field: "Mensaje" },
+  };
+
+  const defaultMensaje = {
+    nombre_contacto: "",
+    telefono: "",
+    mensaje: "",
+    vivienda_id: "",
+  };
+
+  const [mensaje, setMensaje] = useState(defaultMensaje);
+
+  async function contactarConInmobiliaria() {
+    if (!isProcessing) {
+      var validate = VALIDATION.checkObject(validate_fields, mensaje);
+      if (validate.status) {
+        let auxMensaje = mensaje;
+        auxMensaje.vivienda_id = vivienda.id;
+        setMensaje(auxMensaje);
+
+        const res = await enviarMensaje(mensaje);
+
+        setIsProcessing(true);
+
+        if (res.error) {
+          toast(res.error, { type: "error" });
+        } else {
+          toast("Mensaje enviado correctamente", { type: "success" });
+          handleClose();
+        }
+      } else {
+        toast(validate.message, { type: "warning" });
+      }
+    }
+  }
+
+
   return (
-    <Card style={{width:"300px",cursor:"pointer"}} className={classes.root} onClick={() => history.push(`vivienda/${vivienda.id}`)}>
+    <>
+    <Card style={{width:"300px"}} className={classes.root} >
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            {console.log({vivienda})}
-            <img src={PARAMS.urlImagenes+vivienda?.logo_inmobiliaria}/>
+            
+            <img src={PARAMS.urlImagenes+vivienda?.logo_inmobiliaria} style={{width:"50px", height:"50px"}}/>
           </Avatar>
         }
 
         title={vivienda.inmobiliaria}
         subheader={vivienda.titulo}
       />
-      <CardMedia
+      <CardMedia onClick={() => history.push(`/vivienda/${vivienda.id}`)}
         className={classes.media}
         image={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta}
         title="Paella dish"
@@ -90,15 +163,35 @@ const CardVivienda = ({vivienda}) =>  {
           {vivienda.descripcion.substring(0,150)}
         </Typography>
       </CardContent>
-      {/* <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+      <CardActions disableSpacing style={{justifyContent:"space-between"}}>
+        <IconButton aria-label="add to favorites" onClick={() => handleClickContactar()}>
+        <MessageIcon />
+        </IconButton>
+        <IconButton aria-label="add to favorites" href={"tel:" + vivienda.telefono}>
+          <CallIcon />
+        </IconButton>
+        <IconButton aria-label="add to favorites" onClick={() => aUxaddFavoritos()}>
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions> */}
+        
+      </CardActions>
     </Card>
+
+
+{/* FORMULARIO CONTACTAR */}
+
+<Modal
+open={openContactar}
+onCancel={() => handleClose()}
+confirmText={"Contactar"}
+content={
+  <FormularioContactar setMensaje={setMensaje} mensaje={mensaje} />
+}
+title="Contactar con inmobiliaria"
+onConfirm={() => contactarConInmobiliaria()}
+/>
+</>
+    
   );
 }
 

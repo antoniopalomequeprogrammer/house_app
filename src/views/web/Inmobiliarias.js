@@ -134,6 +134,7 @@ const Inmobiliarias = () => {
 
         {inmobiliarias &&
           inmobiliarias.map((inmobiliaria) => (
+            
             <SimpleCardInmobiliaria
               style={{ cursor: "pointer" }}
               xs={12}

@@ -36,7 +36,7 @@ export default function SimpleCardInmobiliaria({inmobiliaria}) {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root} onClick={ () => history.push('inmobiliaria/'+inmobiliaria.id)}>
+    <Card className={classes.root} onClick={ () => history.push('/inmobiliaria/'+inmobiliaria.id)}>
       <CardContent>
         <img src={PARAMS.urlImagenes+inmobiliaria?.logo} style={{width:"100%", height:"200px"}}/>
         <Typography className={classes.pos} color="textSecondary">

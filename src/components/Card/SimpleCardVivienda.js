@@ -37,7 +37,7 @@ export default function SimpleCardVivienda({vivienda}) {
   const bull = <span className={classes.bullet}>•</span>;
   console.log({vivienda});
   return (
-    <Card className={classes.root} onClick={ () => <Redirect to="vivienda/3"/>}>
+    <Card className={classes.root} onClick={ () => history.push(`/vivienda/${vivienda.id}`)}>
       <CardContent>
         <img src={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta}></img>
         <Typography className={classes.pos} color="textSecondary">

@@ -46,6 +46,21 @@ const rutas = [
   },
 
   {
+    path: "/favoritos",
+    identificador_ruta: "home",
+    need_login: false,
+    component: lazy(() => import("views/web/Favoritos/Favoritos")),
+    visible: false,
+  },
+  {
+    path: "/mis-notificaciones",
+    identificador_ruta: "home",
+    need_login: false,
+    component: lazy(() => import("views/web/Notificaciones/Notificacion")),
+    visible: false,
+  },
+
+  {
     path: "/aviso-legal",
     identificador_ruta: "aviso-legal",
     need_login: false,

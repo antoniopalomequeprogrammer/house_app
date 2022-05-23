@@ -192,7 +192,7 @@ import {
               <p>Gestión de Tipos</p>
             </CardHeader>
             <CardBody>
-              <Accordion>
+              {/* <Accordion>
                 <AccordionSummary
                   expandIcon={<ExpandMore />}
                   aria-controls="panel1a-content"
@@ -202,7 +202,7 @@ import {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography style={{ width: "100%" }}>
-                    {/* <Select2
+                    <Select2
                       value={estadosProductos.find(
                         (el) => el.value == estadosProductos.value
                       )}
@@ -212,7 +212,7 @@ import {
                       options={estadosProductos}
                       placeholder="Filtrar por estados de pedido"
                       isDisabled={show}
-                    /> */}
+                    />
                     <div
                       style={{
                         width: "100%",
@@ -221,17 +221,17 @@ import {
                         display: "flex",
                       }}
                     >
-                      {/* <Button
+                      <Button
                         variant="contained"
                         color="primary"
                         onClick={() => setEstadoProducto(null)}
                       >
                         Borrar Filtros
-                      </Button> */}
+                      </Button>
                     </div>
                   </Typography>
                 </AccordionDetails>
-              </Accordion>
+              </Accordion> */}
               <div className={classes.root}>
                 <Datatable
                   data={inmobiliarias}

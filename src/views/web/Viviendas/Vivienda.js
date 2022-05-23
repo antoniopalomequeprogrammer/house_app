@@ -34,6 +34,7 @@ const Vivienda = (props) => {
     telefono: "",
     mensaje: "",
     vivienda_id: "",
+    email:"",
   };
 
   const [mensaje, setMensaje] = useState(defaultMensaje);

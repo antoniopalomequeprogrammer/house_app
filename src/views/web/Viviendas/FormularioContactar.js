@@ -1,9 +1,19 @@
 import { TextField } from '@material-ui/core'
 import GridContainer from 'components/Grid/GridContainer'
 import GridItem from 'components/Grid/GridItem'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const FormularioContactar = ({mensaje,setMensaje}) => {
+
+
+  useEffect(() => {
+    setMensaje({...mensaje,email: localStorage.getItem('userEmail')});
+  }, [])
+  
+
+
+
+
   return (
     <GridContainer xs={12} lg={12} md={12} sm={12}>
         <GridItem xs={12} lg={12} md={12} sm={12}>

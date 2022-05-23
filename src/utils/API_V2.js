@@ -415,6 +415,26 @@ export async function getMisViviendas(search, page, perPageData = 1) {
   );
 }
 
+
+export async function getViviendasFavoritas(){
+  return await resolve(
+    instance
+    .post('viviendas/mis-favoritas').then((res) => res.data)
+  );
+}
+
+export async function anadirFavoritos(idVivienda){
+  return await resolve(
+    instance
+    .post('viviendas/anadir-favoritos',{idVivienda}).then((res) => res.data)
+  );
+}
+
+
+
+
+
+
 export async function getViviendas(search, page, perPageData = 1, filtros) {
   return await resolve(
     instance
@@ -436,6 +456,13 @@ export async function getNotificaciones() {
   return await resolve(
     instance.post("notificaciones/index").then((res) => res.data)
   );
+}
+
+export async function getMisNotificaciones(){
+  return await resolve(
+    instance
+    .post('notificaciones/mis-notificaciones')
+  )
 }
 
 export async function borrarNotificacion(id) {

@@ -47,7 +47,7 @@ useEffect(() => {
     obtenerViviendasInmobiliaria(props.match.params.id);
 
   }else{
-    history.push('inmobiliarias-disponibles');
+    history.push('/inmobiliarias-disponibles');
   }
 }, [])
 
@@ -70,7 +70,7 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
 
 <GridItem className={classes.inmobiliarias} xs={12} sm={12} md={12} lg={12} xl={12}>
         {viviendas && viviendas.map((vivienda) => (
-            <SimpleCardVivienda vivienda={vivienda}></SimpleCardVivienda>
+            <SimpleCardVivienda vivienda={vivienda} ></SimpleCardVivienda>
         ))}
         </GridItem>
 

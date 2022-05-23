@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
       width:"100%",
       background:"white",
       display:"flex",
+
+
     },
     footer1:{
         width:"33%",
