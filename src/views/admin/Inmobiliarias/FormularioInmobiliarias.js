@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import DropZone from "components/DropZone/DropZone";
-
+import PARAMS from "utils/PARAMS";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FormularioEstado = ({
+const FormularioInmobiliarias = ({
   inmobiliaria,
   setInmobiliaria,
   edit = false,
@@ -29,11 +29,19 @@ const FormularioEstado = ({
   readOnly = false,
   editPerfil = false,
 }) => {
+  
+
+
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
     <GridItem xs={12} sm={12} md={12} lg={12}>
+      
+      {inmobiliaria?.logo && <img src={PARAMS.urlImagenes+inmobiliaria.logo}/>}
+
+
+
             {!show && <h5 style={{ color: "#00B0D5" }}>Nueva Imagen</h5>}
             <DropZone
               id="imagen"
@@ -132,4 +140,4 @@ const FormularioEstado = ({
   );
 };
 
-export default FormularioEstado;
+export default FormularioInmobiliarias;

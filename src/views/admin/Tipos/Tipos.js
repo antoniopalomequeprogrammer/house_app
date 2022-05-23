@@ -111,6 +111,7 @@ import {
   
     async function obtenerTipos(findBy, page, perPageData) {
       setIsLoad(false);
+      console.log({perPageData});
       const res = await getTipos(findBy, page, perPageData);
       if (res.error) {
         toast("Se ha producido un error en la carga de inmobiliarias", {
@@ -118,8 +119,8 @@ import {
         });
       } else {
         const arrayTipos = [];
-        if (res.data.length > 0) {
-          res.data.forEach((tipo, index) => {
+        if (res.data.data.length > 0) {
+          res.data.data.forEach((tipo, index) => {
             let aux = createData(
               tipo.id,
               tipo.tipo,
@@ -135,7 +136,7 @@ import {
             arrayTipos.push(aux);
           });
         }
-        // setTotalData(res.data.meta.total);
+        // setTotalData(res.data.data.meta.total);
         setInmobiliarias(arrayTipos);
         setIsLoad(true);
       }
@@ -192,46 +193,6 @@ import {
               <p>Gestión de Tipos</p>
             </CardHeader>
             <CardBody>
-              {/* <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMore />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography className={classes.heading}>FILTROS</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography style={{ width: "100%" }}>
-                    <Select2
-                      value={estadosProductos.find(
-                        (el) => el.value == estadosProductos.value
-                      )}
-                      onChange={(selectedOption) =>
-                        setEstadoProducto(selectedOption.value)
-                      }
-                      options={estadosProductos}
-                      placeholder="Filtrar por estados de pedido"
-                      isDisabled={show}
-                    />
-                    <div
-                      style={{
-                        width: "100%",
-                        marginTop: "10px",
-                        justifyContent: "end",
-                        display: "flex",
-                      }}
-                    >
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => setEstadoProducto(null)}
-                      >
-                        Borrar Filtros
-                      </Button>
-                    </div>
-                  </Typography>
-                </AccordionDetails>
-              </Accordion> */}
               <div className={classes.root}>
                 <Datatable
                   data={inmobiliarias}

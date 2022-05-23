@@ -184,51 +184,11 @@ const Conversaciones = () => {
       <p>Gestión de inmuebles</p>
     </CardHeader>
     <CardBody>
-      {/* <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMore />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>FILTROS</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography style={{ width: "100%" }}>
-            <Select2
-              value={estadosProductos.find(
-                (el) => el.value == estadosProductos.value
-              )}
-              onChange={(selectedOption) =>
-                setEstadoProducto(selectedOption.value)
-              }
-              options={estadosProductos}
-              placeholder="Filtrar por estados de pedido"
-              isDisabled={show}
-            />
-            <div
-              style={{
-                width: "100%",
-                marginTop: "10px",
-                justifyContent: "end",
-                display: "flex",
-              }}
-            >
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setEstadoProducto(null)}
-              >
-                Borrar Filtros
-              </Button>
-            </div>
-          </Typography>
-        </AccordionDetails>
-      </Accordion> */}
       <div className={classes.root}>
         <Datatable
           data={notificaciones}
           columnNames={columnNames}
-          // search={(data) => handleSearch(data)}
+          search={(data) => handleSearch(data)}
           load={isLoad}
           loader={
             <GridContainer
@@ -240,8 +200,6 @@ const Conversaciones = () => {
               <CustomLoading color={PARAMS.firstColor} size={80} />
             </GridContainer>
           }
-          // addItemTitle=""
-          // addItemAction={() => handleClickOpen()}
           serverSide={true}
           totalRows={totalData}
           perPage={perPageData}

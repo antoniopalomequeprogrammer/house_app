@@ -21,7 +21,7 @@ import {
   import { ExpandMore } from "@material-ui/icons";
   import { makeStyles } from "@material-ui/core/styles";
   import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
-  import FormularioInmueble from "./FormularioInmobiliarias";
+  import FormularioInmobiliarias from "./FormularioInmobiliarias";
   import Modal from "components/Modal/Modal";
   import {
     crearUsuario,
@@ -75,9 +75,6 @@ import {
       obtenerInmobiliarias(findBy, page, perPageData);
     };
   
-    const handleClickOpen = () => {
-      setOpenModal(true);
-    };
   
     const handleClose = () => {
       setOpenModal(false);
@@ -134,7 +131,8 @@ import {
     }
   
   
-    function loadUser(inmobiliaria) {
+    function loadInmobiliaria(inmobiliaria) {
+      
       setReadOnly(true);
       setOpenModal(true);
       setInmobiliaria(inmobiliaria);
@@ -161,7 +159,7 @@ import {
               <div>
                 <Actions
                   show={true}
-                  onShow={() => loadUser(inmobiliaria)}
+                  onShow={() => loadInmobiliaria(inmobiliaria)}
                   edit={true}
                   onEdit={() => loadEdit(inmobiliaria)}
                   del={true}
@@ -329,7 +327,7 @@ import {
           open={openModal}
           onCancel={() => handleClose()}
           content={
-            <FormularioInmueble
+            <FormularioInmobiliarias
               inmobiliaria={inmobiliaria}
               setInmobiliaria={setInmobiliaria}
               readOnly={readOnly}
@@ -347,7 +345,7 @@ import {
           onCancel={() => handleClose()}
           confirmText={"Editar"}
           content={
-            <FormularioInmueble
+            <FormularioInmobiliarias
               inmobiliaria={inmobiliaria}
               setInmobiliaria={setInmobiliaria}
               edit={true}
@@ -364,7 +362,6 @@ import {
           onCancel={() => handleClose()}
           confirmText={"Eliminar"}
           content={<h4>Esta seguro que desea eliminar este inmobiliaria</h4>}
-          onConfirm={() => editarDatosInmobiliaria()}
           title="Editar inmobiliaria"
           onConfirm={() => eliminarInmobiliaria()}
         />
