@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     borderRadius: "1rem",
     borderSize: "1px",
     borderStyle: "solid",
-    borderColor: "#EABE3F",
+    borderColor: "#1c6c6c",
     padding: "1rem",
     cursor: "pointer",
   },
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     "& svg": {
-      fill: "#EABE3F",
+      fill: "#1c6c6c",
     },
   },
   title: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
   momentoContainer: {
     borderRadius: "0.5rem",
     padding: "0 0.4rem",
-    backgroundColor: "#EABE3F",
+    backgroundColor: "#1c6c6c",
     padding: "0.2rem 0.4rem",
   },
   momentoTitle: {
@@ -82,11 +82,11 @@ const useStyles = makeStyles({
     fontWeight: 700,
     fontSize: "4rem",
 
-    color: "#EABE3F",
+    color: "#1c6c6c",
   },
   unids: {
     margin: "1.3rem 0 0 0.5rem",
-    color: "#EABE3F",
+    color: "#1c6c6c",
     fontSize: "2rem",
   },
 });

@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    cursor:"pointer",
   },
   menu: {
     color: "white",
@@ -141,7 +142,7 @@ export default function MenuAppBar() {
                     <MenuItem onClick={() => cerrarSesion()}>Cerrar sesión <ExitToAppIcon/></MenuItem>
                   </>
                 ) : (
-                  <MenuItem onClick={handleClose}>Acceso</MenuItem>
+                  <MenuItem onClick={() => history.push('/acceso')}>Acceso</MenuItem>
                 )}
               </Menu>
             </div>

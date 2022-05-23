@@ -393,7 +393,6 @@ const Usuarios = () => {
         onCancel={() => handleClose()}
         confirmText={"Eliminar"}
         content={<h4>Esta seguro que desea eliminar este usuario</h4>}
-        onConfirm={() => editarUsuario()}
         title="Editar Usuario"
         onConfirm={() => eliminarUsuario()}
       />
@@ -407,7 +406,7 @@ const Usuarios = () => {
         content={
           <FormularioPassword usuario={usuario} setUsuario={setUsuario} />
         }
-        onConfirm={() => editarUsuario()}
+
         title="Cambiar Contraseña"
         onConfirm={() => cambiarPassword()}
       />

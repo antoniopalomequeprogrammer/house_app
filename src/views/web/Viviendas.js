@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const Viviendas = ({filtros,search,loadBuscar,setTotal}) => {
 const [viviendas, setViviendas] = useState(false);
 const [totalData, setTotalData] = useState(false);
-const [perPage, setPerPage] = useState(10);
+const [perPage, setPerPage] = useState(3);
 const classes = useStyles();
 const [page, setPage] = useState(1);
 useEffect(() => {

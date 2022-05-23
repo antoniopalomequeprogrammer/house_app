@@ -134,7 +134,7 @@ const customCardHeader = {
 };
 const primaryCardHeader = {
   color: "#fff",
-  background: "linear-gradient(60deg, #383538, #D1A72F)",
+  background: "linear-gradient(60deg, #383538, #2fd1ca)",
   ...primaryBoxShadow
 };
 const roseCardHeader = {
