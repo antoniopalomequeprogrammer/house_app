@@ -4,11 +4,12 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import PARAMS from 'utils/PARAMS';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    width:"25%",
     margin:"15px",
     cursor:"pointer",
   },
@@ -34,12 +35,12 @@ const useStyles = makeStyles({
 export default function SimpleCardVivienda({vivienda}) {
   let history = useHistory();
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-  console.log({vivienda});
   return (
-    <Card className={classes.root} onClick={ () => history.push(`/vivienda/${vivienda.id}`)}>
+    <Card xs={6} sm={6} lg={6} xl={6}  className={classes.root} onClick={ () => history.push(`/vivienda/${vivienda.id}`)}>
       <CardContent>
-        <img src={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta}></img>
+        {vivienda?.imagenes && (<img src={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta} style={{width:"100%"}}></img>)}
+
+        
         <Typography className={classes.pos} color="textSecondary">
           {vivienda?.titulo}
         </Typography>

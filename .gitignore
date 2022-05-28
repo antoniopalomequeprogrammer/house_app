@@ -25,4 +25,4 @@ yarn-error.log*
 # package
 /dist
 
-src/utils/PARAMS.js
+# src/utils/PARAMS.js

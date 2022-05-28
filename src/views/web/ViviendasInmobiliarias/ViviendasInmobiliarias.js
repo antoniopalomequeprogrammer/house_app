@@ -16,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   titulo: {
-      textAlign: "center",
-      fontSize: "28px",
+      display: "flex",
+      justifyContent:"center",
   },
 
   inmobiliarias:{
@@ -42,6 +42,7 @@ const ViviendasInmobiliarias = (props) => {
 const classes = useStyles();
 let history = useHistory();    
 const [viviendas, setViviendas] = useState([]);
+const [nombreInmobiliaria, setNombreInmobiliaria] = useState(false);
 useEffect(() => {
   if(props.match.params.id){
     obtenerViviendasInmobiliaria(props.match.params.id);
@@ -59,6 +60,7 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
 
   }else{
     setViviendas(res.data.data);
+    setNombreInmobiliaria(res.data.data[0].inmobiliaria)
     
   }
 
@@ -67,13 +69,13 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
 
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12} className={classes.container}>
+      <GridItem xs={12} sm={12} md={12} lg={12} xl={12} className={classes.titulo}>
 
-<GridItem className={classes.inmobiliarias} xs={12} sm={12} md={12} lg={12} xl={12}>
+        {nombreInmobiliaria && <h1>Descubre las viviendas de <span>{nombreInmobiliaria}</span></h1>}
+      </GridItem>
         {viviendas && viviendas.map((vivienda) => (
             <SimpleCardVivienda vivienda={vivienda} ></SimpleCardVivienda>
         ))}
-        </GridItem>
-
 
 
     </GridContainer>
