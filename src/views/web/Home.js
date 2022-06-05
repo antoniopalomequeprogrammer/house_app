@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     width:"100%",
     borderTopRightRadius: "30px",
     borderTopLeftRadius: "30px",
-    
     marginTop:"-150px"
   },
 
@@ -40,9 +39,7 @@ const useStyles = makeStyles((theme) => ({
     width:"100%",
     display:"flex",
     justifyContent:"center",
-    
-    
-
+    flexWrap:"wrap",
   },
 
   buscador:{

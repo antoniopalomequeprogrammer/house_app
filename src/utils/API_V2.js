@@ -453,8 +453,14 @@ export async function getVivienda(id) {
 //   return await resolve(instance.post(`tipos/index?page=${page}`, {search,perPageData}).then((res) => res.data));
 // }
 
-export async function getEstados(search,page,perPageData =1) {
-  return await resolve(instance.post(`estados/index?page=${page}`, {search,perPageData}).then((res) => res.data));
+// export async function getEstados(search,page,perPageData =1) {
+//   return await resolve(instance.post(`estados/index?page=${page}`, {search,perPageData}).then((res) => res.data));
+// }
+
+
+
+export async function getEstados(){
+  return await resolve(instance.post('estados/index').then((res) => res.data));
 }
 
 export async function getNotificaciones(search,page,perPageData = 1) {
@@ -546,9 +552,14 @@ export async function detalleMultiplesMuestras(
 
 
 
-export async function getTipos(search,page,perPageData = 1) {
-  return await resolve(instance.post(`tipos/index?page=${page}`, {search,perPageData}).then((res) => res.data));
+// export async function getTipos(search,page,perPageData = 1) {
+//   return await resolve(instance.post(`tipos/index?page=${page}`, {search,perPageData}).then((res) => res.data));
+// }
+
+export async function getTipos(){
+  return await resolve(instance.post('tipos/index').then((res) => res.data));
 }
+
 
 export async function tipoStore(tipo) {
   return await resolve(

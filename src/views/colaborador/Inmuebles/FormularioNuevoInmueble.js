@@ -11,7 +11,6 @@ import FormControl from "@material-ui/core/FormControl";
 import { toast } from "react-toastify";
 import { getEstados, getTipos } from "utils/API_V2";
 import Imagen from "./Imagen";
-import { getVivienda } from "utils/API_V2";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -114,7 +113,7 @@ const FormularioNuevoInmueble = ({
     if (res.error) {
       toast("Error, al intentar obtener tipos", { type: "error" });
     } else {
-      setTipos(res.data);
+      setTipos(res.data.data);
     }
   }
 
