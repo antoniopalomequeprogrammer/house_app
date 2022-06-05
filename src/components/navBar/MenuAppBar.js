@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   menu: {
     color: "white",
   },
+  navBar:{
+    justifyContent:"end",
+  }
 }));
 
 export default function MenuAppBar() {
@@ -75,15 +78,15 @@ export default function MenuAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography
+      <AppBar position="static" className={classes.navBar}>
+        <Toolbar className={classes.navBar}>
+          {/* <Typography
             variant="h6"
             className={classes.title}
             onClick={() => history.push("/home")}
           >
             HOUSE APP
-          </Typography>
+          </Typography> */}
           {auth && (
             <div>
 
