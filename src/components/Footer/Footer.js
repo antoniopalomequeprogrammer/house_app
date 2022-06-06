@@ -3,27 +3,40 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 
-
 const useStyles = makeStyles((theme) => ({
     footer: {
       height:"auto",
       width:"100%",
       background:"white",
       display:"flex",
+      ['@media (max-width:480px)']: { 
+        display:"flex",
+        flexFlow:"column",
+        width:"100%",
+      }
 
 
     },
     footer1:{
         width:"33%",
-        border:"2px solid",
+        ['@media (max-width:480px)']: { 
+            width:"100%",
+          },
+        border:"1px solid",
     },
     footer2:{
         width:"33%",
-        border:"2px solid",
+        ['@media (max-width:480px)']: { 
+            width:"100%",
+          },
+        border:"1px solid",
     },
     footer3:{
         width:"33%",
-        border:"2px solid",
+        ['@media (max-width:480px)']: { 
+            width:"100%",
+          },
+        border:"1px solid",
     },
     ul_styles:{
         listStyle:"none",

@@ -17,7 +17,20 @@ const useStyles = makeStyles((theme) => ({
     },
     viviendasContainer:{
         justifyContent:"center",
+    },
+    title:{
+        textAlign:"center",
+        ['@media (max-width:480px)']: { 
+            fonstSize:"22px"
+          }
+    },
+    h3:{
+        color:"darkgray",
+        ['@media (max-width:480px)']: { 
+            fonstSize:"18px"
+          } 
     }
+    
 
 }));
 
@@ -61,7 +74,7 @@ const handleChange = (event, value) => {
   return (
     <div>
         
-    <h2 style={{textAlign:"center"}}>Más de 300 viviendas disponibles en toda España</h2>    
+    <h2 className={classes.title}>Más de 300 viviendas disponibles en toda España</h2>    
         
         <GridContainer xs={12} sm={12} md={12} lg={12} className={classes.viviendasContainer}>
         
@@ -72,7 +85,7 @@ const handleChange = (event, value) => {
 
         {viviendas?.length == 0 && <div style={{textAling:"center" }}>
             
-            <h3 style={{textAling:"center", color:"red"}}>No hay viviendas con los filtros aplicados, intente con otro criterio de búsqueda</h3>
+            <h3 className={classes.h3}>No hay viviendas con los filtros aplicados, intente con otro criterio de búsqueda</h3>
             </div>}
 
         

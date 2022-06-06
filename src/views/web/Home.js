@@ -51,6 +51,13 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
+  title:{
+    ['@media (max-width:480px)']: { 
+      fontSize:"20px",
+      textAlign:"center",
+    }
+  },
+
   item: {
     width: "300px",
     height: "100px",
@@ -75,6 +82,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop:"19px",
+    ['@media (max-width:480px)']: { 
+      width:"100%",
+      marginBottom:"10px",
+    }
   },
 }));
 
@@ -173,7 +184,7 @@ const Home = () => {
 
 
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12} >
-        <h3>Aplica los Filtros que desees</h3>
+        <h3 className={classes.title}>Aplica los Filtros que desees</h3>
       <TextField
         className={classes.buscador}
         id="outlined-basic"
