@@ -80,7 +80,7 @@ export default function Login(props) {
 
   const forgotPassword = async () => {
     if (email_forgot != "") {
-      const res = await API.resetPass(email);
+      const res = await API.resetPass(email_forgot);
       if (res.error) {
         toast("Correo no válido", { type: "warning" });
       } else {

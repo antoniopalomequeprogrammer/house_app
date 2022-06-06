@@ -9,6 +9,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
 import { shadows } from '@material-ui/system';
+import styles from '../../styles.css'
 const useStyles = makeStyles((theme) => ({
   contenedor: {
     height:"auto",
@@ -45,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
   buscador:{
     width:"100%",
     background:"white",
+    ['@media (max-width:480px)']: { 
+      width:"100%",
+    }
   },
 
   item: {
@@ -62,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    ['@media (max-width:480px)']: { 
+      width:"100%",
+    }
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -156,7 +163,11 @@ const Home = () => {
       </GridItem>
 
 
-    <GridContainer xs={12} sm={12} md={12} lg={12} xl={12} className={classes.contenedor} boxShadow={3}>
+    <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}  
+    className={classes.contenedor} 
+
+    
+    boxShadow={3}>
 
       {/* FILTROS Y BUSCADOR */}
 
@@ -177,7 +188,7 @@ const Home = () => {
         className={classes.formControl}
         xs={12}
         sm={12}
-        md={3}
+        md={6}
         lg={3}
         xl={3}
       >
