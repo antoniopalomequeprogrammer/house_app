@@ -9,7 +9,8 @@ import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
-    width:"25%",
+    // width:"25%",
+    maxWidth:"300px",
     margin:"15px",
     cursor:"pointer",
   },

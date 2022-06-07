@@ -19,13 +19,6 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
       justifyContent:"center",
   },
-  fuenteTitulo:{
-    ['@media (max-width:480px)']: { 
-      fontSize:"24px",
-      textAlign:"center"
-    }
-  
-  },
 
   inmobiliarias:{
       display:"flex",
@@ -78,7 +71,7 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12} className={classes.container}>
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12} className={classes.titulo}>
 
-        {nombreInmobiliaria && <h1 className={classes.fuenteTitulo}>Descubre las viviendas de <span>{nombreInmobiliaria}</span></h1>}
+        {nombreInmobiliaria && <h1>Descubre las viviendas de <span>{nombreInmobiliaria}</span></h1>}
       </GridItem>
         {viviendas && viviendas.map((vivienda) => (
             <SimpleCardVivienda vivienda={vivienda} ></SimpleCardVivienda>
