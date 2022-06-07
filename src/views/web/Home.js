@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     background:"aliceblue",
     borderRadius:"30px",
     position:"relative",
-    width:"100%",
+    // width:"100%",
     borderTopRightRadius: "30px",
     borderTopLeftRadius: "30px",
     marginTop:"-150px"

@@ -35,12 +35,5 @@ params["personalizacion"] = false;
 params["dev_mode"] = true;
 params["panel_url"] = "administrador";
 params["web_url"] = "entidad";
-params["GOOGLE_API_KEY"] = "AIzaSyAfsDJ2Ee7XCcfvUg1xwEmk-XY5bRfbOO4";
-params["console_log"] = true;
-params["STRIPE_PUBLIC_KEY"] ="pk_test_51KucebEdHiV0hgiyfqC1axHwAQ0q1TJzk5QI1DWOMYPKGeBPhS4hddVuAXJPGOGOlCMOfq9SFqP3YKNmUKAjV77i00HiFBIm51";
-
-// Para la zona admin
-params["zonaAdmin"] = btoa(tokenAleatorio);
-params["STRIPE_ACCOUNT"] = "acct_1KucebEdHiV0hgiy";
 
 export default params;

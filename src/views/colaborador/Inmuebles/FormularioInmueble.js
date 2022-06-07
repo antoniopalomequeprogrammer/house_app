@@ -114,7 +114,7 @@ const FormularioInmueble = ({
     if (res.error) {
       toast("Error, al intentar obtener tipos", { type: "error" });
     } else {
-      setTipos(res.data);
+      setTipos(res.data.data);
     }
   }
 

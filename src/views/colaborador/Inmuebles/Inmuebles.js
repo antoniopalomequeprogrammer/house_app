@@ -40,7 +40,7 @@ import {
 const Inmuebles = () => {
     const classes = useStyles();
     const [isLoad, setIsLoad] = useState(false);
-    const [inmobiliarias, setViviendas] = useState([]);
+    const [viviendas, setViviendas] = useState([]);
     const [findBy, setFindBy] = useState("");
     const [page, setPage] = useState(1);
     const [perPageData, setPerPageData] = useState(10);
@@ -251,8 +251,6 @@ const Inmuebles = () => {
           setTotalData(res.data.meta.total);
           setViviendas(arrayViviendas);
           setIsLoad(true);
-        }else{
-          setViviendas([]);
         }
         }
     }
@@ -370,7 +368,7 @@ const Inmuebles = () => {
         </Accordion> */}
         <div className={classes.root}>
           <Datatable
-            data={inmobiliarias}
+            data={viviendas}
             columnNames={columnNames}
             search={(data) => handleSearch(data)}
             load={isLoad}
@@ -410,7 +408,7 @@ const Inmuebles = () => {
           onCancel={() => handleClose()}
           content={
             <FormularioNuevoInmueble
-            vivienda={vivienda}
+              vivienda={vivienda}
               setVivienda={setVivienda}
               readOnly={readOnly}
             />

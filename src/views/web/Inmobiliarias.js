@@ -98,7 +98,7 @@ const Inmobiliarias = () => {
         className={classes.buscadorContainer}
       >
         <TextField
-          style={{ width: "80%" }}
+          style={{ width: "60%" }}
           id="bucar"
           label="Buscar por inmobiliaria"
           onChange={(e) => setSearch(e.target.value)}
