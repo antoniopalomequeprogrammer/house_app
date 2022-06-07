@@ -410,7 +410,7 @@ const Inmuebles = () => {
           onCancel={() => handleClose()}
           content={
             <FormularioNuevoInmueble
-            vivienda={vivienda}
+              vivienda={vivienda}
               setVivienda={setVivienda}
               readOnly={readOnly}
             />
