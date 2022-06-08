@@ -5,10 +5,10 @@ import sideBarImg from "assets/img/sidebar-3.jpg";
 let tokenAleatorio = Math.random().toString(36);
 
 var params = [];
-params["baseUrl"] = "http://dreamhouse.proyectospalomeque.es:3000/";
+params["baseUrl"] = "http://dreamhouse.proyectospalomeque.es";
 params["apiUrl"] = "http://api.dreamhouse.proyectospalomeque.es/api";
 params["urlImagenes"] = "http://api.dreamhouse.proyectospalomeque.es/storage";
-params["urlBackend"] = "http://api.dreamhouse.proyectospalomeque.es:8000";
+params["urlBackend"] = "http://api.dreamhouse.proyectospalomeque.es";
 params["loginAdminImg"] = loginAdminImg;
 params["sideBarIcon"] = iconImg;
 params["sideBarImg"] = sideBarImg;
