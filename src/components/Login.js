@@ -203,7 +203,7 @@ export default function Login(props) {
               Registrarse
             </Button>
           </CardFooter>
-          <p style={{ textAlign: "center" }}>
+          {/* <p style={{ textAlign: "center" }}>
             Ha olvidado su contraseña,{" "}
             <span
               style={{ color: PARAMS.customColor, cursor: "pointer" }}
@@ -211,7 +211,7 @@ export default function Login(props) {
             >
               pulse aquí
             </span>
-          </p>
+          </p> */}
         </form>
       </Card>
       <Modal

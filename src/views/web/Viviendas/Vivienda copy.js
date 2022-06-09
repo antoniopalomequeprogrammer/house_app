@@ -109,11 +109,11 @@ const Vivienda = (props) => {
         style={{ display: "flex" }}
       >
         <GridItem
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          xl={12}
+          xs={6}
+          sm={6}
+          md={6}
+          lg={6}
+          xl={6}
           style={{ padding: "0", width: "auto" }}
         >
           <img
@@ -122,36 +122,7 @@ const Vivienda = (props) => {
           />
         </GridItem>
 
-        
-      </GridItem>
-
-      <GridItem
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        xl={12}
-        style={{ display: "flex" }}
-      >
-        {vivienda?.imagenes?.length > 0 &&
-          vivienda?.imagenes.map((imagen) => (
-            <img
-              style={{
-                marginTop: "20px",
-                marginRight: "5px",
-                width: "150px",
-                height: "150px",
-                cursor: "pointer",
-              }}
-              src={PARAMS.urlImagenes + imagen.ruta}
-              onClick={() =>
-                handleCambiarFoto(PARAMS.urlImagenes + imagen.ruta)
-              }
-            />
-          ))}
-      </GridItem>
-
-      <GridItem xs={6} sm={6} md={6} lg={6} xl={6}>
+        <GridItem xs={6} sm={6} md={6} lg={6} xl={6}>
           <ul style={{listStyle:"none", padding:"0px"}}>
             <li>
               {vivienda.habitacion == 1
@@ -192,6 +163,33 @@ const Vivienda = (props) => {
             </Button>
           </div>
         </GridItem>
+      </GridItem>
+
+      <GridItem
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        xl={12}
+        style={{ display: "flex" }}
+      >
+        {vivienda?.imagenes?.length > 0 &&
+          vivienda?.imagenes.map((imagen) => (
+            <img
+              style={{
+                marginTop: "20px",
+                marginRight: "5px",
+                width: "150px",
+                height: "150px",
+                cursor: "pointer",
+              }}
+              src={PARAMS.urlImagenes + imagen.ruta}
+              onClick={() =>
+                handleCambiarFoto(PARAMS.urlImagenes + imagen.ruta)
+              }
+            />
+          ))}
+      </GridItem>
 
       {/* OPEN CONTACTAR */}
 
