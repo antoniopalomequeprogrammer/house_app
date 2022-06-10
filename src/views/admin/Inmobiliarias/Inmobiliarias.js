@@ -205,6 +205,7 @@ import {
 
       if (!isProcessing) {
         var validate = VALIDATION.checkObject(validate_fields_edit, inmobiliaria);
+        console.log(validate.status);
         if (validate.status) {
           const res = await editarInmobiliaria(inmobiliaria, inmobiliaria.id);
   
@@ -215,6 +216,8 @@ import {
             obtenerInmobiliarias(findBy, page, perPageData);
             handleClose();
           }
+        }else {
+          toast(validate.message, { type: "warning" });
         }
       }
     }
