@@ -60,13 +60,15 @@ async function configurarInmobiliaria(){
          <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
 
         <GridItem xs={12} sm={12} md={12} lg={12} xl={12} >
-            <h1>Configurar perfil de Inmobiliaria</h1>
+            <h2>Configurar perfil de Inmobiliaria</h2>
         </GridItem>
 
+        {defaultLogo && 
          <GridItem xs={12} sm={12} md={12} lg={12} style={{display:"flex",marginBottom:"15px", justifyContent:"end"}}>
           
           <img src={PARAMS.urlImagenes+defaultLogo} style={{width:"150px", height:"150px"}}/>
         </GridItem>
+}
 
 
         <GridItem xs={12} sm={12} md={12} lg={12}>

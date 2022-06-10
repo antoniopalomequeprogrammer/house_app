@@ -220,6 +220,7 @@ const Inmuebles = () => {
       } else {
 
         const arrayViviendas = [];
+        
         if (res.data.data.length > 0) {
           res.data.data.forEach((vivienda, index) => {
             
@@ -248,6 +249,7 @@ const Inmuebles = () => {
   
             arrayViviendas.push(aux);
           });
+          
           setTotalData(res.data.meta.total);
           setViviendas(arrayViviendas);
           setIsLoad(true);

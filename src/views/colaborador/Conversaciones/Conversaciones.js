@@ -127,7 +127,7 @@ const Conversaciones = () => {
         type: "warning",
       });
     } else {
-      console.log({res});
+      
       const arrayNotificaciones = [];
       if (res.data.length > 0) {
         res.data.forEach((notificacion, index) => {
@@ -146,7 +146,7 @@ const Conversaciones = () => {
               />
             </div>
           );
-
+          console.log({arrayNotificaciones});
           arrayNotificaciones.push(aux);
         });
       }
