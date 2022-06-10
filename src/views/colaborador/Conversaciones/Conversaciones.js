@@ -181,7 +181,7 @@ const Conversaciones = () => {
           onClick={() => setHelp(true)}
         />
       </h4>
-      <p>Gestión de inmuebles</p>
+      <p>Gestión de Conversaciones</p>
     </CardHeader>
     <CardBody>
       <div className={classes.root}>
