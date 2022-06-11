@@ -111,7 +111,7 @@ import {
   
     async function obtenerTipos(findBy, page, perPageData) {
       setIsLoad(false);
-      console.log({perPageData});
+      
       const res = await getTipos(findBy, page, perPageData);
       if (res.error) {
         toast("Se ha producido un error en la carga de inmobiliarias", {

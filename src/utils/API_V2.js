@@ -556,9 +556,11 @@ export async function detalleMultiplesMuestras(
 //   return await resolve(instance.post(`tipos/index?page=${page}`, {search,perPageData}).then((res) => res.data));
 // }
 
-export async function getTipos(){
-  return await resolve(instance.post('tipos/index').then((res) => res.data));
+export async function getTipos(search, page, perPageData = 1){
+  return await resolve(instance.post(`tipos/index?page=${page}` , {search,perPageData}).then((res) => res.data));
 }
+
+
 
 
 export async function tipoStore(tipo) {
