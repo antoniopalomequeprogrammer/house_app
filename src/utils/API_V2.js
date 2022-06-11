@@ -355,6 +355,25 @@ export async function usuariosTotales() {
   );
 }
 
+export async function tiposTotales(){
+  return await resolve(instance.post("dashboard/tipos")).then(
+    (res) => res.data
+  );
+}
+
+
+export async function estadosTotales(){
+  return await resolve(instance.post("dashboard/estados")).then(
+    (res) => res.data
+  );
+}
+
+export async function inmobiliariasTotales(){
+  return await resolve(instance.post("dashboard/inmobiliarias")).then(
+    (res) => res.data
+  );
+}
+
 /**
  *      MUESTRAS
  */

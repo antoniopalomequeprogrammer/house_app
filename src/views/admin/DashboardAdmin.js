@@ -9,11 +9,10 @@ import AirlineSeatLegroomExtraIcon from "@material-ui/icons/AirlineSeatLegroomEx
 import TabUnselectedIcon from "@material-ui/icons/TabUnselected";
 import {
   usuariosTotales,
-  clientesTotales,
-  reservasRegistradasTotales,
-  reservasConfirmadasTotales,
-  salonesTotales,
-  mesasTotales,
+  tiposTotales,
+  estadosTotales,
+  inmobiliariasTotales,
+
 } from "utils/API_V2";
 
 const useStyles = makeStyles({
@@ -45,6 +44,24 @@ const DashboardAdmin = () => {
           titleContent={"USUARIOS"}
           path={"/usuarios"}
           handleFuncion={usuariosTotales}
+        />
+        <CardDashBoard
+          icon={<PeopleIcon />}
+          titleContent={"TIPOS"}
+          path={"/tipos"}
+          handleFuncion={tiposTotales}
+        />
+        <CardDashBoard
+          icon={<PeopleIcon />}
+          titleContent={"ESTADOS"}
+          path={"/estados"}
+          handleFuncion={estadosTotales}
+        />
+        <CardDashBoard
+          icon={<PeopleIcon />}
+          titleContent={"INMOBILIARIAS"}
+          path={"/inmobiliarias"}
+          handleFuncion={inmobiliariasTotales}
         />
       </div>
     </div>
