@@ -8,12 +8,9 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AirlineSeatLegroomExtraIcon from "@material-ui/icons/AirlineSeatLegroomExtra";
 import TabUnselectedIcon from "@material-ui/icons/TabUnselected";
 import {
-  usuariosTotales,
-  clientesTotales,
-  reservasRegistradasTotales,
-  reservasConfirmadasTotales,
-  salonesTotales,
-  mesasTotales,
+  notificacionesTotales,
+  viviendasTotales,
+
 } from "utils/API_V2";
 
 const useStyles = makeStyles({
@@ -39,14 +36,23 @@ const DashboardColaborador = () => {
   return (
     <div>
       <h1 className={classes.title}>DASHBOARD COLABORADOR</h1>
-      {/* <div className={classes.layout}>
+      <div className={classes.layout}>
         <CardDashBoard
           icon={<PeopleIcon />}
-          titleContent={"USUARIOS"}
-          path={"/usuarios"}
-          handleFuncion={usuariosTotales}
+          titleContent={"NOTIFICACIONES"}
+          path={"/notificaciones"}
+          handleFuncion={notificacionesTotales}
         />
-      </div> */}
+
+        <CardDashBoard
+          icon={<PeopleIcon />}
+          titleContent={"INMUEBLES"}
+          path={"/inmuebles"}
+          handleFuncion={viviendasTotales}
+        />
+
+
+      </div>
     </div>
   );
 };

@@ -374,6 +374,19 @@ export async function inmobiliariasTotales(){
   );
 }
 
+export async function notificacionesTotales(){
+  return await resolve(instance.post("dashboard/notificaciones")).then(
+    (res) => res.data
+  );
+}
+
+export async function viviendasTotales(){
+  return await resolve(instance.post("dashboard/viviendas")).then(
+    (res) => res.data
+  );
+}
+
+
 /**
  *      MUESTRAS
  */
