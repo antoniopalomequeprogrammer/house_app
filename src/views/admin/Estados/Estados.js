@@ -319,7 +319,6 @@ import {
           onCancel={() => handleClose()}
           confirmText={"Eliminar"}
           content={<h4>Esta seguro que desea eliminar este estado</h4>}
-          onConfirm={() => editarDatosInmobiliaria()}
           title="Eliminar Estado"
           onConfirm={() => eliminarEstado()}
         />
