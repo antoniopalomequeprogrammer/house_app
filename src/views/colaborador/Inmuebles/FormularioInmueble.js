@@ -126,6 +126,7 @@ const FormularioInmueble = ({
 
     <GridItem xs={12} sm={12} md={12} lg={12}>
     {vivienda && vivienda.imagenes && vivienda.imagenes.map((imagen) => (
+    
       <Imagen imagen={imagen}/>
     ))}
     </GridItem>

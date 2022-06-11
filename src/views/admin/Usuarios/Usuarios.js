@@ -1,10 +1,3 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Button,
-  Typography,
-} from "@material-ui/core";
 import CustomLoading from "components/CustomLoading/CustomLoading";
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";

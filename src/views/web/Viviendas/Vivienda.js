@@ -11,8 +11,42 @@ import Button from "@material-ui/core/Button";
 import * as VALIDATION from "utils/VALIDATION";
 import PARAMS from "utils/PARAMS";
 import CustomLoading from "components/CustomLoading/CustomLoading";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  imagen: {
+    marginTop:"20px",
+    width:"600px",
+    height:"500px",
+    ['@media (max-width:480px)']: { 
+      maxWidth:"100%",
+      maxHeight:"300px",
+    }
+  },
+  tituloVivienda:{
+    ['@media (max-width:480px)']: { 
+      fontSize:"22px",
+
+    }
+  },
+  miniaturas:{
+    marginTop: "20px",
+    marginRight: "5px",
+    width: "150px",
+    height: "150px",
+    cursor: "pointer",
+
+    ['@media (max-width:480px)']: { 
+      maxWidth:"100px",
+      maxHeight:"100px",
+
+    }
+  }
+}));
+
 
 const Vivienda = (props) => {
+  const classes = useStyles();
   const [vivienda, setVivienda] = useState({});
   const [isProcessing, setIsProcessing] = useState(false);
   const [openContactar, setOpenContactar] = useState(false);
@@ -96,7 +130,9 @@ const Vivienda = (props) => {
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12} style={{marginBottom:"25px"}}>
       {/* TÍTULO */}
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
-        <h1>{vivienda.titulo}</h1>
+        <h1 className={classes.tituloVivienda}>{vivienda.titulo}</h1>
+        <hr></hr>
+        <p>{vivienda.descripcion}</p>
       </GridItem>
 
       {/* IMAGENES */}
@@ -117,7 +153,8 @@ const Vivienda = (props) => {
           style={{ padding: "0", width: "auto" }}
         >
           <img
-            style={{ marginTop: "20px", width: "650px", height: "500px" }}
+            className={classes.imagen}
+            // style={{ marginTop: "20px", width: "650px", height: "500px" }}
             src={fotoPrincipal}
           />
         </GridItem>
@@ -131,18 +168,13 @@ const Vivienda = (props) => {
         md={12}
         lg={12}
         xl={12}
-        style={{ display: "flex" }}
+        style={{ display: "flex", flexWrap:"wrap" }}
       >
         {vivienda?.imagenes?.length > 0 &&
           vivienda?.imagenes.map((imagen) => (
             <img
-              style={{
-                marginTop: "20px",
-                marginRight: "5px",
-                width: "150px",
-                height: "150px",
-                cursor: "pointer",
-              }}
+            className={classes.miniaturas}
+
               src={PARAMS.urlImagenes + imagen.ruta}
               onClick={() =>
                 handleCambiarFoto(PARAMS.urlImagenes + imagen.ruta)
@@ -169,7 +201,7 @@ const Vivienda = (props) => {
             <li>{vivienda.terraza ? "Con Terraza" : "Sin Terraza"}</li>
             <li>{vivienda.m2 + "/m2"}</li>
           </ul>
-          {vivienda.descripcion}
+          
           <h2 style={{ color: "green", fontWeight: "700" }}>
             {vivienda?.precio + "€"}
           </h2>

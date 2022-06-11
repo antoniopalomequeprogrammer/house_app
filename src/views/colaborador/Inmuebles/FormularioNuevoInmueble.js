@@ -34,7 +34,7 @@ const FormularioNuevoInmueble = ({
   show = false,
   readOnly = false,
 }) => {
-  
+ 
   const classes = useStyles();
   const [estados, setEstados] = useState([]);
   const [tipos, setTipos] = useState([]);
@@ -120,8 +120,13 @@ const FormularioNuevoInmueble = ({
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
 
+  
+
     <GridItem xs={12} sm={12} md={12} lg={12}>
-    {vivienda && vivienda.imagenes && vivienda.imagenes.map((imagen) => (
+
+
+    {vivienda.imagenes && vivienda.imagenes.map((imagen) => (
+
       <Imagen imagen={imagen}/>
     ))}
     </GridItem>
