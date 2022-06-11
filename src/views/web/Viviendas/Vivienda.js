@@ -29,6 +29,17 @@ const useStyles = makeStyles((theme) => ({
 
     }
   },
+  precio:{
+    color:"green",
+    fontWeight:"700",
+    fontSize:"28px",
+    ['@media (max-width:480px)']: { 
+      padding:"0",
+      display:"flex",
+      justifyContent:"end",
+
+    }
+  },
   miniaturas:{
     marginTop: "20px",
     marginRight: "5px",
@@ -41,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
       maxHeight:"100px",
 
     }
+  },
+  contacto_precio:{
+    display:"flex",
+    padding:"0px",
   }
 }));
 
@@ -161,7 +176,7 @@ const Vivienda = (props) => {
 
         
       </GridItem>
-
+      {/* MINIATURAS */}
       <GridItem
         xs={12}
         sm={12}
@@ -181,9 +196,9 @@ const Vivienda = (props) => {
               }
             />
           ))}
-      </GridItem>
-
-      <GridItem xs={6} sm={6} md={6} lg={6} xl={6}>
+      </GridItem> 
+      {/* DATOS VIVIENDAS */}
+      <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
           <ul style={{listStyle:"none", padding:"0px"}}>
             <li>
               {vivienda.habitacion == 1
@@ -201,8 +216,34 @@ const Vivienda = (props) => {
             <li>{vivienda.terraza ? "Con Terraza" : "Sin Terraza"}</li>
             <li>{vivienda.m2 + "/m2"}</li>
           </ul>
-          
-          <h2 style={{ color: "green", fontWeight: "700" }}>
+      </GridItem>
+
+      {/* CONTACTO Y PRECIO */}
+      <GridItem xs={12} sm={12} lg={12} xl={12} className={classes.contacto_precio}>
+      <GridItem xs={4} sm={4} lg={4} xl={4}>
+      <Button
+              variant="contained"
+              color="primary"
+              style={{ marginRight: "5px" }}
+              href={"tel:" + vivienda.telefono}
+            >
+              LLAMAR
+            </Button>
+      </GridItem>
+      <GridItem xs={4} sm={4} lg={4} xl={4} style={{padding:"0px", justifyContent:"start"}}>
+      <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleClick(vivienda)}
+            >
+              CONTACTAR
+            </Button>
+      </GridItem>
+      <GridItem xs={4} sm={4} lg={4} xl={4}>
+      <p className={classes.precio}>{vivienda?.precio + "€"}</p>
+      </GridItem>
+
+      {/* <h2 style={{ color: "green", fontWeight: "700" }}>
             {vivienda?.precio + "€"}
           </h2>
           <div style={{ display: "flex", marginTop: "25px" }}>
@@ -222,8 +263,11 @@ const Vivienda = (props) => {
             >
               CONTACTAR
             </Button>
-          </div>
-        </GridItem>
+          </div> */}
+
+      </GridItem>
+         
+        {/* </GridItem> */}
 
       {/* OPEN CONTACTAR */}
 
