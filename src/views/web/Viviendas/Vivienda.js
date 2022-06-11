@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     ['@media (max-width:480px)']: { 
       padding:"0",
       display:"flex",
+      flexWrap:"wrap",
       justifyContent:"end",
 
     }
