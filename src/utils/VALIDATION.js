@@ -94,6 +94,8 @@ export function validate(type, value, field) {
     case "FLOAT":
       validadorFloat(value, field);
       break;
+    case "PHONE":
+      validadorPhone(value,field);
     default:
   }
 }

@@ -86,7 +86,7 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
   }
   const validate_fields = {
     nombre_contacto: { type: "NULL", field: "Nombre del Contacto" },
-    telefono: { type: "NULL", field: "Teléfono" },
+    telefono: { type: "PHONE", field: "Teléfono" },
     mensaje: { type: "NULL", field: "Mensaje" },
   };
 
