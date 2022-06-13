@@ -29,12 +29,12 @@ import FormularioContactar from 'views/web/Viviendas/FormularioContactar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 350,
+    width: "100%",
     margin:'5px',
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    // paddingTop: '56.25%', // 16:9
     cursor:"pointer",
   },
   expand: {
@@ -126,7 +126,7 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
 
   return (
     <>
-    <Card style={{width:"300px"}} className={classes.root} >
+    <Card className={classes.root} >
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>

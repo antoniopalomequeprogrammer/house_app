@@ -14,10 +14,19 @@ const useStyles = makeStyles((theme) => ({
     tituloFavotiros:{
         justifyContent:"center",
         display:"flex",
+
+        ['@media (max-width:480px)']: { 
+            fontSize:"24px",
+      
+          }
+
+
     },
     viviendasFavoritas:{
+        width:"1000%",
         display:"flex",
         marginBottom:"20px",
+        flexWrap:"wrap",
         justifyContent:"center"
     }
   }));
@@ -62,8 +71,8 @@ async function obtenerViviendasFavoritas(){
 
     <GridContainer xs={12} md={12} lg={12} xl={12}>
 
-        <GridItem xs={12} md={12} lg={12} xl={12} className={classes.tituloFavotiros}>
-            <h1>Mi Lista de Favoritos</h1>
+        <GridItem xs={12} md={12} lg={12} xl={12} >
+            <h1 className={classes.tituloFavotiros}>Mi Lista de Favoritos</h1>
         </GridItem>
 
         <GridItem xs={12} md={12} lg={12} xl={12} className={classes.viviendasFavoritas}> 

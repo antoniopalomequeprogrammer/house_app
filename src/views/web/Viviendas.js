@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     title:{
         textAlign:"center",
         ['@media (max-width:480px)']: { 
-            fonstSize:"18px"
+            fonstSize:"1px"
           }
     },
     h3:{

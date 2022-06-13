@@ -240,7 +240,7 @@ const Vivienda = (props) => {
 
       {/* CONTACTO Y PRECIO */}
       <GridItem xs={12} sm={12} lg={12} xl={12} className={classes.contacto_precio}>
-      <GridItem xs={4} sm={4} lg={4} xl={4}>
+      <GridItem xs={6} sm={6} lg={6} xl={6}>
       <Button
               variant="contained"
               color="primary"
@@ -250,7 +250,7 @@ const Vivienda = (props) => {
               LLAMAR
             </Button>
       </GridItem>
-      <GridItem xs={4} sm={4} lg={4} xl={4} style={{padding:"0px", justifyContent:"start"}}>
+      <GridItem xs={6} sm={6} lg={6} xl={6} style={{padding:"0px", justifyContent:"start"}}>
       <Button
               variant="contained"
               color="primary"
