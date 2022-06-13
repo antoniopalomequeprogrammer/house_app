@@ -1,14 +1,30 @@
 import React from 'react'
 import PARAMS from 'utils/PARAMS';
+import { makeStyles } from "@material-ui/core/styles";
+
+
+
+const useStyles = makeStyles((theme) => ({
+
+  miniaturas: {
+    maxWidth:"150px",
+    margin:"5px",
+  },
+}));
+
+
+
+
+
+
+
 
 const Imagen = (imagen) => {
-    // console.log({imagen});
-    // console.log(PARAMS.urlImagenes+imagen.imagen.ruta);
+  const classes = useStyles();
     return (
         <>
-          <img
-            style={{ width: `25%` }}
-            src={PARAMS.urlImagenes + imagen.ruta}
+          <img className={classes.miniaturas}
+            src={PARAMS.urlImagenes + imagen.imagen.ruta}
             
           />
         </>

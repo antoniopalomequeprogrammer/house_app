@@ -29,8 +29,25 @@ const useStyles = makeStyles((theme) => ({
 
     }
   },
+  containerPrecio:{
+
+    marginTop:"15px",
+    background:"green",
+    padding:"15px",
+    display:"flex",
+    justifyContent:"end",
+
+    ['@media (max-width:480px)']: { 
+      width:"100%",
+      justifyContent:"center",
+      margin:"0 auto",
+      padding:"17px",
+      marginTop:"20px",
+
+    }
+  },
   precio:{
-    color:"green",
+    color:"white",
     fontWeight:"700",
     fontSize:"28px",
     ['@media (max-width:480px)']: { 
@@ -38,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
       display:"flex",
       flexWrap:"wrap",
       justifyContent:"end",
+      color:"white",
+      
 
     }
   },
@@ -240,35 +259,12 @@ const Vivienda = (props) => {
               CONTACTAR
             </Button>
       </GridItem>
-      <GridItem xs={4} sm={4} lg={4} xl={4}>
+
+      </GridItem>
+
+      <GridItem xs={12} sm={12} lg={12} xl={12} className={classes.containerPrecio}>
       <p className={classes.precio}>{vivienda?.precio + "€"}</p>
       </GridItem>
-
-      {/* <h2 style={{ color: "green", fontWeight: "700" }}>
-            {vivienda?.precio + "€"}
-          </h2>
-          <div style={{ display: "flex", marginTop: "25px" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ marginRight: "5px" }}
-              href={"tel:" + vivienda.telefono}
-            >
-              LLAMAR
-            </Button>
-
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleClick(vivienda)}
-            >
-              CONTACTAR
-            </Button>
-          </div> */}
-
-      </GridItem>
-         
-        {/* </GridItem> */}
 
       {/* OPEN CONTACTAR */}
 

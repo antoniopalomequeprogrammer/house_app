@@ -17,13 +17,6 @@ const rutas = [
     visible: false,
   },
   {
-    path: "/tarifas",
-    identificador_ruta: "tarifas",
-    need_login: false,
-    component: lazy(() => import("views/web/Tarifas")),
-    visible: false,
-  },
-  {
     path: "/inmobiliarias-disponibles",
     identificador_ruta: "inmobiliarias-disponibles",
     need_login: false,

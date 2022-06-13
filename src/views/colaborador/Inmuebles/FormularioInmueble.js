@@ -11,6 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import { toast } from "react-toastify";
 import { getEstados, getTipos } from "utils/API_V2";
 import Imagen from "./Imagen";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
 const FormularioInmueble = ({
   vivienda,
   setVivienda,
+  imagenes,
+  setImagenes,
   show = false,
   readOnly = false,
 }) => {
@@ -40,12 +43,20 @@ const FormularioInmueble = ({
   const classes = useStyles();
   const [estados, setEstados] = useState([]);
   const [tipos, setTipos] = useState([]);
+  const [loadMiniaturas, setLoadMiniaturas] = useState(true);
 
   useEffect(() => {
+    let auxVivienda = vivienda;
+    auxVivienda.imagenes = imagenes;
+    setVivienda(auxVivienda);
     obtenerEstados();
     obtenerTipos();
   
   }, []);
+
+
+  
+
 
   const provincias = [
     "Alava",
@@ -105,7 +116,8 @@ const FormularioInmueble = ({
     if (res.error) {
       toast("Error, al intentar obtener estados", { type: "error" });
     } else {
-      setEstados(res.data.data);
+      
+      setEstados(res.data);
     }
   }
 
@@ -114,9 +126,33 @@ const FormularioInmueble = ({
     if (res.error) {
       toast("Error, al intentar obtener tipos", { type: "error" });
     } else {
-      setTipos(res.data.data);
+      setTipos(res.data);
     }
   }
+
+
+  /**
+   * Buscamos dentro de nuestro array de imágenes, la imagen seleccionada y la eliminamos.
+   *  
+   */
+
+  const eliminarImagen = (imagenSeleccionada) => {
+
+    let auxImagenes = imagenes;
+    console.log({auxImagenes});
+    let posicionImagenAEliminar = 0;
+    posicionImagenAEliminar = auxImagenes.findIndex( imagen => imagen.id == imagenSeleccionada.id);
+
+    auxImagenes.splice(posicionImagenAEliminar,1);
+
+    setImagenes(auxImagenes);
+    setLoadMiniaturas(!loadMiniaturas);
+
+    
+
+  }
+
+
 
 
 
@@ -125,9 +161,13 @@ const FormularioInmueble = ({
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
 
     <GridItem xs={12} sm={12} md={12} lg={12}>
-    {vivienda && vivienda.imagenes && vivienda.imagenes.map((imagen) => (
-    
+    {loadMiniaturas && imagenes && imagenes && imagenes.map((imagen) => (
+      <>
       <Imagen imagen={imagen}/>
+      <Button variant="contained" color="secondary" onClick={ () => eliminarImagen(imagen)}>
+        X
+      </Button>
+      </>
     ))}
     </GridItem>
 
@@ -140,7 +180,7 @@ const FormularioInmueble = ({
           onLoadImage={(File) => {
             setVivienda({ ...vivienda, imagenes: File });
           }}
-          // initalFiles={categoria.imagen_url}
+          initialFiles={imagenes}
           multiple={true}
           maxFiles={10}
         />

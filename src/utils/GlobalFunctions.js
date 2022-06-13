@@ -62,19 +62,7 @@ export async function obtenerFiltrosAplicados() {
   }
 }
 
-export async function descargarArchivoPdf(fecha) {
-  const res = await descargarPdf(fecha);
-  if (!res.error) {
-    //Descargar
-    const url = window.URL.createObjectURL(
-      new Blob([res.data], { type: "application/pdf;base64" })
-    );
-    //Visualizar
-    window.open(url, "_blank");
-  } else {
-    toast("Error al descargar el pdf", { type: "warning" });
-  }
-}
+
 
 // Funcion auxiliar async
 async function resolve(promise) {

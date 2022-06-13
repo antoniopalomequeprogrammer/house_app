@@ -1,24 +1,16 @@
-import {
-    Accordion,
-    AccordionDetails,
-    AccordionSummary,
-    Button,
-    Typography,
-  } from "@material-ui/core";
+
   import CustomLoading from "components/CustomLoading/CustomLoading";
   import GridContainer from "components/Grid/GridContainer";
   import GridItem from "components/Grid/GridItem";
   import Datatable from "components/Table/Datatable";
   import React, { useEffect, useState } from "react";
   import { toast } from "react-toastify";
-  import { getUsuarios } from "utils/API_V2";
   import PARAMS from "utils/PARAMS";
   import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
   import Actions from "components/Actions/Actions";
   import Card from "components/Card/Card";
   import CardHeader from "components/Card/CardHeader";
   import CardBody from "components/Card/CardBody";
-  import { ExpandMore } from "@material-ui/icons";
   import { makeStyles } from "@material-ui/core/styles";
   import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
   import FormularioInmueble from "./FormularioInmueble";
@@ -27,7 +19,7 @@ import {
   import Alert from '@material-ui/lab/Alert';
   import Modal from "components/Modal/Modal";
   import {
-    crearUsuario,
+    
     actualizarVivienda,
     borrarInmueble,
     crearVivienda,
@@ -54,6 +46,7 @@ const Inmuebles = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [openModalPassword, setOpenModalPassword] = useState(false);
     const [inmobiliaria, setInmobiliaria] = useState(false);
+    const [imagenes, setImagenes] = useState([]);
     useEffect(() => {
       obtenerInfoInmobiliaria();
       obtenerViviendas(findBy, page, perPageData);
@@ -64,7 +57,7 @@ const Inmuebles = () => {
     }, [perPageData, actualPage]);
   
     const defaultVivienda = {
-      imagenes: "",
+      imagenes: [],
       ciudad: "",
       telefono:"",
       titulo: "",
@@ -86,6 +79,14 @@ const Inmuebles = () => {
     const handleSearch = (findBy) => {
       obtenerViviendas(findBy, page, perPageData);
     };
+    
+
+    useEffect(() => {
+        let auxVivienda = vivienda;
+    
+      console.log("Dentro del useEffect");
+
+    }, [vivienda,imagenes])
     
 
     async function obtenerInfoInmobiliaria(){
@@ -110,6 +111,7 @@ const Inmuebles = () => {
     const handleClose = () => {
       setOpenModal(false);
       setOpenEdit(false);
+      setImagenes([]);
       setOpenModalDel(false);
       setOpenModalPassword(false);
       setVivienda(defaultVivienda);
@@ -151,7 +153,7 @@ const Inmuebles = () => {
     const columnNames = [
       { name: "Id", key: "id", width:"50px" },
       { name: "Título", key: "titulo" },
-      { name: "Descripcion", key: "descripcion"},
+      // { name: "Descripcion", key: "descripcion"},
       { name: "Garaje", key: "garaje", },
       { name: "Habitación", key: "habitacion" },
       { name: "m2", key: "m2" },
@@ -165,7 +167,7 @@ const Inmuebles = () => {
   
     function createData(id,
       titulo,
-      descripcion,
+      // descripcion,
       garaje,
       ascensor,
       habitacion,
@@ -177,7 +179,7 @@ const Inmuebles = () => {
       return {
         id,
         titulo,
-        descripcion,
+        // descripcion,
         garaje,
         ascensor,
         habitacion,
@@ -190,21 +192,22 @@ const Inmuebles = () => {
     }
   
     function loadEdit(vivienda) {
-      console.log("Dentro de Edit");
-      console.log({vivienda});
+     
+      setImagenes(vivienda.imagenes);
       setVivienda(vivienda);
       setOpenEdit(true);
     }
   
     function loadDelete(vivienda) {
-      console.log("Dentro de delete");
+     
       setVivienda(vivienda);
       setOpenModalDel(true);
     }
   
   
     function loadVivienda(vivienda) {
-      console.log("Dentro de load vivienda");
+      
+      setImagenes(vivienda.imagenes);
       setVivienda(vivienda);
       setReadOnly(true);
       setOpenModal(true);
@@ -227,7 +230,7 @@ const Inmuebles = () => {
             let aux = createData(
               vivienda.id,
               vivienda.titulo,
-              vivienda.descripcion,
+              // vivienda.descripcion,
               vivienda.garaje?'Con garaje':'Sin Garaje',
               vivienda.ascensor?'Con ascensor':'Sin Ascensor',
               vivienda.habitacion,
@@ -374,6 +377,7 @@ const Inmuebles = () => {
               vivienda={vivienda}
               setVivienda={setVivienda}
               readOnly={readOnly}
+              imagenes={imagenes}
             />
           }
           noBtn={readOnly ? true : false}
@@ -389,6 +393,8 @@ const Inmuebles = () => {
           confirmText={"Editar"}
           content={
             <FormularioInmueble
+              imagenes={imagenes}
+              setImagenes={setImagenes}
               vivienda={vivienda}
               setVivienda={setVivienda}
               edit={true}

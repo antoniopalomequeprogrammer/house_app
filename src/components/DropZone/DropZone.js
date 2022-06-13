@@ -130,7 +130,7 @@ export default function DropZone(props) {
         <Dropzone
           // accept=".pdf"
           onChangeStatus={handleChangeStatus}
-          // PreviewComponent={Preview}
+          PreviewComponent={Preview}
           styles={{ dropzone: { minHeight: 150 } }}
           submitButtonDisabled={true}
           inputWithFilesContent={inputWithFilesContent ? inputWithFilesContent : "Añadir archivos"}

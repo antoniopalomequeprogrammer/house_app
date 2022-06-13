@@ -26,11 +26,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+  
+  imagenesInmueble:{
+    justifyContent:"center",
+    display:"flex",
+    flexWrap:"wrap",
+  }
+
 }));
 
 const FormularioNuevoInmueble = ({
   vivienda,
   setVivienda,
+  imagenes,
   show = false,
   readOnly = false,
 }) => {
@@ -41,6 +49,11 @@ const FormularioNuevoInmueble = ({
 
   useEffect(() => {
     
+    let auxVivienda = vivienda;
+    auxVivienda.imagenes = imagenes;
+    setVivienda(auxVivienda);
+
+
     obtenerEstados();
     obtenerTipos();
     
@@ -104,7 +117,7 @@ const FormularioNuevoInmueble = ({
     if (res.error) {
       toast("Error, al intentar obtener estados", { type: "error" });
     } else {
-      setEstados(res.data.data);
+      setEstados(res.data);
     }
   }
 
@@ -113,7 +126,7 @@ const FormularioNuevoInmueble = ({
     if (res.error) {
       toast("Error, al intentar obtener tipos", { type: "error" });
     } else {
-      setTipos(res.data.data);
+      setTipos(res.data);
     }
   }
 
@@ -122,17 +135,19 @@ const FormularioNuevoInmueble = ({
 
   
 
-    <GridItem xs={12} sm={12} md={12} lg={12}>
+    <GridItem xs={12} sm={12} md={12} lg={12} className={classes.imagenesInmueble}>
 
 
-    {vivienda.imagenes && vivienda.imagenes.map((imagen) => (
+    {imagenes && imagenes.map((imagen) => (
 
       <Imagen imagen={imagen}/>
     ))}
     </GridItem>
 
+      {!readOnly && 
       <GridItem xs={12} sm={12} md={12} lg={12}>
-        {!show && <h5 style={{ color: "#00B0D5" }}>Nueva Imagen</h5>}
+        <h5 style={{ color: "#00B0D5" }}>Nueva Imagen</h5>
+        
         <DropZone
           id="imagen"
           preview={true}
@@ -145,6 +160,8 @@ const FormularioNuevoInmueble = ({
           maxFiles={10}
         />
       </GridItem>
+      }
+
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
         <TextField
           style={{ width: "100%" }}
@@ -372,11 +389,21 @@ const FormularioNuevoInmueble = ({
             }
           >
             
-            {estados &&
+            {estados && !readOnly &&
               estados.length > 0 &&
               estados.map((estado) => (
-                <MenuItem defaultValue={vivienda.estado} value={estado.id}>{estado.estado}</MenuItem>
+                <MenuItem  value={estado.id}>{estado.estado}</MenuItem>
               ))}
+
+
+            {estados && readOnly &&
+              estados.length > 0 &&
+              estados.map((estado) => (
+                <MenuItem  value={estado.estado}>{estado.estado}</MenuItem>
+              ))}
+
+
+
           </Select>
         </FormControl>
 
@@ -391,11 +418,20 @@ const FormularioNuevoInmueble = ({
             value={vivienda.tipo}
             onChange={(e) => setVivienda({ ...vivienda, tipo: e.target.value })}
           >
-            {tipos &&
+            {tipos && !readOnly &&
               tipos.length > 0 &&
               tipos.map((tipo) => (
                 <MenuItem value={tipo.id}>{tipo.tipo}</MenuItem>
               ))}
+
+            {tipos && readOnly &&
+              tipos.length > 0 &&
+              tipos.map((tipo) => (
+                <MenuItem value={tipo.tipo}>{tipo.tipo}</MenuItem>
+              ))}
+
+
+
           </Select>
         </FormControl>
       </GridItem>

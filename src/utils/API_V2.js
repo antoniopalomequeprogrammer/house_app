@@ -481,8 +481,8 @@ export async function getVivienda(id) {
 }
 
 
-export async function getEstados(search,page,perPageData = 1){
-  return await resolve(instance.post(`estados/index?page=${page}`, {search,perPageData} ).then((res) => res.data));
+export async function getEstados(){
+  return await resolve(instance.post(`estados/index`).then((res) => res.data));
 }
 
 export async function getNotificaciones(search,page,perPageData = 1) {
@@ -578,8 +578,8 @@ export async function detalleMultiplesMuestras(
 //   return await resolve(instance.post(`tipos/index?page=${page}`, {search,perPageData}).then((res) => res.data));
 // }
 
-export async function getTipos(search, page, perPageData = 1){
-  return await resolve(instance.post(`tipos/index?page=${page}` , {search,perPageData}).then((res) => res.data));
+export async function getTipos(){
+  return await resolve(instance.post(`tipos/index`).then((res) => res.data));
 }
 
 
@@ -625,52 +625,8 @@ export async function descargarArchivo(archivoId) {
   );
 }
 
-export async function exportarMuestras() {
-  return await resolve(
-    instance_fd.post("muestras/exportar").then((res) => res.data)
-  );
-}
 
-/**
- *            CRUD MESAS
- */
 
-export async function mesasDisponibles(filtroReserva) {
-  return await resolve(
-    instance.post("mesas/mesas-disponibles", { filtroReserva })
-  ).then((res) => res.data);
-}
-
-export async function mapaMesas(filtroReserva) {
-  return await resolve(
-    instance.post("mesas/mapa-mesas", { filtroReserva })
-  ).then((res) => res.data);
-}
-
-/**
- *           CRUD SUSCRIPCIONES
- */
-
-export async function getSuscripciones(search, page, perPageData = 1) {
-  return await resolve(
-    instance
-
-      .post(`suscripciones/index?page=${page}`, { search, perPageData })
-      .then((res) => res.data)
-  );
-}
-
-export async function crearSuscripcion(suscripcion) {
-  return await resolve(
-    instance.post("suscripcion/crear", { suscripcion }).then((res) => res.data)
-  );
-}
-
-export async function getTarifas() {
-  return await resolve(
-    instance.get("suscripciones/tarifas").then((res) => res.data)
-  );
-}
 
 /**
  *           MENSAJES ENTRE CLIENTES/INMOBILIARIA
@@ -744,267 +700,7 @@ export async function getUser() {
   );
 }
 
-/**
- *            CRUD CLIENTES
- */
 
-// export async function usuarios(search, page, perPageData = 1) {
-//   return await resolve(
-//     instance
 
-//       .post(`usuarios/index?page=${page}`, { search, perPageData })
-//       .then((res) => res.data)
-//   );
-// }
 
-export async function clientes(search, page, perPageData = 1) {
-  return await resolve(
-    instance
-      .post(`clientes/index?page=${page}`, { search, perPageData, page })
-      .then((res) => res.data)
-  );
-}
 
-export async function listadoClientes() {
-  return await resolve(
-    instance.post("clientes/lista-clientes").then((res) => res.data)
-  );
-}
-
-export async function crearCliente(cliente) {
-  return await resolve(
-    instance.post("clientes/crear", { cliente }).then((res) => res.data)
-  );
-}
-
-export async function actualizarCliente(cliente, clienteId) {
-  return await resolve(
-    instance
-      .post(`clientes/actualizar/${clienteId}`, { cliente })
-      .then((res) => res.data)
-  );
-}
-
-export async function borrarCliente(id) {
-  return await resolve(instance.post(`clientes/${id}`).then((res) => res.data));
-}
-
-/**
- *            CRUD RESERVAS
- */
-
-export async function descargarPdf(fecha) {
-  return await resolve(
-    instance_blob
-      .post("reservas/descargar-pdf", { fecha })
-      .then((res) => res.data)
-  );
-}
-
-export async function crearReserva(reserva) {
-  return await resolve(
-    instance.post("reservas/nueva-reserva", { reserva }).then((res) => res.data)
-  );
-}
-
-export async function editarReserva(reserva) {
-  return await resolve(
-    instance
-      .post("reservas/editar-reserva", { reserva })
-      .then((res) => res.data)
-  );
-}
-
-// export async function usuarios(search, page, perPageData = 1) {
-//   return await resolve(
-//     instance
-
-//       .post(`usuarios/index?page=${page}`, { search, perPageData })
-//       .then((res) => res.data)
-//   );
-// }
-
-export async function reservas(search, page, perPageData) {
-  return await resolve(
-    instance
-      .post(`reservas/index?page=${page}`, { search, perPageData })
-      .then((res) => res.data)
-  );
-}
-
-export async function detalleReserva(id) {
-  return await resolve(instance.post(`reservas/detalleReserva/${id}`));
-}
-
-export async function libroReservas(fechaReserva, filtro = false) {
-  return await resolve(
-    instance
-      .post("reservas/libroReservas", { fechaReserva, filtro })
-      .then((res) => res.data)
-  );
-}
-
-export async function libroReservasConfirmadas(fechaReserva) {
-  return await resolve(
-    instance
-      .post("reservas/libroReservasConfirmadas", { fechaReserva })
-      .then((res) => res.data)
-  );
-}
-
-export async function reservasConfirmadas(fechaReserva, filtro = false) {
-  return await resolve(
-    instance
-      .post("reservas/confirmadas", { fechaReserva, filtro })
-      .then((res) => res.data)
-  );
-}
-
-export async function confirmarReservas(reservas) {
-  return await resolve(
-    instance
-      .post("reservas/confirmarReservas", { reservas })
-      .then((res) => res.data)
-  );
-}
-
-export async function desconfirmarReservas(reservas) {
-  return await resolve(
-    instance
-      .post("reservas/desconfirmarReservas", { reservas })
-      .then((res) => res.data)
-  );
-}
-
-export async function confirmarReserva(idReserva) {
-  return await resolve(
-    instance.post("reservas/confirmar-reserva", { idReserva })
-  );
-}
-
-export async function cancelarReserva(idReserva) {
-  return await resolve(
-    instance.post("reservas/cancelar-reserva", { idReserva })
-  );
-}
-
-export async function borrarReserva(id) {
-  return await resolve(instance.post(`reservas/${id}`).then((res) => res.data));
-}
-
-/**
- *            CRUD SALONES
- */
-
-export async function crearSalon(salon) {
-  return await resolve(
-    instance.post("salones/crear", { salon }).then((res) => res.data)
-  );
-}
-
-export async function actualizarSalon(salon, salonId) {
-  return await resolve(
-    instance
-      .post(`salones/actualizar/${salonId}`, { salon })
-      .then((res) => res.data)
-  );
-}
-
-// export async function usuarios(search, page, perPageData = 1) {
-//   return await resolve(
-//     instance
-
-//       .post(`usuarios/index?page=${page}`, { search, perPageData })
-//       .then((res) => res.data)
-//   );
-// }
-
-export async function salones(search, page, perPageData = 1) {
-  return await resolve(
-    instance
-      .post(`salones/index?page=${page}`, { search, perPageData })
-      .then((res) => res.data)
-  );
-}
-
-// export async function salones(search, page, perPageData = 1) {
-//   return await resolve(
-//     instance
-//       .post("salones/index", { search, page, perPageData })
-//       .then((res) => res.data)
-//   );
-// }
-
-export async function listadoSalones() {
-  return await resolve(
-    instance.post("salones/lista-salones").then((res) => res.data)
-  );
-}
-
-export async function borrarSalon(id) {
-  return await resolve(instance.post(`salones/${id}`).then((res) => res.data));
-}
-
-/**
- *            CRUD MESAS
- */
-
-export async function crearMesa(mesa) {
-  return await resolve(
-    instance.post("mesas/crear", { mesa }).then((res) => res.data)
-  );
-}
-
-export async function actualizarMesa(mesa, mesaId) {
-  return await resolve(
-    instance
-      .post(`mesas/actualizar/${mesaId}`, { mesa })
-      .then((res) => res.data)
-  );
-}
-
-export async function mesas(search, page, perPageData) {
-  return await resolve(
-    instance
-      .post("mesas/index", { search, page, perPageData })
-      .then((res) => res.data)
-  );
-}
-
-export async function borrarMesa(id) {
-  return await resolve(instance.post(`mesas/${id}`).then((res) => res.data));
-}
-
-/**
- *            LIBRO RESERVAS
- */
-
-export async function numeroComensales(fecha) {
-  return await resolve(
-    instance
-      .post("libro-reservas/filtros/comensales", { fecha })
-      .then((res) => res.data)
-  );
-}
-
-export async function ubicacionesReserva(fecha) {
-  return await resolve(
-    instance
-      .post("libro-reservas/filtros/ubicaciones", { fecha })
-      .then((res) => res.data)
-  );
-}
-
-export async function mesasReserva(fecha) {
-  return await resolve(
-    instance
-      .post("libro-reservas/filtros/mesas", { fecha })
-      .then((res) => res.data)
-  );
-}
-
-export async function getMesaSalon(idSalon) {
-  return await resolve(
-    instance.post("mesas/salon", { idSalon }).then((res) => res.data)
-  );
-}
