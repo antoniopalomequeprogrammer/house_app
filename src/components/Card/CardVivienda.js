@@ -29,12 +29,12 @@ import FormularioContactar from 'views/web/Viviendas/FormularioContactar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: 350,
     margin:'5px',
   },
   media: {
     height: 0,
-    // paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%', // 16:9
     cursor:"pointer",
   },
   expand: {
@@ -86,7 +86,7 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
   }
   const validate_fields = {
     nombre_contacto: { type: "NULL", field: "Nombre del Contacto" },
-    telefono: { type: "PHONE", field: "Teléfono" },
+    telefono: { type: "NULL", field: "Teléfono" },
     mensaje: { type: "NULL", field: "Mensaje" },
   };
 
@@ -126,7 +126,7 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
 
   return (
     <>
-    <Card className={classes.root} >
+    <Card style={{width:"300px"}} className={classes.root} >
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>

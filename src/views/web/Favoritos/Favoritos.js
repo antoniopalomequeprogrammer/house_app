@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     viviendasFavoritas:{
-        width:"1000%",
+        // width:"100%",
         display:"flex",
         marginBottom:"20px",
         flexWrap:"wrap",
