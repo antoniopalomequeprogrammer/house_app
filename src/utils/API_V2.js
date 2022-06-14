@@ -666,10 +666,32 @@ export async function actualizarUsuario(usuario, usuarioId) {
 }
 
 export async function actualizarVivienda(vivienda, viviendaId) {
-  console.log({ vivienda });
+  console.log(vivienda);
+  if (vivienda.imagenesNuevas) {
+    for (var key in vivienda.imagenesNuevas) {
+      if (vivienda.imagenesNuevas[key].name) {
+        vivienda.imagenesNuevas[key] = await toBase64(vivienda.imagenesNuevas[key]);
+      }
+    }
+  }
+
+  let fd = new FormData();
+
+  for (var key in vivienda) {
+    if (vivienda[key]) {
+      if (Array.isArray(vivienda[key])) {
+        fd.append(key, JSON.stringify(vivienda[key]));
+      } else {
+        fd.append(key, vivienda[key]);
+      }
+    }
+  }
+
+
+
   return await resolve(
-    instance
-      .post(`vivienda/actualizar/${viviendaId}`, { vivienda })
+    instance_fd
+      .post(`vivienda/actualizar/${viviendaId}`,  fd )
       .then((res) => res.data)
   );
 }

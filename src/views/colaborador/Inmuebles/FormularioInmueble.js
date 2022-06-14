@@ -139,14 +139,13 @@ const FormularioInmueble = ({
   const eliminarImagen = (imagenSeleccionada) => {
 
     let auxImagenes = imagenes;
-    console.log({auxImagenes});
     let posicionImagenAEliminar = 0;
     posicionImagenAEliminar = auxImagenes.findIndex( imagen => imagen.id == imagenSeleccionada.id);
 
     auxImagenes.splice(posicionImagenAEliminar,1);
-
-    setImagenes(auxImagenes);
-    setLoadMiniaturas(!loadMiniaturas);
+    setVivienda({...vivienda,imagenes: auxImagenes});
+    // setImagenes(auxImagenes);
+    // setLoadMiniaturas(!loadMiniaturas);
 
     
 
@@ -178,7 +177,7 @@ const FormularioInmueble = ({
           preview={true}
           show={show}
           onLoadImage={(File) => {
-            setVivienda({ ...vivienda, imagenes: File });
+            setVivienda({ ...vivienda, imagenesNuevas: File });
           }}
           initialFiles={imagenes}
           multiple={true}

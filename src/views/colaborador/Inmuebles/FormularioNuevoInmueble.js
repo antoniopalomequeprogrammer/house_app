@@ -153,7 +153,7 @@ const FormularioNuevoInmueble = ({
           preview={true}
           show={show}
           onLoadImage={(File) => {
-            setVivienda({ ...vivienda, imagenes: File });
+            setVivienda({ ...vivienda, imagenesNuevas: File });
           }}
           // initalFiles={categoria.imagen_url}
           multiple={true}

@@ -58,6 +58,7 @@ const Inmuebles = () => {
   
     const defaultVivienda = {
       imagenes: [],
+      imagenesNuevas: [],
       ciudad: "",
       telefono:"",
       titulo: "",
@@ -81,12 +82,7 @@ const Inmuebles = () => {
     };
     
 
-    useEffect(() => {
-        let auxVivienda = vivienda;
     
-      console.log("Dentro del useEffect");
-
-    }, [vivienda,imagenes])
     
 
     async function obtenerInfoInmobiliaria(){
