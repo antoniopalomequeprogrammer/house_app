@@ -180,12 +180,31 @@ export async function viviendasInmobiliaria(idInmobiliaria) {
   );
 }
 
+
 export async function editarInmobiliaria(inmobiliaria, inmobiliariaId) {
+  if (inmobiliaria.logo) {
+    inmobiliaria.logo = await toBase64(inmobiliaria.logo);
+  }
+
+  let fd = new FormData();
+
+  for (var key in inmobiliaria) {
+    if (inmobiliaria[key]) {
+      if (Array.isArray(inmobiliaria[key])) {
+        fd.append(key, JSON.stringify(inmobiliaria[key]));
+      } else {
+        fd.append(key, inmobiliaria[key]);
+      }
+    }
+  }
+
   return await resolve(
-    instance
-      .post(`editar/inmobiliaria/${inmobiliariaId}`, { inmobiliaria })
+    instance_fd
+      .post(`editar/inmobiliaria/${inmobiliariaId}`,  fd )
       .then((res) => res.data)
   );
+
+ 
 }
 
 export async function comprobarInmobiliaria() {
@@ -219,7 +238,6 @@ export async function comprobarInmobiliaria() {
 // }
 
 export async function actualizarInmobiliaria(inmobiliaria) {
-  console.log({ inmobiliaria });
 
   if (inmobiliaria.logo) {
     inmobiliaria.logo = await toBase64(inmobiliaria.logo);

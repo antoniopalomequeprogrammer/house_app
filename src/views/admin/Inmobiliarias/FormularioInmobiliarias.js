@@ -1,10 +1,11 @@
 import GridContainer from "components/Grid/GridContainer";
 import GridItem from "components/Grid/GridItem";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import DropZone from "components/DropZone/DropZone";
 import PARAMS from "utils/PARAMS";
+import CustomLoading from "components/CustomLoading/CustomLoading";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+  logoContainer:{
+    justifyContent:"center",
+    display:"flex",
+  },
+  logoInmobiliaria:{
+    borderRadius:"127px",
+    minHeight:"150px",
+    maxWidth:"150px"
+  }
 }));
 
 const FormularioInmobiliarias = ({
@@ -27,8 +37,14 @@ const FormularioInmobiliarias = ({
   edit = false,
   show = false,
   readOnly = false,
+  
   editPerfil = false,
 }) => {
+  const [logo, setLogo] = useState(null);
+  useEffect(() => {
+    setLogo(null);
+    setLogo(inmobiliaria.logo);
+  }, [])
   
 
 
@@ -36,9 +52,15 @@ const FormularioInmobiliarias = ({
   const [showPassword, setShowPassword] = useState(false);
   return (
     <GridContainer xs={12} sm={12} md={12} lg={12} xl={12}>
+      <GridItem xs={12} sm={12} md={12} lg={12} xl={12} className={classes.logoContainer}>
+        {logo==null && <CustomLoading/>}
+        {logo && <img className={classes.logoInmobiliaria} src={PARAMS.urlImagenes+logo}/>}
+
+      
+      </GridItem>
     <GridItem xs={12} sm={12} md={12} lg={12}>
       
-      {inmobiliaria?.logo && <img src={PARAMS.urlImagenes+inmobiliaria.logo}/>}
+   
 
 
 
