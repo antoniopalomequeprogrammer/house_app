@@ -78,6 +78,10 @@ const useStyles = makeStyles((theme) => ({
     ['@media (max-width:480px)']: { 
      display:"flex",
      justifyContent:"center",
+     maxWidth:"150px",
+     maxHeight:"150px",
+     minHeight:"150px",
+     maxWidth:"150px",
     }
   },
   parrafosContactos:{
