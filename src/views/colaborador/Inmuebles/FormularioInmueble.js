@@ -144,11 +144,6 @@ const FormularioInmueble = ({
 
     auxImagenes.splice(posicionImagenAEliminar,1);
     setVivienda({...vivienda,imagenes: auxImagenes});
-    // setImagenes(auxImagenes);
-    // setLoadMiniaturas(!loadMiniaturas);
-
-    
-
   }
 
 
@@ -410,16 +405,16 @@ const FormularioInmueble = ({
             labelId="estado-label"
             id="estado"
             
-            value={vivienda.estado}
+            value={vivienda.estado_id}
             onChange={(e) =>
-              setVivienda({ ...vivienda, estado: e.target.value })
+              setVivienda({ ...vivienda, estado_id: e.target.value })
             }
           >
             
             {estados &&
               estados.length > 0 &&
               estados.map((estado) => (
-                <MenuItem defaultValue={vivienda.estado} value={estado.id}>{estado.estado}</MenuItem>
+                <MenuItem  value={estado.id}>{estado.estado}</MenuItem>
               ))}
           </Select>
         </FormControl>
@@ -431,9 +426,9 @@ const FormularioInmueble = ({
             style={{ width: "100%" }}
             labelId="tipo-label"
             id="tipo"
-            defaultValue={vivienda.tipo}
-            value={vivienda.tipo}
-            onChange={(e) => setVivienda({ ...vivienda, tipo: e.target.value })}
+            defaultValue={vivienda.tipo_id}
+            
+            onChange={(e) => setVivienda({ ...vivienda, tipo_id: e.target.value })}
           >
             {tipos &&
               tipos.length > 0 &&

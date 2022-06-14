@@ -59,6 +59,8 @@ const Inmuebles = () => {
     const defaultVivienda = {
       imagenes: [],
       imagenesNuevas: [],
+      estado_id:"",
+      tipo_id:"",
       ciudad: "",
       telefono:"",
       titulo: "",
