@@ -42,6 +42,7 @@ const ViviendasInmobiliarias = (props) => {
 const classes = useStyles();
 let history = useHistory();    
 const [viviendas, setViviendas] = useState([]);
+const [inmobiliaria, setInmobiliaria] = useState(false);
 const [nombreInmobiliaria, setNombreInmobiliaria] = useState(false);
 useEffect(() => {
   if(props.match.params.id){
@@ -61,6 +62,7 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
   }else{
     setViviendas(res.data.data);
     setNombreInmobiliaria(res.data.data[0].inmobiliaria)
+    
     
   }
 
