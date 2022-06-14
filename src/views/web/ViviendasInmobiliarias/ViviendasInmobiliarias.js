@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
   titulo: {
       display: "flex",
       justifyContent:"center",
+      
   },
   fuenteTitulo:{
+
     ['@media (max-width:480px)']: { 
       fontSize:"24px",
       textAlign:"center"
@@ -33,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
       marginBottom:"25px",
       flexWrap:"wrap",
       padding:"15px",
+  },
+  tituloNoHayViviendas:{
+    minHeight:"750px",
+    maxHeight:"750px",
   }
 
 }));
@@ -67,7 +73,7 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
 
   }else{
     setViviendas(res.data.data);
-    setNombreInmobiliaria(res.data.data[0].inmobiliaria)
+    setNombreInmobiliaria(res?.data?.data[0]?.inmobiliaria)
     
   }
 
@@ -80,6 +86,7 @@ async function  obtenerViviendasInmobiliaria  (idInmobiliaria){
 
         {nombreInmobiliaria && <h1 className={classes.fuenteTitulo}>Descubre las viviendas de <span>{nombreInmobiliaria}</span></h1>}
       </GridItem>
+        {viviendas && viviendas.length == 0 && <h2 className={classes.tituloNoHayViviendas}>Esta inmobiliaria no tiene viviendas</h2>}
         {viviendas && viviendas.map((vivienda) => (
             <SimpleCardVivienda vivienda={vivienda} ></SimpleCardVivienda>
         ))}

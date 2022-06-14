@@ -39,7 +39,7 @@ export default function SimpleCardInmobiliaria({inmobiliaria}) {
   return (
     <Card className={classes.root} onClick={ () => history.push('/inmobiliaria/'+inmobiliaria.id)}>
       <CardContent style={{width:"300px"}}>
-        <img src={PARAMS.urlImagenes+inmobiliaria?.logo} style={{width:"100%", height:"200px"}}/>
+        <img className={classes.imagenInmobiliaria} src={PARAMS.urlImagenes+inmobiliaria?.logo} style={{width:"100%", height:"200px"}}/>
         <Typography className={classes.pos} color="textSecondary">
           {inmobiliaria.nombre}
         </Typography>
