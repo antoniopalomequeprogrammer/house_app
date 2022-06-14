@@ -119,8 +119,8 @@ import {
         });
       } else {
         const arrayTipos = [];
-        if (res.data.data.length > 0) {
-          res.data.data.forEach((tipo, index) => {
+        if (res.data.length > 0) {
+          res.data.forEach((tipo, index) => {
             let aux = createData(
               tipo.id,
               tipo.tipo,

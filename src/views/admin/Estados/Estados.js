@@ -128,8 +128,8 @@ import {
       } else {
         
         const arrayEstados = [];
-        if (res.data.data.length > 0) {
-          res.data.data.forEach((estado, index) => {
+        if (res.data.length > 0) {
+          res.data.forEach((estado, index) => {
             let aux = createData(
               estado.id,
               estado.estado,
