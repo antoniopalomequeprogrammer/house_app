@@ -47,6 +47,32 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
+  containerHeader:{
+    display:"flex",
+    justifyContent:"space-between",
+    padding:"0px",
+    flexWrap:"wrap",
+  },
+  items:{
+    borderRadius:"25px",
+    border:"1px solid",
+    width:"auto",
+  },
+
+  item1:{
+    background:"#ff7b7b",
+    color:"white",
+  },
+
+  item2:{
+    background:"aliceblue",
+    color:"black",
+  },
+  item3:{
+    background:"#bbefbb",
+  },
+
+
   avatar: {
     backgroundColor: red[500],
   },
@@ -144,19 +170,36 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
         title="Paella dish"
       />
       <CardContent>
-          <GridItem xs={12} sm={12} md={12} lg={12} xl={12} style={{display:"flex",justifyContent:"space-between"}}>
-          <GridItem xs={6} sm={6} md={6} lg={6} xl={6}
-            style={{
-              padding:"0px",
-              margin:"0px",
-            }}
+          <GridItem xs={12} sm={12} md={12} lg={12} xl={12} 
+          
+          style={{display:"flex",justifyContent:"space-between", padding:"0px"}}
           
           >
-            PRECIO
+
+
+          <GridItem xs={4} sm={4} md={4} lg={4} xl={4}
+            className={classes.items+" "+classes.item1}
+          
+          >
+            {vivienda.ciudad}
           </GridItem>
-          <GridItem xs={6} sm={6} md={6} lg={6} xl={6}>
+
+          <GridItem xs={4} sm={4} md={4} lg={4} xl={4}
+          className={classes.items+" "+classes.item2}
+          >
+            {vivienda.tipo}
+          </GridItem>
+
+          <GridItem xs={4} sm={4} md={4} lg={4} xl={4}
+          className={classes.items+" "+classes.item3}>
             {vivienda.precio+'€'}
           </GridItem>
+
+
+
+
+
+
           </GridItem>
           <hr></hr>
         <Typography variant="body2" color="textSecondary" component="p">

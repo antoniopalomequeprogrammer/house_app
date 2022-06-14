@@ -226,7 +226,7 @@ const Home = () => {
          <TextField
         className={classes.buscador}
         id="outlined-basic"
-        label="Precio en €"
+        label="Precio hasta en €"
         variant="outlined"
         type="number"
         onChange={(e) => setFiltros({...filtros,precio:e.target.value}) }
