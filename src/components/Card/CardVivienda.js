@@ -112,7 +112,7 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
   }
   const validate_fields = {
     nombre_contacto: { type: "NULL", field: "Nombre del Contacto" },
-    telefono: { type: "NULL", field: "Teléfono" },
+    telefono: { type: "TEL", field: "Teléfono" },
     mensaje: { type: "NULL", field: "Mensaje" },
   };
 
@@ -126,8 +126,11 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
   const [mensaje, setMensaje] = useState(defaultMensaje);
 
   async function contactarConInmobiliaria() {
+    console.log("Entrando");
+    console.log(mensaje);
     if (!isProcessing) {
       var validate = VALIDATION.checkObject(validate_fields, mensaje);
+      console.log(validate);
       if (validate.status) {
         let auxMensaje = mensaje;
         auxMensaje.vivienda_id = vivienda.id;
@@ -141,6 +144,8 @@ const CardVivienda = ({vivienda, setLoadFavoritos=false, loadFavoritos,recargarF
           toast(res.error, { type: "error" });
         } else {
           toast("Mensaje enviado correctamente", { type: "success" });
+          setIsProcessing(false);
+          setMensaje(defaultMensaje);
           handleClose();
         }
       } else {

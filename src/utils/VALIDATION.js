@@ -94,7 +94,7 @@ export function validate(type, value, field) {
     case "FLOAT":
       validadorFloat(value, field);
       break;
-    case "PHONE":
+    case "TEL":
       validadorPhone(value,field);
     default:
   }
@@ -148,10 +148,14 @@ function validadorEmail(value, key) {
 }
 
 function validadorPhone(value, key) {
-  if (!/([0-9]){9}/.test(value)) {
+  if (
+    !/^(0034|\+34)?(\d\d\d)-? ?(\d\d)-? ?(\d)-? ?(\d)-? ?(\d\d)$/.test(value)
+  ) {
     throw new CustomException(`El campo ${key} no es un teléfono válido`, key);
   }
 }
+
+
 
 var validDNI = function (dni) {
   var dni_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
