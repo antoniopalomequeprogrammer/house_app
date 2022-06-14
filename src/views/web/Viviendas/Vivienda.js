@@ -12,7 +12,8 @@ import * as VALIDATION from "utils/VALIDATION";
 import PARAMS from "utils/PARAMS";
 import CustomLoading from "components/CustomLoading/CustomLoading";
 import { makeStyles } from "@material-ui/core/styles";
-
+import CallIcon from '@material-ui/icons/Call';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 const useStyles = makeStyles((theme) => ({
   imagen: {
     marginTop:"20px",
@@ -76,7 +77,21 @@ const useStyles = makeStyles((theme) => ({
   contacto_precio:{
     display:"flex",
     padding:"0px",
+  },
+  imagenPrincipal:{
+    display:"flex",
+    justifyContent:"center",
+  },
+  botonLlamar:{
+    width:"100%",
+    padding:"25px",
+  },
+
+  botonContactar:{
+    width:"100%",
+    padding:"25px",
   }
+
 }));
 
 
@@ -177,6 +192,7 @@ const Vivienda = (props) => {
         md={12}
         lg={12}
         xl={12}
+        className={classes.imagenPrincipal}
         style={{ display: "flex" }}
       >
         <GridItem
@@ -185,6 +201,7 @@ const Vivienda = (props) => {
           md={12}
           lg={12}
           xl={12}
+          className={classes.imagenPrincipal}
           style={{ padding: "0", width: "auto" }}
         >
           <img
@@ -203,6 +220,7 @@ const Vivienda = (props) => {
         md={12}
         lg={12}
         xl={12}
+        className={classes.imagenPrincipal}
         style={{ display: "flex", flexWrap:"wrap" }}
       >
         {vivienda?.imagenes?.length > 0 &&
@@ -242,21 +260,23 @@ const Vivienda = (props) => {
       <GridItem xs={12} sm={12} lg={12} xl={12} className={classes.contacto_precio}>
       <GridItem xs={6} sm={6} lg={6} xl={6}>
       <Button
+              className={classes.botonLlamar}
               variant="contained"
               color="primary"
               style={{ marginRight: "5px" }}
               href={"tel:" + vivienda.telefono}
             >
-              LLAMAR
+              LLAMAR <CallIcon/>
             </Button>
       </GridItem>
       <GridItem xs={6} sm={6} lg={6} xl={6} style={{padding:"0px", justifyContent:"start"}}>
       <Button
+              className={classes.botonContactar}
               variant="contained"
               color="primary"
               onClick={() => handleClick(vivienda)}
             >
-              CONTACTAR
+              CONTACTAR <QuestionAnswerIcon/>
             </Button>
       </GridItem>
 

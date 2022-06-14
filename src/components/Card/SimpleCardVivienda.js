@@ -24,12 +24,22 @@ const useStyles = makeStyles({
   },
   pos: {
     marginBottom: 12,
+    marginTop:15,
   },
   boton:{
     width:"100%",
     background:"aliceblue",
     justifyContent:"center",
 
+  },
+  imgVivienda:{
+    maxHeight:"200px",
+    maxWidth:"300px",
+    minHeight:"200px",
+    maxWidth:"300px",
+  },
+  tituloVivienda:{
+    fontSize:"18px"
   }
 });
 
@@ -39,14 +49,14 @@ export default function SimpleCardVivienda({vivienda}) {
   return (
     <Card xs={6} sm={6} lg={6} xl={6}  className={classes.root} onClick={ () => history.push(`/vivienda/${vivienda.id}`)}>
       <CardContent>
-        {vivienda?.imagenes && (<img src={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta} style={{width:"100%"}}></img>)}
+        {vivienda?.imagenes && (<img className={classes.imgVivienda} src={PARAMS.urlImagenes+vivienda?.imagenes[0]?.ruta} style={{width:"100%"}}></img>)}
 
         
         <Typography className={classes.pos} color="textSecondary">
-          {vivienda?.titulo}
+          <p className={classes.tituloVivienda}>{vivienda?.titulo}</p>
         </Typography>
         <Typography variant="body2" component="p">
-          {vivienda?.descripcion}
+          {vivienda?.descripcion.substr(0,80)}
           <br />
           <h4>{vivienda?.ciudad}</h4>
         </Typography>
