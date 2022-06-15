@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   tituloVivienda:{
+    fontSize:"18px",
     ['@media (max-width:480px)']: { 
       fontSize:"22px",
 
