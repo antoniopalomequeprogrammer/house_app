@@ -73,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius:"125px",
     maxWidth:"300px",
     maxHeight:"300px",
-    minHeight:"300px",
+    minHeight:"230px",
+    minWidth:"200px",
     maxWidth:"300px",
     ['@media (max-width:480px)']: { 
      display:"flex",
