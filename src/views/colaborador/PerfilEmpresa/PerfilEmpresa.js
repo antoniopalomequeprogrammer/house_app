@@ -48,7 +48,7 @@ async function configurarInmobiliaria(){
     console.log({inmobiliaria});
     const res = await actualizarInmobiliaria(inmobiliaria);
     if(res.error){
-        toast("Error al configurar la inmobiliaria", {type:"error"});
+        toast("Error al configurar la inmobiliaria, formato de imagenes admitidos (JPG Y PNG)", {type:"error"});
     }else{
         toast("Inmobiliaria configurada correctamente", {type:"success"});
         obtenerInfoInmobiliaria();

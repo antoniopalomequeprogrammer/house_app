@@ -65,7 +65,7 @@ const Footer = () => {
                 <li className={classes.li} onClick={ () => history.push('/acceso')}>Acceso</li>
                 <li className={classes.li} onClick={ () => history.push('/home')}>Viviendas</li>
                 <li className={classes.li} onClick={ () => history.push('/inmobiliarias-disponibles')}>Inmobiliarias</li>
-                <li className={classes.li} onClick={ () => history.push('/acceso')}>¿Quienes somos?</li>
+                {/* <li className={classes.li} onClick={ () => history.push('/acceso')}>¿Quienes somos?</li> */}
             </ul>
         {/* </GridItem> */}
 

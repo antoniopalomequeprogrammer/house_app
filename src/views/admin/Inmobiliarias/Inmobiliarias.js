@@ -96,7 +96,7 @@ import {
       nombre: { type: "NULL", field: "Nombre" },
       direccion: { type: "NULL", field: "Dirección" },
       descripcion:{type:"NULL", field:"Descripcion"},
-      logo: { type: "NULL", field: "Logo" },
+      // logo: { type: "NULL", field: "Logo" },
       telefono: { type: "NULL", field: "Teléfono" },
     };
   
@@ -104,7 +104,7 @@ import {
       nombre: { type: "NULL", field: "Nombre" },
       direccion: { type: "NULL", field: "Dirección" },
       descripcion:{type:"NULL", field:"Descripcion"},
-      logo: { type: "NULL", field: "Logo" },
+      // logo: { type: "NULL", field: "Logo" },
       telefono: { type: "NULL", field: "Teléfono" },
     };
   ;
@@ -210,7 +210,7 @@ import {
           const res = await editarInmobiliaria(inmobiliaria, inmobiliaria.id);
   
           if (res.error) {
-            toast(res.error, { type: "error" });
+            toast("Se ha producido un error, compruebe que el formato de las imágenes sea (JPG o Png)", { type: "error" });
           } else {
             toast("inmobiliaria editado correctamente", { type: "success" });
             obtenerInmobiliarias(findBy, page, perPageData);

@@ -291,7 +291,7 @@ const Inmuebles = () => {
           const res = await actualizarVivienda(vivienda, vivienda.id);
   
           if (res.error) {
-            toast(res.error, { type: "error" });
+            toast("Se ha producido un error, compruebe que el formato de las imágenes sea (JPG O PNG)", { type: "error" });
           } else {
             toast("Vivienda editado correctamente", { type: "success" });
             obtenerViviendas(findBy, page, perPageData);

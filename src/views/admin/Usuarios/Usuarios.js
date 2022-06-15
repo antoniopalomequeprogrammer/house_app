@@ -288,7 +288,7 @@ const Usuarios = () => {
                     <CustomLoading color={PARAMS.firstColor} size={80} />
                   </GridContainer>
                 }
-                addItemTitle=""
+                // addItemTitle=""
                 addItemAction={() => handleClickOpen()}
                 serverSide={true}
                 totalRows={totalData}

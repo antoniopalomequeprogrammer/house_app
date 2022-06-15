@@ -197,7 +197,7 @@ import {
                 <Datatable
                   data={inmobiliarias}
                   columnNames={columnNames}
-                  search={(data) => handleSearch(data)}
+                  // search={(data) => handleSearch(data)}
                   load={isLoad}
                   loader={
                     <GridContainer
@@ -212,15 +212,16 @@ import {
                   addItemTitle=""
                   addItemAction={() => handleClickOpen()}
                   serverSide={true}
+                  search={true}
                   totalRows={totalData}
                   perPage={perPageData}
-                  handlePageChange={(page) => {
-                    setActualPage(page);
-                  }}
-                  handlePerRowsChange={(perPage, page) => {
-                    setPerPageData(perPage);
-                    setActualPage(page);
-                  }}
+                  // handlePageChange={(page) => {
+                  //   setActualPage(page);
+                  // }}
+                  // handlePerRowsChange={(perPage, page) => {
+                  //   setPerPageData(perPage);
+                  //   setActualPage(page);
+                  // }}
                 />
               </div>
             </CardBody>

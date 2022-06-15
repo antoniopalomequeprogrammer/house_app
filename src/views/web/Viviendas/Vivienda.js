@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   tituloVivienda:{
-    fontSize:"18px",
+    
     ['@media (max-width:480px)']: { 
       fontSize:"22px",
 
@@ -91,6 +91,13 @@ const useStyles = makeStyles((theme) => ({
   botonContactar:{
     width:"100%",
     padding:"25px",
+  },
+  descripcionVivienda:{
+    fontSize:"24px",
+    ['@media (max-width:480px)']: { 
+      fontSize:"18px",
+
+    }
   }
 
 }));
@@ -183,7 +190,7 @@ const Vivienda = (props) => {
       <GridItem xs={12} sm={12} md={12} lg={12} xl={12}>
         <h1 className={classes.tituloVivienda}>{vivienda.titulo}</h1>
         <hr></hr>
-        <p>{vivienda.descripcion}</p>
+        <p className={classes.descripcionVivienda}>{vivienda.descripcion}</p>
       </GridItem>
 
       {/* IMAGENES */}
